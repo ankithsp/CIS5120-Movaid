@@ -73,7 +73,7 @@ const PrototypeTodoScreen = () => {
           </div>
           <div className="get-around6" onClick={onGetAroundContainerClick}>
             <div className="get-around7">Get Around</div>
-            <img className="map-icon3" alt="" src="/map2.svg" />
+            <img className="map-icon3" alt="" src="/map.svg" />
           </div>
           <img
             className="home-icon3"

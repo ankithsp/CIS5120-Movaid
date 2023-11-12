@@ -7,7 +7,7 @@ const AddNewRoom = ({ onClose }) => {
     <div className="add-new-room">
       <div className="add-room-button1" onClick={onClose}>
         <div className="icon-text2">
-          <img className="plus-icon6" alt="" src="/plus3@2x.png" />
+          <img className="plus-icon6" alt="" src="/plus2@2x.png" />
           <div className="add-room1">Add Room</div>
         </div>
       </div>
@@ -23,7 +23,7 @@ const AddNewRoom = ({ onClose }) => {
       <img
         className="close-button-icon3"
         alt=""
-        src="/close-button1.svg"
+        src="/close-button.svg"
         onClick={onClose}
       />
       <div className="add-new-room1">Add New Room</div>

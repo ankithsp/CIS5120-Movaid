@@ -151,7 +151,8 @@
 .add-new-event-button {
   position: absolute;
   top: 742px;
-  left: calc(50% - 185.5px);
+  /* left: calc(50% - 185.5px); */
+  left: 1%;
   border-radius: var(--br-xl);
   background-color: var(--color-lightblue);
   width: 371px;
@@ -400,13 +401,15 @@
 .personalised-greeting-message2 {
   position: absolute;
   top: 25px;
-  left: calc(50% - 104.5px);
+  /* left: calc(50% - 104.5px); */
+  left: 6%;
   font-size: var(--font-size-11xl);
 }
 .prototype-move-in-plan-screen {
   position: relative;
   background-color: var(--color-white);
   width: 100%;
+  left: 30%;
   height: 852px;
   overflow: hidden;
   text-align: center;

@@ -66,8 +66,7 @@ const PrototypeGettingAroundScree = () => {
             onClick={onRecommendationTextClick}
           >
             <ul className="best-cheesesteaks-in-philadelp">
-              <li className="best-cheesesteaks-in">Best Cheesesteaks in</li>
-              <li>Philadelphia</li>
+              <li className="best-cheesesteaks-in">Best Cheesesteaks in Philadelphia</li>
             </ul>
           </h3>
           <img
@@ -82,8 +81,8 @@ const PrototypeGettingAroundScree = () => {
             className="recommendation-text"
             onClick={onRecommendationText1Click}
           >
-            <ul className="best-cheesesteaks-in-philadelp">
-              Hiking Trails Around Philadelphia
+            <ul className="rec2-text">
+              <li className="rec2-text-sub">Hiking Trails Around Philadelphia </li>
             </ul>
           </h3>
           <img
@@ -98,8 +97,8 @@ const PrototypeGettingAroundScree = () => {
             className="recommendation-text"
             onClick={onRecommendationText2Click}
           >
-            <ul className="best-cheesesteaks-in-philadelp">
-              Top Rated Museums in Philadelphia
+            <ul className="rec3-text">
+              <li className="rec3-text-sub">Top Rated Museums in Philadelphia</li>
             </ul>
           </h3>
           <img

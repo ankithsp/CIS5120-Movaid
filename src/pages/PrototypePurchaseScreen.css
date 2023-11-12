@@ -31,7 +31,8 @@
 }
 .add-room-button {
   top: 742px;
-  left: calc(50% - 185.5px);
+  left: 0.7%;
+  /* left: calc(50% - 185.5px); */
   background-color: var(--color-lightblue);
   height: 45px;
   display: flex;
@@ -66,7 +67,7 @@
   position: absolute;
   top: 47px;
   left: 151px;
-  width: 120px;
+  width: 130px;
   height: 24px;
   display: flex;
   flex-direction: row;
@@ -79,7 +80,7 @@
 .checklist-item-3,
 .checklist-item-4 {
   top: 0;
-  width: 151px;
+  width: 152px;
 }
 .checklist-item-1,
 .checklist-item-2,
@@ -300,7 +301,9 @@
 .personalised-greeting-message {
   position: absolute;
   top: 25px;
-  left: calc(50% - 153.5px);
+  left: 47px;
+  /* left: calc(50% - 153.5px); */
+  
   font-size: var(--font-size-11xl);
 }
 .navigation-bar-background {
@@ -309,7 +312,7 @@
   left: 0;
   background-color: var(--color-lightgray);
   width: 393px;
-  height: 60px;
+  height: 65px;
 }
 .todo-list-icon,
 .todo-text {
@@ -362,8 +365,8 @@
 .purchase-bag-icon,
 .purchase-text {
   position: relative;
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
 }
 .purchase-text {
   display: inline-block;
@@ -532,9 +535,10 @@
 .prototype-purchase-screen {
   position: relative;
   background-color: var(--color-white);
+  left: 30%;
   width: 100%;
   height: 852px;
-  overflow: hidden;
+  overflow: scroll;
   text-align: center;
   font-size: var(--font-size-xl);
   color: var(--color-black);

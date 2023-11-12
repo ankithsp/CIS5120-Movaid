@@ -100,7 +100,7 @@
   position: absolute;
   top: 111px;
   left: 11px;
-  width: 302px;
+  width: 340px;
   height: 132px;
   font-size: var(--font-size-xl);
   font-family: var(--font-inherit);
@@ -124,7 +124,8 @@
 .header {
   position: absolute;
   top: 11px;
-  left: calc(50% - 78.5px);
+  /* left: calc(50% - 78.5px); */
+  left:35%;
   font-size: var(--font-size-11xl);
 }
 .detailed-item-view {
@@ -132,6 +133,7 @@
   background-color: var(--color-white);
   width: 393px;
   height: 396px;
+  left: -100px;
   overflow: hidden;
   max-width: 100%;
   max-height: 100%;
@@ -139,4 +141,5 @@
   font-size: var(--font-size-lg);
   color: var(--color-black);
   font-family: var(--font-marko-one);
+  border-radius: 10px;
 }

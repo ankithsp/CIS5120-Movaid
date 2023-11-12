@@ -154,6 +154,7 @@
 }
 .adding-new-event {
   position: relative;
+  left: -107px;
   background-color: var(--color-white);
   padding: var(--padding-mini) 10px 14px var(--padding-xs);
   box-sizing: border-box;
@@ -164,4 +165,5 @@
   font-size: var(--font-size-mini);
   color: var(--color-black);
   font-family: var(--font-montserrat);
+  border-radius: 10px; /* for rounding */
 }

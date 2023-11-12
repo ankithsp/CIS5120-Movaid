@@ -1,3 +1,4 @@
+
 import { useEffect } from "react";
 import {
   Routes,
@@ -70,7 +71,10 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/" element={<PrototypeMainScreen />} />
+      <Route 
+        path="/" 
+        element={<PrototypeMainScreen />} 
+      />
       <Route
         path="/prototype-purchase-screen"
         element={<PrototypePurchaseScreen />}
@@ -83,7 +87,10 @@ function App() {
         path="/prototype-movein-plan-screen"
         element={<PrototypeMoveInPlanScreen />}
       />
-      <Route path="/prototype-todo-screen" element={<PrototypeTodoScreen />} />
+      <Route 
+        path="/prototype-todo-screen" 
+        element={<PrototypeTodoScreen />} 
+      />
       <Route
         path="/prototype-todo-screen-2"
         element={<PrototypeTodoScreen2 />}

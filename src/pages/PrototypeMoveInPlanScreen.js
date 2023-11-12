@@ -73,7 +73,7 @@ const PrototypeMoveInPlanScreen = () => {
           </div>
           <div className="get-around4" onClick={onGetAroundContainerClick}>
             <div className="get-around5">Get Around</div>
-            <img className="map-icon2" alt="" src="/map2.svg" />
+            <img className="map-icon2" alt="" src="/map.svg" />
           </div>
           <img
             className="home-icon2"

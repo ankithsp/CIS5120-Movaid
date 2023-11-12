@@ -197,7 +197,7 @@ const PrototypeMainScreen = () => {
           <img
             className="purchase-bag-icon4"
             alt=""
-            src="/purchase-bag11.svg"
+            src="/purchase-bag1.svg"
           />
           <div className="plan-text4">Purchase</div>
         </div>

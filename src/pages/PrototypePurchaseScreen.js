@@ -84,6 +84,7 @@ const PrototypePurchaseScreen = () => {
   return (
     <>
       <div className="prototype-purchase-screen">
+        <div className="personalised-greeting-message">Things to Purchase</div>
         <div className="add-room-button" onClick={openAddNewRoom}>
           <div className="add-room-icon-text">
             <img className="plus-icon" alt="" src="/plus@2x.png" />
@@ -199,7 +200,6 @@ const PrototypePurchaseScreen = () => {
           >{`Add item >`}</div>
           <div className="kitchen">Kitchen</div>
         </div>
-        <div className="personalised-greeting-message">Things to Purchase</div>
         <div className="navigation-bar-background" />
         <div className="navigation-bar">
           <div className="to-do" onClick={onToDoContainerClick}>

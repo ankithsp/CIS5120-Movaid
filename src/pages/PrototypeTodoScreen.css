@@ -105,7 +105,8 @@
 }
 .navigation-bar3 {
   position: absolute;
-  top: 792px;
+  /* top: 792px; */
+  bottom: 0% ;
   left: 0;
   background-color: var(--color-lightgray);
   width: 393px;
@@ -262,7 +263,8 @@
 .todo-box {
   position: absolute;
   top: 85px;
-  left: calc(50% - 177.5px);
+  /* left: calc(50% - 177.5px); */
+  left:16.5px;
   border-radius: var(--br-mini);
   background-color: var(--color-tan);
   width: 356px;
@@ -279,7 +281,7 @@
 }
 .completed-box {
   top: 562px;
-  left: 19px;
+  left: 16px;
   border-radius: var(--br-mini);
   background-color: var(--color-dimgray);
   width: 356px;
@@ -289,12 +291,14 @@
 .personalised-greeting-message3 {
   position: absolute;
   top: 25px;
-  left: calc(50% - 80.5px);
+  left: 8%;
+  /* left: calc(50% - 80.5px); */
   font-size: var(--font-size-11xl);
 }
 .prototype-todo-screen {
   position: relative;
   background-color: var(--color-white);
+  left: 30%;
   width: 100%;
   height: 852px;
   overflow: hidden;
