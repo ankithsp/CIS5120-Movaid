@@ -1,0 +1,101 @@
+.add-new-task {
+  position: absolute;
+  top: 13px;
+  left: 12px;
+  font-size: var(--font-size-4xl);
+}
+.close-button-icon1 {
+  position: absolute;
+  top: 20px;
+  right: 12px;
+  width: 20px;
+  height: 20px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.priority,
+.priority-box-icon {
+  position: absolute;
+  top: 24px;
+  left: 0;
+  width: 216px;
+  height: 27px;
+}
+.priority {
+  top: 194px;
+  left: 12px;
+  height: 51px;
+  text-align: left;
+  font-family: var(--font-montserrat);
+}
+.span1 {
+  color: var(--color-indianred);
+}
+.task-description-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.description-box-formgroup,
+.task-description {
+  width: 349px;
+  position: absolute;
+  top: 24px;
+  left: 0;
+}
+.task-description {
+  top: 72px;
+  left: 12px;
+  height: 94px;
+  text-align: left;
+  font-family: var(--font-montserrat);
+}
+.plus-icon4 {
+  position: absolute;
+  top: 0;
+  left: -2px;
+  width: 38px;
+  height: 38px;
+  object-fit: cover;
+}
+.add-task {
+  position: absolute;
+  top: 5px;
+  left: 17px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 123px;
+  text-shadow: 0 2px 2px rgba(0, 0, 0, 0.25);
+}
+.plus-parent {
+  position: absolute;
+  top: 6px;
+  left: 116px;
+  width: 140px;
+  height: 34px;
+}
+.add-task-button {
+  position: absolute;
+  top: 291px;
+  left: calc(50% - 185.5px);
+  border-radius: var(--br-xl);
+  background-color: var(--color-lightblue);
+  width: 371px;
+  height: 45px;
+  cursor: pointer;
+  font-size: var(--font-size-lg);
+}
+.adding-new-task {
+  position: relative;
+  background-color: var(--color-white);
+  width: 393px;
+  height: 353px;
+  overflow: hidden;
+  max-width: 100%;
+  max-height: 100%;
+  text-align: center;
+  font-size: var(--font-size-mini);
+  color: var(--color-black);
+  font-family: var(--font-marko-one);
+}

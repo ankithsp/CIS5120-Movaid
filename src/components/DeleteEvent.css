@@ -1,0 +1,58 @@
+.delete-icon {
+  position: absolute;
+  top: calc(50% - 9.5px);
+  right: 7px;
+  width: 20px;
+  height: 20px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.dividing-line {
+  position: absolute;
+  top: -0.5px;
+  left: 123.5px;
+  border-right: 1px solid var(--color-black);
+  box-sizing: border-box;
+  width: 1px;
+  height: 70px;
+}
+.couch-set-up {
+  margin: 0;
+}
+.event-description,
+.time {
+  position: absolute;
+  top: 0;
+  left: 6px;
+}
+.time {
+  top: 36px;
+  font-size: var(--font-size-3xs);
+}
+.color-line-icon,
+.event-to-delete {
+  position: absolute;
+  top: -1.5px;
+  left: -1.5px;
+  width: 3px;
+  height: 52px;
+}
+.event-to-delete {
+  top: 10px;
+  left: 11px;
+  width: 85px;
+  height: 49px;
+}
+.delete-event {
+  border-radius: var(--br-10xs);
+  background-color: #b8bda8;
+  width: 158px;
+  height: 69px;
+  overflow: hidden;
+  max-width: 100%;
+  max-height: 100%;
+  text-align: left;
+  font-size: var(--font-size-2xs);
+  color: var(--color-black);
+  font-family: var(--font-montserrat);
+}

@@ -1,0 +1,245 @@
+.personalised-greeting-message1 {
+  position: absolute;
+  top: 25px;
+  left: calc(50% - 177.5px);
+  display: inline-block;
+  width: 356px;
+}
+.map-image-icon {
+  position: absolute;
+  top: 39px;
+  left: -4px;
+  border-radius: var(--br-3xs);
+  width: 364px;
+  height: 188px;
+  object-fit: cover;
+}
+.map {
+  position: absolute;
+  top: 0;
+  left: calc(50% - 172px);
+  display: inline-block;
+  width: 350px;
+}
+.map-of-city,
+.recs-header {
+  position: absolute;
+  font-size: var(--font-size-4xl);
+}
+.map-of-city {
+  top: 133px;
+  left: 19px;
+  width: 356px;
+  height: 219px;
+  text-align: left;
+}
+.recs-header {
+  top: 0;
+  left: calc(50% - 175px);
+  font-family: var(--font-marko-one);
+  color: var(--color-black);
+  display: inline-block;
+  width: 350px;
+}
+.best-cheesesteaks-in {
+  margin-bottom: 0;
+}
+.best-cheesesteaks-in-philadelp {
+  margin: 0;
+  padding-left: var(--padding-5xl);
+}
+.recommendation-text {
+  margin: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: inherit;
+  font-weight: 400;
+  font-family: inherit;
+  display: inline-block;
+  width: 350px;
+  cursor: pointer;
+}
+.frame-icon {
+  position: absolute;
+  top: 23px;
+  left: 145px;
+  width: 16px;
+  height: 21px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.link-out-icon,
+.recommendation-1 {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  width: 350px;
+  height: 44px;
+}
+.link-out-icon {
+  height: 72.73%;
+  width: 4.57%;
+  top: 4.55%;
+  right: 0.86%;
+  bottom: 22.73%;
+  left: 94.57%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+  cursor: pointer;
+}
+.recommendation-2,
+.recommendation-3,
+.recommendations {
+  position: absolute;
+  top: 236px;
+  left: 0;
+  width: 350px;
+  height: 22px;
+}
+.recommendation-2,
+.recommendations {
+  top: 143px;
+  height: 44px;
+}
+.recommendations {
+  top: 395px;
+  left: 25px;
+  height: 31px;
+  text-align: left;
+  font-size: var(--font-inherit);
+  color: var(--color-royalblue);
+  font-family: var(--font-inherit);
+}
+.home-icon1 {
+  position: absolute;
+  top: 5px;
+  left: 20px;
+  width: 48px;
+  height: 48px;
+  overflow: hidden;
+  opacity: 0.4;
+  cursor: pointer;
+}
+.todo-text1 {
+  position: absolute;
+  top: 36px;
+  left: 0;
+  display: inline-block;
+  width: 75px;
+  height: 18px;
+}
+.todo-list-icon1 {
+  position: absolute;
+  top: 0;
+  left: 20px;
+  width: 36px;
+  height: 36px;
+  overflow: hidden;
+}
+.to-do1 {
+  position: absolute;
+  top: 1px;
+  left: 75px;
+  width: 75px;
+  height: 54px;
+  opacity: 0.4;
+  cursor: pointer;
+}
+.calendar-icon1 {
+  position: absolute;
+  top: 0;
+  left: 22px;
+  width: 32px;
+  height: 32px;
+  overflow: hidden;
+}
+.to-plan1 {
+  position: absolute;
+  top: 1px;
+  left: 138px;
+  width: 75px;
+  height: 54px;
+  opacity: 0.4;
+  cursor: pointer;
+}
+.purchase-bag-icon1 {
+  position: absolute;
+  height: 59.26%;
+  width: 42.67%;
+  top: 0;
+  right: 30.67%;
+  bottom: 40.74%;
+  left: 26.67%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+.purchase1 {
+  position: absolute;
+  top: 1px;
+  left: 0;
+  width: 75px;
+  height: 54px;
+  opacity: 0.4;
+  cursor: pointer;
+}
+.get-around3 {
+  position: absolute;
+  top: 36px;
+  left: 0;
+  display: inline-block;
+  width: 83px;
+  height: 18px;
+  text-shadow: 0 2px 2px rgba(0, 0, 0, 0.25);
+}
+.map-icon1 {
+  position: absolute;
+  height: 66.67%;
+  width: 43.37%;
+  top: 0;
+  right: 27.71%;
+  bottom: 33.33%;
+  left: 28.92%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+.frame,
+.get-around2 {
+  position: absolute;
+  top: 0;
+  left: 213px;
+  width: 83px;
+  height: 54px;
+}
+.frame {
+  top: 5px;
+  left: 93px;
+  width: 296px;
+  height: 55px;
+  overflow: hidden;
+}
+.navigation-bar1 {
+  position: absolute;
+  top: 792px;
+  left: 0;
+  background-color: var(--color-lightgray);
+  width: 393px;
+  height: 60px;
+  font-size: var(--font-size-2xs);
+  color: var(--color-gray);
+  font-family: var(--font-krona-one);
+}
+.prototype-getting-around-scree {
+  position: relative;
+  background-color: var(--color-white);
+  width: 100%;
+  height: 852px;
+  overflow: hidden;
+  text-align: center;
+  font-size: var(--font-size-11xl);
+  color: var(--color-black);
+  font-family: var(--font-marko-one);
+}
