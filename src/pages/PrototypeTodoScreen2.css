@@ -9,7 +9,8 @@
 .personalised-greeting-message5 {
   position: absolute;
   top: 25px;
-  left: calc(50% - 80.5px);
+  left: 8%;
+  /* left: calc(50% - 80.5px); */
 }
 .todo-text5 {
   position: absolute;
@@ -260,7 +261,7 @@
 .completed-box1 {
   position: absolute;
   top: 155px;
-  left: calc(50% - 177.5px);
+  left: 19px;
   border-radius: var(--br-mini);
   background-color: var(--color-tan);
   width: 356px;
@@ -287,6 +288,7 @@
 .prototype-todo-screen-2 {
   position: relative;
   background-color: var(--color-white);
+  left: 30%;
   width: 100%;
   height: 852px;
   overflow: hidden;

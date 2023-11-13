@@ -22,7 +22,7 @@ const AddingNewTask = ({ onClose }) => {
           <span className="span1">*</span>
         </div>
         <Form.Group className="description-box-formgroup">
-          <Form.Control as="textarea" defaultValue="" />
+          <Form.Control as="input" defaultValue="" />
         </Form.Group>
       </div>
       <div className="add-task-button" onClick={onClose}>
