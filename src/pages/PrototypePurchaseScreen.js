@@ -17,6 +17,11 @@ const PrototypePurchaseScreen = () => {
   const [isAddingNewItem2Open, setAddingNewItem2Open] = useState(false);
   const navigate = useNavigate();
 
+  const [newItem, setNewItem] = useState('');
+  const [newItem1, setNewItem1] = useState('');
+  const [newItem2, setNewItem2] = useState('');
+
+
   const openAddNewRoom = useCallback(() => {
     setAddNewRoomOpen(true);
   }, []);
@@ -31,6 +36,7 @@ const PrototypePurchaseScreen = () => {
 
   const closeAddingNewItem = useCallback(() => {
     setAddingNewItemOpen(false);
+    setNewItem('New Item');
   }, []);
 
   const openAddingNewItem1 = useCallback(() => {
@@ -39,6 +45,7 @@ const PrototypePurchaseScreen = () => {
 
   const closeAddingNewItem1 = useCallback(() => {
     setAddingNewItem1Open(false);
+    setNewItem1('New Item');
   }, []);
 
   const openDetailedItemView = useCallback(() => {
@@ -63,6 +70,7 @@ const PrototypePurchaseScreen = () => {
 
   const closeAddingNewItem2 = useCallback(() => {
     setAddingNewItem2Open(false);
+    setNewItem2('New Item');
   }, []);
 
   const onToDoContainerClick = useCallback(() => {
@@ -94,10 +102,13 @@ const PrototypePurchaseScreen = () => {
         <div className="customizable-widget-3">
           <div className="widget-box" />
           <div className="checklist-items">
-            <div className="checklist-item-5">
-              <img className="circle-icon" alt="" src="/circle2@2x.png" />
-              <div className="ottoman">Ottoman</div>
-            </div>
+            {newItem && 
+              <div className="checklist-item-5">
+                <img className="circle-icon" alt="" src="/circle2@2x.png" />
+                <div className="ottoman">{newItem}</div>
+              </div>
+            }
+            
             <div className="checklist-item-4">
               <img className="circle-icon" alt="" src="/circle2@2x.png" />
               <div className="ottoman">Coffee Table</div>
@@ -129,10 +140,13 @@ const PrototypePurchaseScreen = () => {
         <div className="customizable-widget-2">
           <div className="widget-box1" />
           <div className="checklist-items1">
-            <div className="checklist-item-51">
-              <img className="circle-icon" alt="" src="/circle2@2x.png" />
-              <div className="ottoman">Hand Soap</div>
-            </div>
+            {newItem1 && 
+              <div className="checklist-item-51">
+                <img className="circle-icon" alt="" src="/circle2@2x.png" />
+                <div className="ottoman">{newItem1}</div>
+              </div>
+            }
+            
             <div className="checklist-item-41">
               <img className="circle-icon" alt="" src="/circle2@2x.png" />
               <div className="ottoman">Toiletries</div>
@@ -164,10 +178,13 @@ const PrototypePurchaseScreen = () => {
         <div className="customizable-widget-1">
           <div className="widget-box1" />
           <div className="checklist-items2">
-            <div className="checklist-item-52">
-              <img className="circle-icon" alt="" src="/circle2@2x.png" />
-              <div className="ottoman">Dish Soap</div>
-            </div>
+            {newItem2 && 
+              <div className="checklist-item-52">
+                <img className="circle-icon" alt="" src="/circle2@2x.png" />
+                <div className="ottoman">{newItem2}</div>
+              </div>
+            }
+            
             <div className="checklist-item-42">
               <img className="circle-icon" alt="" src="/circle2@2x.png" />
               <div className="ottoman">Pots and Pans</div>
