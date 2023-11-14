@@ -46,4 +46,5 @@
   font-size: var(--font-size-2xl);
   color: var(--color-black);
   font-family: var(--font-montserrat);
+  border-radius: 10px;
 }
