@@ -1,0 +1,30 @@
+.radio-button {
+    display: flex;
+  }
+  
+  .radio-option {
+    flex: 1;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .radio-option:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .radio-option.selected {
+    background-color: lightgray;
+    color: white;
+  }
+  
+  .radio-icon {
+    padding: 10px;
+    text-align: center;
+  }
+  
+  input[type="radio"] {
+    display: none;
+  }
