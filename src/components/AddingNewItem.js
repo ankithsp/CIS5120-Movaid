@@ -31,7 +31,7 @@ const AddingNewItem = ({ onClose }) => {
         <div className="online2">Online</div>
         <div className="in-person">In-Person</div>
         <div className="dividing-line1" /> */}
-        <div>
+        <div className="purchase-preference-background">
           <RadioButton options={purchaseOptions} selectedOption={purchasePreference} onChange={handlePreferenceChange}/>
         </div>
       </div>
