@@ -8,5 +8,5 @@
   2) In the terminal, run `npm install`
   3) Run `npm start` to view project in browser
 
-  ## Citation
+  ## Citations
   We used the Figma 'Locofy' plugin to help convert the design and functionality of our hi-fi prototype to React code. 
