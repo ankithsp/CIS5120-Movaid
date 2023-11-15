@@ -76,7 +76,7 @@
 .frame5,
 .frame6 {
   height: 51px;
-  overflow: hidden;
+  /* overflow: hidden; */
   flex-shrink: 0;
 }
 .frame6 {
