@@ -6,6 +6,7 @@ import DetailedItemView from "../components/DetailedItemView";
 import DeleteItem from "../components/DeleteItem";
 import { Link, useNavigate } from "react-router-dom";
 import "./PrototypePurchaseScreen.css";
+import BudgetTracker from "../components/BudgetTracker";
 
 const PrototypePurchaseScreen = () => {
   const [isAddNewRoomOpen, setAddNewRoomOpen] = useState(false);
@@ -88,6 +89,9 @@ const PrototypePurchaseScreen = () => {
   const onHomeIconClick = useCallback(() => {
     navigate("/");
   }, [navigate]);
+
+  const budget = 100;
+  const currentSpend = 47;
 
   return (
     <>
@@ -245,8 +249,8 @@ const PrototypePurchaseScreen = () => {
             onClick={onHomeIconClick}
           />
         </div>
-        <div className="budget-tracker">
-          <div className="overall-budget-tracker">Overall Budget Tracker</div>
+        <div className="budget-tracker-container">
+          {/* <div className="overall-budget-tracker">Overall Budget Tracker</div>
           <div className="budget-tracker-contents">
             <div className="current-level-readout">
               <img
@@ -267,7 +271,8 @@ const PrototypePurchaseScreen = () => {
               <div className="div1">$0</div>
               <div className="div2">$3,000</div>
             </div>
-          </div>
+          </div> */}
+          <BudgetTracker budget={budget} currentSpend={currentSpend} />
         </div>
       </div>
       {isAddNewRoomOpen && (

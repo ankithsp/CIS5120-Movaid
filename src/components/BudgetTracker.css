@@ -1,0 +1,25 @@
+.budget-tracker {
+    height: 20px;
+    background-color: #ddd;
+    position: relative;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: #4caf50;
+    position: relative;
+    transition: width 1s ease-in-out;
+}
+
+.marker {
+    position: absolute;
+    top: 0;
+    transform: translateX(-50%);
+    background-color: #4caf50;
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 12px;
+    white-space: nowrap;
+}
