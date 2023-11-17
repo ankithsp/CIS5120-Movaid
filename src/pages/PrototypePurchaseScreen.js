@@ -4,7 +4,7 @@ import PortalPopup from "../components/PortalPopup";
 import AddingNewItem from "../components/AddingNewItem";
 import DetailedItemView from "../components/DetailedItemView";
 import DeleteItem from "../components/DeleteItem";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./PrototypePurchaseScreen.css";
 
 const PrototypePurchaseScreen = () => {
@@ -126,11 +126,14 @@ const PrototypePurchaseScreen = () => {
               <div className="ottoman">Couch</div>
             </div>
           </div>
-          <img
-            className="view-more-button"
-            alt=""
-            src="/view-more-button.svg"
-          />
+          <Link to='/detailed-room-view'>
+            <img
+              className="view-more-button"
+              alt=""
+              src="/view-more-button.svg"
+            />
+          </Link>
+          
           <div
             className="add-item"
             onClick={openAddingNewItem}

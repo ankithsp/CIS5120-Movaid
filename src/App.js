@@ -12,6 +12,7 @@ import PrototypeGettingAroundScree from "./pages/PrototypeGettingAroundScree";
 import PrototypeMoveInPlanScreen from "./pages/PrototypeMoveInPlanScreen";
 import PrototypeTodoScreen from "./pages/PrototypeTodoScreen";
 import PrototypeTodoScreen2 from "./pages/PrototypeTodoScreen2";
+import DetailedRoom from "./pages/DetailedRoom";
 
 function App() {
   const action = useNavigationType();
@@ -50,6 +51,10 @@ function App() {
         metaDescription = "";
         break;
       case "/prototype-todo-screen-2":
+        title = "";
+        metaDescription = "";
+        break;
+      case "/detailed-room-view":
         title = "";
         metaDescription = "";
         break;
@@ -94,6 +99,10 @@ function App() {
       <Route
         path="/prototype-todo-screen-2"
         element={<PrototypeTodoScreen2 />}
+      />
+      <Route 
+        path="/detailed-room-view"
+        element={<DetailedRoom />}
       />
     </Routes>
   );

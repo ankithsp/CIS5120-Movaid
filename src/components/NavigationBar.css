@@ -1,0 +1,128 @@
+.navigation-bar-background {
+    position: absolute;
+    top: 792px;
+    left: 0;
+    background-color: var(--color-lightgray);
+    width: 393px;
+    height: 65px;
+}
+
+.navigation-bar {
+    position: absolute;
+    top: 797px;
+    left: 20px;
+    width: 369px;
+    height: 55px;
+    font-size: var(--font-size-2xs);
+    color: var(--color-gray);
+    font-family: var(--font-krona-one);
+}
+
+.todo-list-icon,
+.todo-text {
+  position: relative;
+  flex-shrink: 0;
+}
+.todo-list-icon {
+  width: 36px;
+  height: 36px;
+  overflow: hidden;
+}
+.todo-text {
+  display: inline-block;
+  width: 75px;
+  height: 18px;
+}
+.to-do {
+  position: absolute;
+  top: 1px;
+  left: 148px;
+  width: 75px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  opacity: 0.4;
+  cursor: pointer;
+}
+.calendar-icon {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.to-plan {
+  position: absolute;
+  top: 1px;
+  left: 211px;
+  width: 75px;
+  height: 54px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--gap-9xs);
+  opacity: 0.4;
+  cursor: pointer;
+}
+.purchase-bag-icon,
+.purchase-text {
+  position: relative;
+  width: 36px;
+  height: 36px;
+}
+.purchase-text {
+  display: inline-block;
+  width: 75px;
+  height: 18px;
+  flex-shrink: 0;
+  text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+.purchase {
+  position: absolute;
+  top: 1px;
+  left: 73px;
+  width: 75px;
+  height: 54px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--gap-9xs);
+}
+.get-around1,
+.map-icon {
+  position: relative;
+  width: 32px;
+  height: 32px;
+}
+.get-around1 {
+  display: inline-block;
+  width: 83px;
+  height: 18px;
+  flex-shrink: 0;
+}
+.get-around,
+.home-icon {
+  position: absolute;
+  top: 0;
+  opacity: 0.4;
+  cursor: pointer;
+}
+.get-around {
+  left: 286px;
+  width: 83px;
+  height: 54px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--gap-9xs);
+}
+.home-icon {
+  left: 0;
+  width: 48px;
+  height: 48px;
+  overflow: hidden;
+}
