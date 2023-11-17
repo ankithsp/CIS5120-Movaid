@@ -1,7 +1,8 @@
 import React from "react";
 import './DetailedRoom.css';
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import NavigationBar from "../components/NavigationBar";
+import { useNavigate } from "react-router-dom";
 
 const ChecklistItem = ({ text, checked, onToggle }) => {
 
@@ -46,6 +47,12 @@ const Checklist = ({ items, setItems }) => {
 };
 
 const DetailedRoom = () => {
+
+    const navigate = useNavigate();
+    const onBackArrowClick = useCallback(() => {
+        navigate("/prototype-purchase-screen");
+      }, [navigate]);
+
     const [items, setItems] = useState([
         { name: "Dishes", checked: false, price: 5 },
         { name: "Pots and Pans", checked: false, price: 5 },
@@ -80,6 +87,9 @@ const DetailedRoom = () => {
     return (
         <div className="screen-container">
             <div className="DetailedRoom">
+                <div className="BackArrow" onClick={onBackArrowClick}>
+                    {"<"}
+                </div>
                 <h2 className="checklist-name">Kitchen</h2>
 
                 <button onClick={() => setAddItemPopupOpen(true)}>Add New Item</button>

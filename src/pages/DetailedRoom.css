@@ -34,7 +34,7 @@
     left: 30%;
     width: 390px;
     height: 852px;
-    overflow: scroll;
+    overflow: auto;
     font-size: var(--font-size-xl);
     color: var(--color-black);
     font-family: var(--font-marko-one);
@@ -110,4 +110,17 @@
 
 .AddItemPopup button:hover {
     background-color: #45a049;
+}
+
+.BackArrow {
+    position: absolute;
+    cursor: pointer;
+    font-size: 40px;
+    margin-right: 10px;
+    left: 0;
+    margin-left: 15px;
+}
+
+.BackArrow:hover {
+    text-decoration: underline;
 }
