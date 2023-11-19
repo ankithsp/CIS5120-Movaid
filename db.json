@@ -1,0 +1,80 @@
+{
+    "users" : [
+        {
+            "id": 1,
+            "name": "John Doe",
+            "movingTo": "123 Main St.",
+            "city": "Philadelphia",
+            "purchaseList": [
+                {
+                    "room": "Kitchen",  
+                    "items": [
+                        {
+                            "name": "Dishes", "checked": false, "price": 5
+                        },
+                        { "name": "Pots and Pans", "checked": false, "price": 10 },
+                        { "name": "Utensils", "checked": false, "price": 2 },
+                        { "name": "Cups", "checked": false, "price": 4 },
+                        { "name": "Knife Set", "checked": true, "price": 6 },
+                        { "name": "Blender", "checked": true, "price": 8 },
+                        { "name": "Toaster", "checked": true, "price": 10 },
+                        { "name": "Oven Mitts", "checked": true, "price": 12 }
+                    ]          
+                },
+                {
+                    "room": "Living Room",  
+                    "items": [
+                        {
+                            "name": "Rug", "checked": false, "price": 5
+                        },
+                        { "name": "Sofa", "checked": false, "price": 10 },
+                        { "name": "Posters", "checked": false, "price": 2 },
+                        { "name": "TV", "checked": false, "price": 4 },
+                        { "name": "Coffee Table", "checked": true, "price": 6 },
+                        { "name": "Lamp", "checked": true, "price": 8 },
+                        { "name": "Vacuum", "checked": true, "price": 10 },
+                        { "name": "Coasters", "checked": true, "price": 12 }
+                    ]          
+                },
+                {
+                    "room": "Bedroom",  
+                    "items": [
+                        {
+                            "name": "Pillows", "checked": false, "price": 5
+                        },
+                        { "name": "Sheets", "checked": false, "price": 10 },
+                        { "name": "Desk", "checked": false, "price": 2 },
+                        { "name": "Desk Lamp", "checked": false, "price": 4 },
+                        { "name": "Hangers", "checked": true, "price": 6 },
+                        { "name": "Hamper", "checked": true, "price": 8 },
+                        { "name": "Nightstand", "checked": true, "price": 10 },
+                        { "name": "Rug", "checked": true, "price": 12 }
+                    ]          
+                }
+            ],
+            "todoItems": [
+
+            ],
+            "moveInPlan": [
+                {
+                    "date": "2023-11-21",
+                    "desc": "Jane is coming to drop off some kitchen utensils.",
+                    "timeStart": null,
+                    "timeEnd": null
+                },
+                {
+                    "date": "2023-11-20",
+                    "desc": "Appointment with the landlord to discuss parking permit.",
+                    "timeStart": "T19:06:00",
+                    "timeEnd": null
+                },
+                {
+                    "date": "2023-11-19",
+                    "desc": "Charlie is helping you build and set up your couch.",
+                    "timeStart": "T19:06:00",
+                    "timeEnd": "T19:07:00"
+                }
+            ]
+        }
+    ]
+}
