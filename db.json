@@ -80,29 +80,25 @@
             "priority": 3,
             "completed": false
         }
+    ],
+    "moveInPlan": [
+        {
+            "date": "2023-11-21",
+            "desc": "Jane is coming to drop off some kitchen utensils.",
+            "timeStart": null,
+            "timeEnd": null
+        },
+        {
+            "date": "2023-11-20",
+            "desc": "Appointment with the landlord to discuss parking permit.",
+            "timeStart": "T19:06:00",
+            "timeEnd": null
+        },
+        {
+            "date": "2023-11-19",
+            "desc": "Charlie is helping you build and set up your couch.",
+            "timeStart": "T19:06:00",
+            "timeEnd": "T19:07:00"
+        }
     ]
 }
-
-"todoItems": [
-
-],
-"moveInPlan": [
-    {
-        "date": "2023-11-21",
-        "desc": "Jane is coming to drop off some kitchen utensils.",
-        "timeStart": null,
-        "timeEnd": null
-    },
-    {
-        "date": "2023-11-20",
-        "desc": "Appointment with the landlord to discuss parking permit.",
-        "timeStart": "T19:06:00",
-        "timeEnd": null
-    },
-    {
-        "date": "2023-11-19",
-        "desc": "Charlie is helping you build and set up your couch.",
-        "timeStart": "T19:06:00",
-        "timeEnd": "T19:07:00"
-    }
-]
