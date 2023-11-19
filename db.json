@@ -4,10 +4,15 @@
             "id": 1,
             "name": "John Doe",
             "movingTo": "123 Main St.",
-            "city": "Philadelphia",
-            "purchaseList": [
+            "city": "Philadelphia"
+        }
+    ],
+    "purchaseList": [
+        {
+            "owner": 1,
+            "rooms": [
                 {
-                    "room": "Kitchen",  
+                    "name": "Kitchen",  
                     "items": [
                         {
                             "name": "Dishes", "checked": false, "price": 5
@@ -22,7 +27,7 @@
                     ]          
                 },
                 {
-                    "room": "Living Room",  
+                    "name": "Living Room",  
                     "items": [
                         {
                             "name": "Rug", "checked": false, "price": 5
@@ -37,7 +42,7 @@
                     ]          
                 },
                 {
-                    "room": "Bedroom",  
+                    "name": "Bedroom",  
                     "items": [
                         {
                             "name": "Pillows", "checked": false, "price": 5
@@ -51,30 +56,53 @@
                         { "name": "Rug", "checked": true, "price": 12 }
                     ]          
                 }
-            ],
-            "todoItems": [
-
-            ],
-            "moveInPlan": [
-                {
-                    "date": "2023-11-21",
-                    "desc": "Jane is coming to drop off some kitchen utensils.",
-                    "timeStart": null,
-                    "timeEnd": null
-                },
-                {
-                    "date": "2023-11-20",
-                    "desc": "Appointment with the landlord to discuss parking permit.",
-                    "timeStart": "T19:06:00",
-                    "timeEnd": null
-                },
-                {
-                    "date": "2023-11-19",
-                    "desc": "Charlie is helping you build and set up your couch.",
-                    "timeStart": "T19:06:00",
-                    "timeEnd": "T19:07:00"
-                }
             ]
+        }
+    ],
+    "todoTasks": [
+        {
+            "desc": "Finish & turn in remaining lease paperwork",
+            "priority": 3,
+            "completed": false
+        },
+        {
+            "desc": "Schedule an appointment with landlord regarding parking permits",
+            "priority": 3,
+            "completed": false
+        },
+        {
+            "desc": "Purchase moving boxes",
+            "priority": 3,
+            "completed": true
+        },
+        {
+            "desc": "Plan daily commute route",
+            "priority": 3,
+            "completed": false
         }
     ]
 }
+
+"todoItems": [
+
+],
+"moveInPlan": [
+    {
+        "date": "2023-11-21",
+        "desc": "Jane is coming to drop off some kitchen utensils.",
+        "timeStart": null,
+        "timeEnd": null
+    },
+    {
+        "date": "2023-11-20",
+        "desc": "Appointment with the landlord to discuss parking permit.",
+        "timeStart": "T19:06:00",
+        "timeEnd": null
+    },
+    {
+        "date": "2023-11-19",
+        "desc": "Charlie is helping you build and set up your couch.",
+        "timeStart": "T19:06:00",
+        "timeEnd": "T19:07:00"
+    }
+]

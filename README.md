@@ -6,7 +6,9 @@
   To preview and run the project on your device:
   1) Open project folder in <a href="https://code.visualstudio.com/download">Visual Studio Code</a>
   2) In the terminal, run `npm install`
-  3) Run `npm start` to view project in browser
+  4) Run `npx json-server --watch db.json` to start the database
+  3) In a new terminal window, run `npm start` to view project in browser
+
 
   ## Citations
   We used the Figma 'Locofy' plugin to help convert the design and functionality of our hi-fi prototype to React code. 
