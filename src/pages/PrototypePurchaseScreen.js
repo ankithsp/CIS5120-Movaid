@@ -1,4 +1,4 @@
-import { useState, useRef, useCallback } from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
 import AddNewRoom from "../components/AddNewRoom";
 import PortalPopup from "../components/PortalPopup";
 import AddingNewItem from "../components/AddingNewItem";
@@ -9,6 +9,24 @@ import "./PrototypePurchaseScreen.css";
 import BudgetTracker from "../components/BudgetTracker";
 
 const PrototypePurchaseScreen = () => {
+
+  const [roomsList, setRoomsList] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('http://localhost:8000/purchaseList');
+        const data = await response.json();
+        console.log(data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+
   const [isAddNewRoomOpen, setAddNewRoomOpen] = useState(false);
   const [isAddingNewItemOpen, setAddingNewItemOpen] = useState(false);
   const [isAddingNewItem1Open, setAddingNewItem1Open] = useState(false);

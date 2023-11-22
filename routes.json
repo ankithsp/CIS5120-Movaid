@@ -4,8 +4,7 @@
   
     "/purchaseList": "/purchaseList",
     "/purchaseList/:id": "/purchaseList/:id",
-    "/purchaseList/:purchaseListId/items": "/purchaseList/:purchaseListId/items",
-    "/purchaseList/:purchaseListId/items/:itemId": "/purchaseList/:purchaseListId/items/:itemId",
+    "/purchaseList/:id/items/:itemId": "/items/:itemId",
   
     "/todoTasks": "/todoTasks",
     "/todoTasks/:id": "/todoTasks/:id",

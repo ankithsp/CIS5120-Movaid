@@ -1,4 +1,4 @@
-import { useState, useRef, useCallback } from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
 import AddingNewEvent from "../components/AddingNewEvent";
 import PortalPopup from "../components/PortalPopup";
 import DeleteEvent from "../components/DeleteEvent";
@@ -6,6 +6,24 @@ import { useNavigate } from "react-router-dom";
 import "./PrototypeMoveInPlanScreen.css";
 
 const PrototypeMoveInPlanScreen = () => {
+
+  const [eventsList, setEventsList] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('http://localhost:8000/moveInPlan');
+        const data = await response.json();
+        console.log(data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+
   const [isAddingNewEventOpen, setAddingNewEventOpen] = useState(false);
   const event1Container1Ref = useRef(null);
   const [isDeleteEventPopupOpen, setDeleteEventPopupOpen] = useState(false);

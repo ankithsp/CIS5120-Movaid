@@ -3,6 +3,7 @@ import './DetailedRoom.css';
 import { useState, useCallback} from "react";
 import NavigationBar from "../components/NavigationBar";
 import { useNavigate } from "react-router-dom";
+import { v4 as uuidv4 } from 'uuid';
 
 const ChecklistItem = ({ text, checked, onToggle }) => {
 
@@ -29,6 +30,7 @@ const Checklist = ({ items, setItems }) => {
                 return item;
             });
         });
+
         console.log(items);
     };
 
@@ -62,12 +64,34 @@ const DetailedRoom = () => {
     const [newItemName, setNewItemName] = useState('');
 
     // Function to handle adding a new item
-    const handleAddItem = () => {
+    const handleAddItem = async () => {
         if (newItemName.trim() !== '') {
           setItems((prevItems) => [
             { name: newItemName, checked: false, price: 0 },
             ...prevItems,
           ]);
+
+          try {
+            const updatedItem = { id: uuidv4(), name: newItemName, checked: false, price: 20}
+
+            const response = await fetch(`http://localhost:3000/purchaseList/1/items/${updatedItem.id}`, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(updatedItem),
+            });
+      
+            if (response.ok) {
+              console.log('Item updated successfully');
+              // You can perform additional actions after a successful PUT request
+            } else {
+              console.error('Failed to update item');
+            }
+          } catch (error) {
+            console.error('Error making PUT request:', error);
+          }
+
           setNewItemName('');
           setAddItemPopupOpen(false);
         }

@@ -13,49 +13,41 @@
             "name": "Kitchen",
             "items": [
                 {
-                    "id": 1,
                     "name": "Dishes",
                     "checked": false,
                     "price": 5
                 },
                 {
-                    "id": 2,
                     "name": "Pots and Pans",
                     "checked": false,
                     "price": 10
                 },
                 {
-                    "id": 3,
                     "name": "Utensils",
                     "checked": false,
                     "price": 2
                 },
                 {
-                    "id": 4,
                     "name": "Cups",
                     "checked": false,
                     "price": 4
                 },
                 {
-                    "id": 5,
                     "name": "Knife Set",
                     "checked": true,
                     "price": 6
                 },
                 {
-                    "id": 6,
                     "name": "Blender",
                     "checked": true,
                     "price": 8
                 },
                 {
-                    "id": 7,
                     "name": "Toaster",
                     "checked": true,
                     "price": 10
                 },
                 {
-                    "id": 8,
                     "name": "Oven Mitts",
                     "checked": true,
                     "price": 12

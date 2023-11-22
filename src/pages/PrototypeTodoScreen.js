@@ -1,4 +1,4 @@
-import { useState, useRef, useCallback } from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
 import AddingNewTask from "../components/AddingNewTask";
 import PortalPopup from "../components/PortalPopup";
 import DeleteToDo from "../components/DeleteToDo";
@@ -6,6 +6,24 @@ import { useNavigate } from "react-router-dom";
 import "./PrototypeTodoScreen.css";
 
 const PrototypeTodoScreen = () => {
+
+  const [todoItems, setTodoItems] = useState([]);
+  const [completedItems, setCompletedItems] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try{
+        const response = await fetch('http://localhost:8000/todoTasks');
+        const data = await response.json();
+        console.log(data);
+      } catch (error){
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   const [isAddingNewTaskOpen, setAddingNewTaskOpen] = useState(false);
   const todo1ContainerRef = useRef(null);
   const [isDeleteToDoPopupOpen, setDeleteToDoPopupOpen] = useState(false);
