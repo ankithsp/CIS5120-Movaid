@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import './DetailedRoom.css';
-import { useState, useCallback } from "react";
+import { useState, useCallback} from "react";
 import NavigationBar from "../components/NavigationBar";
 import { useNavigate } from "react-router-dom";
 
@@ -53,16 +53,7 @@ const DetailedRoom = () => {
         navigate("/prototype-purchase-screen");
       }, [navigate]);
 
-    const [items, setItems] = useState([
-        { name: "Dishes", checked: false, price: 5 },
-        { name: "Pots and Pans", checked: false, price: 5 },
-        { name: "Utensils", checked: false, price: 5 },
-        { name: "Cups", checked: false, price: 5 },
-        { name: "Knife Set", checked: true, price: 5 },
-        { name: "Blender", checked: true, price: 5 },
-        { name: "Toaster", checked: true, price: 5 },
-        { name: "Oven Mitts", checked: true, price: 5 },
-    ]);
+    const [items, setItems] = useState([]);
 
     // State for controlling the visibility of the add item pop-up
     const [isAddItemPopupOpen, setAddItemPopupOpen] = useState(false);
@@ -81,6 +72,22 @@ const DetailedRoom = () => {
           setAddItemPopupOpen(false);
         }
     };
+
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await fetch('http://localhost:8000/purchaseList/1');
+                const data = await response.json();
+                console.log(data.items);
+                setItems(data.items);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
+
+        fetchData(); // Call the fetchData function when the component mounts
+    }, []); // The empty dependency array ensures the effect runs only once on mount
 
     
 

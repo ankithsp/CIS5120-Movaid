@@ -1,0 +1,15 @@
+{
+    "/users": "/users",
+    "/users/:id": "/users/:id",
+  
+    "/purchaseList": "/purchaseList",
+    "/purchaseList/:id": "/purchaseList/:id",
+    "/purchaseList/:purchaseListId/items": "/purchaseList/:purchaseListId/items",
+    "/purchaseList/:purchaseListId/items/:itemId": "/purchaseList/:purchaseListId/items/:itemId",
+  
+    "/todoTasks": "/todoTasks",
+    "/todoTasks/:id": "/todoTasks/:id",
+  
+    "/moveInPlan": "/moveInPlan",
+    "/moveInPlan/:id": "/moveInPlan/:id"
+  }
