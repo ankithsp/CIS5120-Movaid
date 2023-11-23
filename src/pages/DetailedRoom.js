@@ -1,37 +1,84 @@
 import React, { useEffect } from "react";
 import './DetailedRoom.css';
-import { useState, useCallback} from "react";
+import { useState, useCallback } from "react";
 import NavigationBar from "../components/NavigationBar";
 import { useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from 'uuid';
 
-const ChecklistItem = ({ text, checked, onToggle }) => {
+const ChecklistItem = ({ text, checked, onToggle, onDelete }) => {
 
     const checkboxId = `checkbox-${text.replace(/\s+/g, "-").toLowerCase()}`;
 
     return (
         <div className={`ChecklistItem ${checked ? 'checked' : ''}`}>
             <input type="checkbox" checked={checked} onChange={onToggle} id={checkboxId} />
-            <label htmlFor={checkboxId} onClick={() => onToggle}>
+            <label htmlFor={checkboxId} onClick={() => onToggle()}>
                 <span>{text}</span>
             </label>
+            <button onClick={() => onDelete()}>Delete</button>
         </div>
     );
 };
 
 const Checklist = ({ items, setItems }) => {
 
-    const handleToggle = (itemName) => {
-        setItems((prevItems) => {
-            return prevItems.map((item) => {
-                if (item.name === itemName) {
-                    return { ...item, checked: !item.checked };
-                }
-                return item;
-            });
-        });
+    const handleToggle = async (itemId) => {
 
-        console.log(items);
+        // Fetch the updated item from the updated state
+        const updatedItem = items.find((el) => el.id === itemId);
+        updatedItem.checked = !updatedItem.checked;
+
+        try {
+            // Make the API call
+            const response = await fetch(`http://localhost:8000/purchaseList/1/items/${itemId}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(updatedItem),
+            });
+
+            if (response.ok) {
+                console.log('Item updated successfully');
+                // You can perform additional actions after a successful PUT request
+                setItems((prevItems) => {
+                    return prevItems.map((item) => {
+                        if (item.id === itemId) {
+                            return { ...updatedItem };
+                        }
+                        return item;
+                    });
+                });
+            } else {
+                console.error('Failed to update item');
+            }
+        } catch (error) {
+            // If an error occurs, revert the state to the previous state
+            console.error('Error making PUT request:', error);
+        }
+    };
+
+    const handleDelete = async (itemId) => {
+
+        try {
+            // Make the API call
+            const response = await fetch(`http://localhost:8000/purchaseList/1/items/${itemId}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+
+            if (response.ok) {
+                console.log('Item updated successfully');
+                setItems((prevItems) => prevItems.filter((item) => item.id !== itemId));
+            } else {
+                console.error('Failed to update item');
+            }
+        } catch (error) {
+            // If an error occurs, revert the state to the previous state
+            console.error('Error making PUT request:', error);
+        }
     };
 
     return (
@@ -41,7 +88,8 @@ const Checklist = ({ items, setItems }) => {
                     key={item.name}
                     text={item.name}
                     checked={item.checked}
-                    onToggle={() => handleToggle(item.name)}
+                    onToggle={() => handleToggle(item.id)}
+                    onDelete={() => handleDelete(item.id)}
                 />
             ))}
         </div>
@@ -53,7 +101,7 @@ const DetailedRoom = () => {
     const navigate = useNavigate();
     const onBackArrowClick = useCallback(() => {
         navigate("/prototype-purchase-screen");
-      }, [navigate]);
+    }, [navigate]);
 
     const [items, setItems] = useState([]);
 
@@ -66,34 +114,34 @@ const DetailedRoom = () => {
     // Function to handle adding a new item
     const handleAddItem = async () => {
         if (newItemName.trim() !== '') {
-          setItems((prevItems) => [
-            { name: newItemName, checked: false, price: 0 },
-            ...prevItems,
-          ]);
+            setItems((prevItems) => [
+                { name: newItemName, checked: false, price: 0 },
+                ...prevItems,
+            ]);
 
-          try {
-            const updatedItem = { id: uuidv4(), name: newItemName, checked: false, price: 20}
+            try {
+                const updatedItem = { id: uuidv4(), name: newItemName, checked: false, price: 20, purchaseListId: 1 }
 
-            const response = await fetch(`http://localhost:3000/purchaseList/1/items/${updatedItem.id}`, {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify(updatedItem),
-            });
-      
-            if (response.ok) {
-              console.log('Item updated successfully');
-              // You can perform additional actions after a successful PUT request
-            } else {
-              console.error('Failed to update item');
+                const response = await fetch(`http://localhost:8000/purchaseList/1/items/`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(updatedItem),
+                });
+
+                if (response.ok) {
+                    console.log('Item added successfully');
+                    // You can perform additional actions after a successful PUT request
+                } else {
+                    console.error('Failed to add item');
+                }
+            } catch (error) {
+                console.error('Error making POST request:', error);
             }
-          } catch (error) {
-            console.error('Error making PUT request:', error);
-          }
 
-          setNewItemName('');
-          setAddItemPopupOpen(false);
+            setNewItemName('');
+            setAddItemPopupOpen(false);
         }
     };
 
@@ -101,10 +149,14 @@ const DetailedRoom = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('http://localhost:8000/purchaseList/1');
-                const data = await response.json();
-                console.log(data.items);
-                setItems(data.items);
+                const response = await fetch('http://localhost:8000/purchaseList/1/items');
+                if (response.ok) {
+                    const data = await response.json();
+                    console.log(data);
+                    setItems(data);
+                } else {
+                    console.error('Failed to fetch data from the backend');
+                }
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
@@ -113,7 +165,7 @@ const DetailedRoom = () => {
         fetchData(); // Call the fetchData function when the component mounts
     }, []); // The empty dependency array ensures the effect runs only once on mount
 
-    
+
 
     return (
         <div className="screen-container">
