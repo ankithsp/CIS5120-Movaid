@@ -5,17 +5,25 @@ import NavigationBar from "../components/NavigationBar";
 import { useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from 'uuid';
 
-const ChecklistItem = ({ text, checked, onToggle, onDelete }) => {
+import { Button } from "react-bootstrap";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+const ChecklistItem = ({ text, checked, onToggle, onDelete, onEdit }) => {
 
     const checkboxId = `checkbox-${text.replace(/\s+/g, "-").toLowerCase()}`;
 
     return (
         <div className={`ChecklistItem ${checked ? 'checked' : ''}`}>
-            <input type="checkbox" checked={checked} onChange={onToggle} id={checkboxId} />
-            <label htmlFor={checkboxId} onClick={() => onToggle()}>
-                <span>{text}</span>
-            </label>
-            <button onClick={() => onDelete()}>Delete</button>
+            <div className="item-content">
+                <input type="checkbox" checked={checked} onChange={onToggle} id={checkboxId} />
+                <label htmlFor={checkboxId} onClick={() => onToggle()}>
+                    <span>{text}</span>
+                </label>
+            </div>
+            <div className="item-actions">
+                <Button variant="outline-secondary" size="sm" onClick={() => onEdit()}>Edit</Button>
+                <Button variant="outline-danger" size="sm" onClick={() => onDelete()}>Delete</Button>
+            </div>
         </div>
     );
 };
@@ -81,6 +89,42 @@ const Checklist = ({ items, setItems }) => {
         }
     };
 
+    const handleEdit = async (itemId) => {
+
+        // Fetch the updated item from the updated state
+        const updatedItem = items.find((el) => el.id === itemId);
+        updatedItem.checked = !updatedItem.checked;
+
+        try {
+            // Make the API call
+            const response = await fetch(`http://localhost:8000/purchaseList/1/items/${itemId}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(updatedItem),
+            });
+
+            if (response.ok) {
+                console.log('Item updated successfully');
+                // You can perform additional actions after a successful PUT request
+                setItems((prevItems) => {
+                    return prevItems.map((item) => {
+                        if (item.id === itemId) {
+                            return { ...updatedItem };
+                        }
+                        return item;
+                    });
+                });
+            } else {
+                console.error('Failed to update item');
+            }
+        } catch (error) {
+            // If an error occurs, revert the state to the previous state
+            console.error('Error making PUT request:', error);
+        }
+    };
+
     return (
         <div className="ChecklistContainer">
             {items.map((item) => (
@@ -90,6 +134,7 @@ const Checklist = ({ items, setItems }) => {
                     checked={item.checked}
                     onToggle={() => handleToggle(item.id)}
                     onDelete={() => handleDelete(item.id)}
+                    onEdit={() => handleEdit(item.id)}
                 />
             ))}
         </div>

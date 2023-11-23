@@ -2,6 +2,7 @@
     display: flex;
     align-items: center;
     margin-bottom: 8px;
+    justify-content: space-between;
 }
 
 .ChecklistItem input {
@@ -123,4 +124,20 @@
 
 .BackArrow:hover {
     text-decoration: underline;
+}
+
+.item-content {
+    display: flex;
+    align-items: center;
+}
+
+.item-content label {
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.item-actions button {
+    margin-left: 10px;
+    cursor: pointer;
+    background-color: white;
 }
