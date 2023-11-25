@@ -152,6 +152,7 @@ const DetailedRoom = () => {
     }, [navigate]);
 
     const [items, setItems] = useState([]);
+    const [roomName, setRoomName] = useState('');
 
     // State for controlling the visibility of the add item pop-up
     const [isAddItemPopupOpen, setAddItemPopupOpen] = useState(false);
@@ -210,7 +211,22 @@ const DetailedRoom = () => {
             }
         };
 
-        fetchData(); // Call the fetchData function when the component mounts
+        const getRoomInfo = async () => {
+            try {
+                const response = await fetch(`http://localhost:8000/purchaseList/${roomId}/`);
+                if (response.ok) {
+                    const data = await response.json();
+                    setRoomName(data.name);
+                } else {
+                    console.error('Failed to fetch data from the backend');
+                }
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        }
+
+        fetchData();
+        getRoomInfo();
     }, []); // The empty dependency array ensures the effect runs only once on mount
 
 
@@ -221,7 +237,7 @@ const DetailedRoom = () => {
                 <div className="BackArrow" onClick={onBackArrowClick}>
                     {"<"}
                 </div>
-                <h2 className="checklist-name">Kitchen</h2>
+                <h2 className="checklist-name">{roomName}</h2>
 
                 <Button variant="primary" onClick={() => setAddItemPopupOpen(true)}>Add New Item</Button>
 
