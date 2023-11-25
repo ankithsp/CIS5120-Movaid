@@ -1,18 +1,16 @@
 .navigation-bar-background {
-    position: absolute;
-    top: 792px;
-    left: 0;
+    position: fixed;
+    left: auto;
+    bottom: 0;
     background-color: var(--color-lightgray);
     width: 393px;
-    height: 65px;
 }
 
 .navigation-bar {
-    position: absolute;
-    top: 797px;
-    left: 20px;
-    width: 369px;
-    height: 55px;
+    position: fixed;
+    bottom: 0;
+    left: auto;
+    padding: inherit;
     font-size: var(--font-size-2xs);
     color: var(--color-gray);
     font-family: var(--font-krona-one);
@@ -125,4 +123,11 @@
   width: 48px;
   height: 48px;
   overflow: hidden;
+}
+
+.navbar-container {
+  /* position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 100; */
 }

@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import './DetailedRoom.css';
 import { useState, useCallback } from "react";
 import NavigationBar from "../components/NavigationBar";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { v4 as uuidv4 } from 'uuid';
 
 import { Button } from "react-bootstrap";
@@ -38,7 +38,7 @@ const Checklist = ({ items, setItems }) => {
 
         try {
             // Make the API call
-            const response = await fetch(`http://localhost:8000/purchaseList/1/items/${itemId}`, {
+            const response = await fetch(`http://localhost:8000/purchaseList/${roomId}/items/${itemId}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -70,7 +70,7 @@ const Checklist = ({ items, setItems }) => {
 
         try {
             // Make the API call
-            const response = await fetch(`http://localhost:8000/purchaseList/1/items/${itemId}`, {
+            const response = await fetch(`http://localhost:8000/purchaseList/${roomId}/items/${itemId}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',
@@ -78,10 +78,10 @@ const Checklist = ({ items, setItems }) => {
             });
 
             if (response.ok) {
-                console.log('Item updated successfully');
+                console.log('Item deleted successfully');
                 setItems((prevItems) => prevItems.filter((item) => item.id !== itemId));
             } else {
-                console.error('Failed to update item');
+                console.error('Failed to delete item');
             }
         } catch (error) {
             // If an error occurs, revert the state to the previous state
@@ -97,7 +97,7 @@ const Checklist = ({ items, setItems }) => {
 
         try {
             // Make the API call
-            const response = await fetch(`http://localhost:8000/purchaseList/1/items/${itemId}`, {
+            const response = await fetch(`http://localhost:8000/purchaseList/${roomId}/items/${itemId}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -144,6 +144,9 @@ const Checklist = ({ items, setItems }) => {
 const DetailedRoom = () => {
 
     const navigate = useNavigate();
+    const [searchParams, setSearchParams] = useSearchParams();
+    const roomId = searchParams.get("roomId");
+
     const onBackArrowClick = useCallback(() => {
         navigate("/prototype-purchase-screen");
     }, [navigate]);
@@ -159,15 +162,11 @@ const DetailedRoom = () => {
     // Function to handle adding a new item
     const handleAddItem = async () => {
         if (newItemName.trim() !== '') {
-            setItems((prevItems) => [
-                { name: newItemName, checked: false, price: 0 },
-                ...prevItems,
-            ]);
 
             try {
                 const updatedItem = { id: uuidv4(), name: newItemName, checked: false, price: 20, purchaseListId: 1 }
 
-                const response = await fetch(`http://localhost:8000/purchaseList/1/items/`, {
+                const response = await fetch(`http://localhost:8000/purchaseList/${roomId}/items/`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -178,6 +177,10 @@ const DetailedRoom = () => {
                 if (response.ok) {
                     console.log('Item added successfully');
                     // You can perform additional actions after a successful PUT request
+                    setItems((prevItems) => [
+                        updatedItem,
+                        ...prevItems,
+                    ]);
                 } else {
                     console.error('Failed to add item');
                 }
@@ -194,7 +197,7 @@ const DetailedRoom = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('http://localhost:8000/purchaseList/1/items');
+                const response = await fetch(`http://localhost:8000/purchaseList/${roomId}/items`);
                 if (response.ok) {
                     const data = await response.json();
                     console.log(data);
@@ -220,7 +223,7 @@ const DetailedRoom = () => {
                 </div>
                 <h2 className="checklist-name">Kitchen</h2>
 
-                <button onClick={() => setAddItemPopupOpen(true)}>Add New Item</button>
+                <Button variant="primary" onClick={() => setAddItemPopupOpen(true)}>Add New Item</Button>
 
                 {/* Pop-up for adding a new item */}
                 {isAddItemPopupOpen && (
@@ -239,7 +242,7 @@ const DetailedRoom = () => {
                     </div>
                 )}
 
-                <Checklist items={items} setItems={setItems} />
+                <Checklist items={items} setItems={setItems} roomId={roomId} />
             </div>
             <NavigationBar />
         </div>

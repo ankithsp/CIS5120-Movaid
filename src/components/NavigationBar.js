@@ -25,7 +25,7 @@ const NavigationBar = () => {
       }, [navigate]);
 
     return (
-        <div>
+        <div className="navbar-container">
             <div className="navigation-bar-background" />
             <div className="navigation-bar">
                 <div className="to-do" onClick={onToDoContainerClick}>

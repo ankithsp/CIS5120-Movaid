@@ -171,7 +171,7 @@
       "id": 1,
       "purchaseListId": 1,
       "name": "Dishes",
-      "checked": false,
+      "checked": true,
       "price": 5
     },
     {
@@ -299,13 +299,6 @@
       "name": "Rug",
       "checked": true,
       "price": 12
-    },
-    {
-      "id": "a8c4f621-ee3c-41c8-8651-ee9e9bb91035",
-      "name": "New Item 2",
-      "checked": false,
-      "price": 20,
-      "purchaseListId": "1"
     },
     {
       "id": "1dbdc713-5239-40df-9846-fb3c2e0a8c17",
