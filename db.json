@@ -255,21 +255,21 @@
       "id": 18,
       "purchaseListId": 3,
       "name": "Sheets",
-      "checked": false,
+      "checked": true,
       "price": 10
     },
     {
       "id": 19,
       "purchaseListId": 3,
       "name": "Desk",
-      "checked": false,
+      "checked": true,
       "price": 2
     },
     {
       "id": 20,
       "purchaseListId": 3,
       "name": "Desk Lamp",
-      "checked": false,
+      "checked": true,
       "price": 4
     },
     {

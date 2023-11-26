@@ -28,7 +28,7 @@ const ChecklistItem = ({ text, checked, onToggle, onDelete, onEdit }) => {
     );
 };
 
-const Checklist = ({ items, setItems }) => {
+const Checklist = ({ items, setItems, roomId }) => {
 
     const handleToggle = async (itemId) => {
 
