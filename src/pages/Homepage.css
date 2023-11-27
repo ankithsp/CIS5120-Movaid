@@ -90,4 +90,16 @@
 
 .navbar-link:hover {
     color: black; /* Preserve the color on hover */
-  }
+}
+
+.full-list-link {
+    margin-top: 10px;
+    text-align: right;
+}
+
+.full-list-link a {
+    text-decoration: underline;
+    text-align: right;
+    color: #007bff;
+    font-size: 14px;
+}

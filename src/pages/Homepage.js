@@ -1,6 +1,7 @@
 import React from "react";
 import { Bag, HouseFill, ListTask, ClipboardCheck, CalendarWeek, Map } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
+import { CardGroup, Card, ListGroup } from "react-bootstrap";
 import "./Homepage.css"
 
 
@@ -18,19 +19,37 @@ const Homepage = () => {
             <div className="scrollable-content">
                 <h5 className="widget-title">Things to Purchase</h5>
                 <div className="widget-container">
-                    <p>Widget 1</p>
+                    <ListGroup variant="flush">
+                        <ListGroup.Item style={{backgroundColor: 'inherit', fontFamily: `Georgia, 'Times New Roman', Times, serif` }}>Kitchen Utensils</ListGroup.Item>
+                        <ListGroup.Item style={{backgroundColor: 'inherit', fontFamily: `Georgia, 'Times New Roman', Times, serif`}}>Bedsheets</ListGroup.Item>
+                        <ListGroup.Item style={{backgroundColor: 'inherit', fontFamily: `Georgia, 'Times New Roman', Times, serif`}}>Desk</ListGroup.Item>
+                        <ListGroup.Item style={{backgroundColor: 'inherit', fontFamily: `Georgia, 'Times New Roman', Times, serif`}}>Couch</ListGroup.Item>
+                        <ListGroup.Item style={{backgroundColor: 'inherit', fontFamily: `Georgia, 'Times New Roman', Times, serif`}}>Dish Soap</ListGroup.Item>
+                    </ListGroup>
+                    <div className="full-list-link">
+                        <a href="/prototype-purchase-screen">Open Full List <span>&#8594;</span></a>
+                    </div>
                 </div>
                 <h5 className="widget-title">To-Do</h5>
                 <div className="widget-container">
                     <p>Widget 2</p>
+                    <div className="full-list-link">
+                        <a href="/prototype-purchase-screen">Open Full List <span>&#8594;</span></a>
+                    </div>
                 </div>
                 <h5 className="widget-title">Move-In Plan</h5>
                 <div className="widget-container">
                     <p>Widget 3</p>
+                    <div className="full-list-link">
+                        <a href="/prototype-purchase-screen">Open Full Plan <span>&#8594;</span></a>
+                    </div>
                 </div>
                 <h5 className="widget-title">Discover Philadelphia</h5>
                 <div className="widget-container">
                     <p>Widget 4</p>
+                    <div className="full-list-link">
+                        <a href="/prototype-purchase-screen">Open All Recommendations <span>&#8594;</span></a>
+                    </div>
                 </div>
                 
             </div>
