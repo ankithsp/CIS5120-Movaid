@@ -30,9 +30,34 @@ const Homepage = () => {
                         <a href="/prototype-purchase-screen">Open Full List <span>&#8594;</span></a>
                     </div>
                 </div>
-                <h5 className="widget-title">To-Do</h5>
+                <h5 className="widget-title">To-Do Items</h5>
                 <div className="widget-container">
-                    <p>Widget 2</p>
+                    <ListGroup>
+                        <ListGroup.Item style={{backgroundColor: 'inherit', fontFamily: `Georgia, 'Times New Roman', Times, serif`, textAlign: 'left'}}>
+                            <div className="list-item-container">
+                                <div className="list-item-text">This is an example of a todo item, overflowing to newline</div>
+                                <div className="list-item-image">
+                                    <img src="/high-priority-icon.png" alt="High Priority Icon" />
+                                </div>
+                            </div>
+                        </ListGroup.Item>
+                        <ListGroup.Item style={{backgroundColor: 'inherit', fontFamily: `Georgia, 'Times New Roman', Times, serif`, textAlign: 'left'}}>
+                            <div className="list-item-container">
+                                <div className="list-item-text">This is an example of a todo item, overflowing to newline</div>
+                                <div className="list-item-image">
+                                    <img src="/medium-priority-icon.png" alt="High Priority Icon" />
+                                </div>
+                            </div>
+                        </ListGroup.Item>
+                        <ListGroup.Item style={{backgroundColor: 'inherit', fontFamily: `Georgia, 'Times New Roman', Times, serif`, textAlign: 'left'}}>
+                            <div className="list-item-container">
+                                <div className="list-item-text">This is an example of a todo item, overflowing to newline</div>
+                                <div className="list-item-image">
+                                    <img src="/low-priority-icon.png" alt="High Priority Icon" />
+                                </div>
+                            </div>
+                        </ListGroup.Item>
+                    </ListGroup>
                     <div className="full-list-link">
                         <a href="/prototype-purchase-screen">Open Full List <span>&#8594;</span></a>
                     </div>

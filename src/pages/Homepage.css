@@ -103,3 +103,30 @@
     color: #007bff;
     font-size: 14px;
 }
+
+.list-item-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.list-item-text {
+    flex-grow: 1;
+}
+
+.list-item-image {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 5px;
+    width: 75px;
+    height: 40px;
+    overflow: hidden;
+    display: flex; /* Use flexbox */
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+}
+  
+.list-item-image img {
+    
+}
