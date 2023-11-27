@@ -11,15 +11,41 @@
 }
 
 .scrollable-content {
-    overflow-y: auto;
-    height: calc(100% - 120px); /* Adjusted height to accommodate top banner and bottom bar */
+    overflow-y: scroll;
+    height: calc(75%);
+    /* Adjusted height to accommodate top banner and bottom bar */
 }
 
 .top-banner {
     position: sticky;
     top: 0;
-    background-color: #f0f0f0;
+    background-color: white;
     padding: 10px;
+    text-align: center;
+}
+
+.banner-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.app-icon {
+    height: 50px;
+    margin-bottom: 10px;
+}
+
+.welcome-header {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    /* Spacing between the welcome header and subheader */
+}
+
+.subheader {
+    font-size: 16px;
+    color: #555;
+    /* Adjust the color of the subheader */
 }
 
 .bottom-bar {
@@ -27,12 +53,41 @@
     bottom: 0;
     background-color: #f0f0f0;
     padding: 10px;
+    height: 60px; /* Adjusted height to make the bottom bar taller */
+    margin-top: -40px; /* Negative margin to expand the bottom bar upward */
+    display: flex;
+    justify-content: space-evenly;
 }
 
 .widget-container {
     background-color: rgba(213, 177, 149, .4);
     border-radius: 10px;
-    padding: 20px; /* Padding inside the widget container */
-    margin: 20px;
-    margin-bottom: 20px; /* Margin between widgets */
+    padding: 20px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 5px;
 }
+
+.widget-title {
+    text-decoration: none;
+    font-weight: bold;
+    text-align:left;
+    margin-left: 25px;
+    margin-bottom: 0rem;
+}
+
+.icon-wrapper {
+    flex: 1;
+    text-align: center;
+}
+
+.navbar-link {
+    text-decoration: none; /* Remove underline */
+    color: gray; /* Inherit the color from the parent */
+    transition: color 0.3s ease;
+}
+
+.navbar-link:hover {
+    color: black; /* Preserve the color on hover */
+  }
