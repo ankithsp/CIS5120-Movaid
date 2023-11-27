@@ -13,6 +13,7 @@ import PrototypeMoveInPlanScreen from "./pages/PrototypeMoveInPlanScreen";
 import PrototypeTodoScreen from "./pages/PrototypeTodoScreen";
 import PrototypeTodoScreen2 from "./pages/PrototypeTodoScreen2";
 import DetailedRoom from "./pages/DetailedRoom";
+import Homepage from "./pages/Homepage";
 
 function App() {
   const action = useNavigationType();
@@ -78,7 +79,7 @@ function App() {
     <Routes>
       <Route 
         path="/" 
-        element={<PrototypeMainScreen />} 
+        element={<Homepage />} 
       />
       <Route
         path="/prototype-purchase-screen"
