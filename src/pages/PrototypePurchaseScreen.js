@@ -356,9 +356,10 @@ const PrototypePurchaseScreen = () => {
   // );
 
   const [roomsList, setRoomsList] = useState([]);
+  const [roomItems, setRoomItems] = useState({});
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchRooms = async () => {
       try {
         const response = await fetch('http://localhost:8000/purchaseList');
         const data = await response.json();
@@ -369,8 +370,45 @@ const PrototypePurchaseScreen = () => {
       }
     };
 
-    fetchData();
+    // const fetchItems = async () => {
+    //   try {
+    //     const response = await fetch('http://localhost:8000/items');
+    //     const data = await response.json();
+    //     console.log(data);
+    //     setItemsList(data);
+    //   } catch (error) {
+    //     console.error('Error fetching data:', error);
+    //   }
+    // };
+
+    fetchRooms();
+    // fetchItems();
   }, []);
+
+  const getRoomItems = async (roomId) => {
+    try {
+      const response = await fetch(`http://localhost:8000/purchaseList/${roomId}/items?_limit=3`);
+      const data = await response.json();
+      console.log(data);
+      setRoomItems((prevItems) => ({
+        ...prevItems,
+        [roomId]: data,
+      }));
+    } catch (error) {
+      console.error('Error fetching data:', error);
+      setRoomItems((prevItems) => ({
+        ...prevItems,
+        [roomId]: [],
+      }));
+    }
+  };
+
+  useEffect(() => {
+    // Fetch room items for each room
+    roomsList.forEach((room) => {
+      getRoomItems(room.id);
+    });
+  }, [roomsList]);
 
   return (
     <div className="screen-container">
@@ -379,7 +417,7 @@ const PrototypePurchaseScreen = () => {
       </div>
 
       <div>
-      <ProgressBar animated variant="success" now={currentSpend} label={`${currentSpend}%`}/>
+        <ProgressBar animated variant="success" now={currentSpend} label={`${currentSpend}%`}/>
       </div>
 
       <div>
@@ -392,24 +430,20 @@ const PrototypePurchaseScreen = () => {
           <h1 className="room-header">{room.name}</h1>
           <div className="room-widget-container">
             <div className="left-section">
-              <ul>
-                {room.items.slice(0, 3).map((item) => (
-                  <li key={item.id} className="item-preview">
-                    {item.name}
-                  </li>
-                ))}
-              </ul>
+              {roomItems[room.id] && roomItems[room.id].length === 0 ? (
+                <p>The list is empty. Add an item!</p>
+              ) : (
+                <ul>
+                  {roomItems[room.id]?.map((item) => (
+                    <li key={item.id} className="item-preview">
+                      {item.name}
+                    </li>
+                  ))}
+                </ul>
+              )}
+              
             </div>
             <div className="right-section">
-              {/* <Link to='/detailed-room-view'>
-                  <img
-                    className="view-more-button"  
-                    alt=""
-                    src="/view-more-button.svg"
-                  />
-                </Link> */}
-              {/* <button className="add-item-button">Add Item</button>
-                <button className="view-full-list-button">View Full List</button> */}
               <Button variant="primary" size="sm" className="mr-2 mb-2">Add Item</Button>
               <Button href={`/detailed-room-view?roomId=${room.id}`} variant="secondary" size="sm">View Full List</Button>
             </div>

@@ -11,308 +11,47 @@
     {
       "id": 1,
       "name": "Kitchen",
-      "userId": 1,
-      "items": [
-        {
-          "name": "Dishes",
-          "checked": false,
-          "price": 5
-        },
-        {
-          "name": "Pots and Pans",
-          "checked": false,
-          "price": 10
-        },
-        {
-          "name": "Utensils",
-          "checked": false,
-          "price": 2
-        },
-        {
-          "name": "Cups",
-          "checked": false,
-          "price": 4
-        },
-        {
-          "name": "Knife Set",
-          "checked": true,
-          "price": 6
-        },
-        {
-          "name": "Blender",
-          "checked": true,
-          "price": 8
-        },
-        {
-          "name": "Toaster",
-          "checked": true,
-          "price": 10
-        },
-        {
-          "name": "Oven Mitts",
-          "checked": true,
-          "price": 12
-        }
-      ]
+      "userId": 1
     },
     {
       "id": 2,
       "name": "Living Room",
-      "userId": 1,
-      "items": [
-        {
-          "id": 1,
-          "name": "Rug",
-          "checked": false,
-          "price": 5
-        },
-        {
-          "id": 2,
-          "name": "Sofa",
-          "checked": false,
-          "price": 10
-        },
-        {
-          "id": 3,
-          "name": "Posters",
-          "checked": false,
-          "price": 2
-        },
-        {
-          "id": 4,
-          "name": "TV",
-          "checked": false,
-          "price": 4
-        },
-        {
-          "id": 5,
-          "name": "Coffee Table",
-          "checked": true,
-          "price": 6
-        },
-        {
-          "id": 6,
-          "name": "Lamp",
-          "checked": true,
-          "price": 8
-        },
-        {
-          "id": 7,
-          "name": "Vacuum",
-          "checked": true,
-          "price": 10
-        },
-        {
-          "id": 8,
-          "name": "Coasters",
-          "checked": true,
-          "price": 12
-        }
-      ]
+      "userId": 1
     },
     {
       "id": 3,
       "name": "Bedroom",
-      "userId": 1,
-      "items": [
-        {
-          "id": 1,
-          "name": "Pillows",
-          "checked": false,
-          "price": 5
-        },
-        {
-          "id": 2,
-          "name": "Sheets",
-          "checked": false,
-          "price": 10
-        },
-        {
-          "id": 3,
-          "name": "Desk",
-          "checked": false,
-          "price": 2
-        },
-        {
-          "id": 4,
-          "name": "Desk Lamp",
-          "checked": false,
-          "price": 4
-        },
-        {
-          "id": 5,
-          "name": "Hangers",
-          "checked": true,
-          "price": 6
-        },
-        {
-          "id": 6,
-          "name": "Hamper",
-          "checked": true,
-          "price": 8
-        },
-        {
-          "id": 7,
-          "name": "Nightstand",
-          "checked": true,
-          "price": 10
-        },
-        {
-          "id": 8,
-          "name": "Rug",
-          "checked": true,
-          "price": 12
-        }
-      ]
+      "userId": 1
     }
   ],
   "items": [
     {
-      "id": 1,
-      "purchaseListId": 1,
-      "name": "Dishes",
-      "checked": true,
-      "price": 5
-    },
-    {
-      "id": 2,
-      "purchaseListId": 1,
-      "name": "Pots and Pans",
-      "checked": true,
-      "price": 10
-    },
-    {
-      "id": 3,
-      "purchaseListId": 1,
-      "name": "Utensils",
-      "checked": true,
-      "price": 2
-    },
-    {
-      "id": 9,
-      "purchaseListId": 2,
-      "name": "Rug",
-      "checked": false,
-      "price": 5
-    },
-    {
-      "id": 10,
-      "purchaseListId": 2,
-      "name": "Sofa",
-      "checked": false,
-      "price": 10
-    },
-    {
-      "id": 11,
-      "purchaseListId": 2,
-      "name": "Posters",
-      "checked": false,
-      "price": 2
-    },
-    {
-      "id": 12,
-      "purchaseListId": 2,
-      "name": "TV",
-      "checked": false,
-      "price": 4
-    },
-    {
-      "id": 13,
-      "purchaseListId": 2,
-      "name": "Coffee Table",
-      "checked": true,
-      "price": 6
-    },
-    {
-      "id": 14,
-      "purchaseListId": 2,
-      "name": "Lamp",
-      "checked": true,
-      "price": 8
-    },
-    {
-      "id": 15,
-      "purchaseListId": 2,
-      "name": "Vacuum",
-      "checked": true,
-      "price": 10
-    },
-    {
-      "id": 16,
-      "purchaseListId": 2,
-      "name": "Coasters",
-      "checked": true,
-      "price": 12
-    },
-    {
-      "id": 17,
-      "purchaseListId": 3,
-      "name": "Pillows",
-      "checked": false,
-      "price": 5
-    },
-    {
-      "id": 18,
-      "purchaseListId": 3,
-      "name": "Sheets",
-      "checked": true,
-      "price": 10
-    },
-    {
-      "id": 19,
-      "purchaseListId": 3,
-      "name": "Desk",
-      "checked": true,
-      "price": 2
-    },
-    {
-      "id": 20,
-      "purchaseListId": 3,
-      "name": "Desk Lamp",
-      "checked": true,
-      "price": 4
-    },
-    {
-      "id": 21,
-      "purchaseListId": 3,
-      "name": "Hangers",
-      "checked": true,
-      "price": 6
-    },
-    {
-      "id": 22,
-      "purchaseListId": 3,
-      "name": "Hamper",
-      "checked": true,
-      "price": 8
-    },
-    {
-      "id": 23,
-      "purchaseListId": 3,
-      "name": "Nightstand",
-      "checked": true,
-      "price": 10
-    },
-    {
-      "id": 24,
-      "purchaseListId": 3,
-      "name": "Rug",
-      "checked": true,
-      "price": 12
-    },
-    {
-      "id": "1dbdc713-5239-40df-9846-fb3c2e0a8c17",
-      "name": "Sponges",
+      "id": "44792312-07ee-4809-a33d-a2ccb0725b4e",
+      "name": "Test",
       "checked": false,
       "price": 20,
       "purchaseListId": "1"
     },
     {
-      "id": "580c6959-6cc9-4622-8176-8599b3d6723c",
-      "name": "Dish Soap",
+      "id": "24deb10e-3d40-4410-8b29-ef57828a5eee",
+      "name": "Test 1",
       "checked": false,
       "price": 20,
-      "purchaseListId": "1"
+      "purchaseListId": "3"
+    },
+    {
+      "id": "783bcc3f-b1ec-4007-835e-4b44472b39c6",
+      "name": "Test 2",
+      "checked": false,
+      "price": 20,
+      "purchaseListId": "3"
+    },
+    {
+      "id": "f0a4a8af-1a10-46a1-98a0-ec526819d90b",
+      "name": "Test 3",
+      "checked": false,
+      "price": 20,
+      "purchaseListId": "3"
     }
   ],
   "todoTasks": [
