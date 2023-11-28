@@ -92,6 +92,10 @@
     color: black; /* Preserve the color on hover */
 }
 
+.icon-subtext {
+    font-size: 11px;
+}
+
 .full-list-link {
     margin-top: 10px;
     text-align: right;
@@ -102,6 +106,7 @@
     text-align: right;
     color: #007bff;
     font-size: 14px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 .list-item-container {

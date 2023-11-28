@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Bag, HouseFill, ListTask, ClipboardCheck, CalendarWeek, Map } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
 import { CardGroup, Card, ListGroup, Carousel } from "react-bootstrap";
@@ -6,6 +6,24 @@ import "./Homepage.css"
 
 
 const Homepage = () => {
+
+    const [itemsList, setItemsList] = useState([]);
+
+    useEffect(() => {
+        const fetchItems = async () => {
+            try {
+                const response = await fetch('http://localhost:8000/items?_limit=5');
+                const data = await response.json();
+                console.log(data);
+                setItemsList(data);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        }
+
+        fetchItems();
+    }, []);
+
     return (
         <div className="screen-container">
             <div className="top-banner">
@@ -20,11 +38,11 @@ const Homepage = () => {
                 <h5 className="widget-title">Things to Purchase</h5>
                 <div className="widget-container">
                     <ListGroup variant="flush">
-                        <ListGroup.Item style={{backgroundColor: 'inherit', fontFamily: `Georgia, 'Times New Roman', Times, serif` }}>Kitchen Utensils</ListGroup.Item>
-                        <ListGroup.Item style={{backgroundColor: 'inherit', fontFamily: `Georgia, 'Times New Roman', Times, serif`}}>Bedsheets</ListGroup.Item>
-                        <ListGroup.Item style={{backgroundColor: 'inherit', fontFamily: `Georgia, 'Times New Roman', Times, serif`}}>Desk</ListGroup.Item>
-                        <ListGroup.Item style={{backgroundColor: 'inherit', fontFamily: `Georgia, 'Times New Roman', Times, serif`}}>Couch</ListGroup.Item>
-                        <ListGroup.Item style={{backgroundColor: 'inherit', fontFamily: `Georgia, 'Times New Roman', Times, serif`}}>Dish Soap</ListGroup.Item>
+                        {itemsList.map((item) => (
+                            <ListGroup.Item key={item.id} style={{backgroundColor: 'inherit', fontFamily: `Georgia, 'Times New Roman', Times, serif` }}>
+                                <li style={{textAlign: 'left'}}>{item.name}</li>
+                            </ListGroup.Item>
+                        ))}
                     </ListGroup>
                     <div className="full-list-link">
                         <a href="/prototype-purchase-screen">Open Full List <span>&#8594;</span></a>
@@ -111,21 +129,25 @@ const Homepage = () => {
                     <div className="icon-wrapper">
                         <Bag size={30} />
                     </div>
+                    <div className="icon-subtext">Purchase</div>
                 </Link>
                 <Link to="/prototype-todo-screen" className="navbar-link">
                     <div className="icon-wrapper">
                         <ClipboardCheck size={30} />
                     </div>
+                    <div className="icon-subtext">To-Do</div>
                 </Link>
                 <Link to="/prototype-movein-plan-screen" className="navbar-link">
                     <div className="icon-wrapper">
                         <CalendarWeek size={30} />
                     </div>
+                    <div className="icon-subtext">Plan</div>
                 </Link>
                 <Link to="/prototype-getting-around-screen" className="navbar-link">
                     <div className="icon-wrapper">
                         <Map size={30} />
                     </div>
+                    <div className="icon-subtext">Discover</div>
                 </Link>
             </div>
         </div>

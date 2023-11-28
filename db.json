@@ -26,29 +26,50 @@
   ],
   "items": [
     {
-      "id": "44792312-07ee-4809-a33d-a2ccb0725b4e",
-      "name": "Test",
+      "id": "152b70e2-f6bb-44ef-9958-1a657ffa129c",
+      "name": "Kitchen Utensils",
       "checked": false,
       "price": 20,
       "purchaseListId": "1"
     },
     {
-      "id": "24deb10e-3d40-4410-8b29-ef57828a5eee",
-      "name": "Test 1",
+      "id": "120d749a-4c80-4ebe-aff9-eea4eed9ca14",
+      "name": "Pots and Pans",
+      "checked": false,
+      "price": 20,
+      "purchaseListId": "1"
+    },
+    {
+      "id": "82a7da98-d67b-4cfa-acff-c11464597b4e",
+      "name": "Dish Soap",
+      "checked": false,
+      "price": 20,
+      "purchaseListId": "1"
+    },
+    {
+      "id": "fad1cc61-5a95-4db0-97f1-e16aca856aff",
+      "name": "Sheets",
       "checked": false,
       "price": 20,
       "purchaseListId": "3"
     },
     {
-      "id": "783bcc3f-b1ec-4007-835e-4b44472b39c6",
-      "name": "Test 2",
+      "id": "5007dda2-35e9-4d65-9dbf-5be64e870117",
+      "name": "Pillows",
       "checked": false,
       "price": 20,
       "purchaseListId": "3"
     },
     {
-      "id": "f0a4a8af-1a10-46a1-98a0-ec526819d90b",
-      "name": "Test 3",
+      "id": "aef827c5-5ac1-42fb-a16b-d495f63acbdd",
+      "name": "Desk Lamp",
+      "checked": false,
+      "price": 20,
+      "purchaseListId": "3"
+    },
+    {
+      "id": "f6048c87-90cd-4ba9-aaf2-58dbfdd8e7ee",
+      "name": "Hamper",
       "checked": false,
       "price": 20,
       "purchaseListId": "3"
