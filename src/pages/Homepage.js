@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Bag, HouseFill, ListTask, ClipboardCheck, CalendarWeek, Map } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
-import { CardGroup, Card, ListGroup, Carousel } from "react-bootstrap";
+import { CardGroup, Card, ListGroup, Carousel, ProgressBar } from "react-bootstrap";
 import "./Homepage.css"
 
 
@@ -37,7 +37,7 @@ const Homepage = () => {
             <div className="scrollable-content">
                 <h5 className="widget-title">Things to Purchase</h5>
                 <div className="widget-container">
-                    <ListGroup variant="flush">
+                    {/* <ListGroup variant="flush">
                         {itemsList.map((item) => (
                             <ListGroup.Item key={item.id} style={{backgroundColor: 'inherit', fontFamily: `Georgia, 'Times New Roman', Times, serif` }}>
                                 <li style={{textAlign: 'left'}}>{item.name}</li>
@@ -46,7 +46,17 @@ const Homepage = () => {
                     </ListGroup>
                     <div className="full-list-link">
                         <a href="/prototype-purchase-screen">Open Full List <span>&#8594;</span></a>
-                    </div>
+                    </div> */}
+
+                    <ProgressBar style={{ width: '100%', marginBottom: '15px' }} animated variant="success" now={45} label={`${45}%`} />
+                    <ListGroup>
+                        <ListGroup.Item style={{backgroundColor: 'inherit', fontFamily: `Georgia, 'Times New Roman', Times, serif`, textAlign: 'left' }}>
+                            <li>4 Essential Items Remaining</li>
+                            <li>1 Essential Item not available nearby</li>
+                        </ListGroup.Item>
+                    </ListGroup>
+
+
                 </div>
                 <h5 className="widget-title">To-Do Items</h5>
                 <div className="widget-container">
