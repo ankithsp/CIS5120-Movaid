@@ -133,6 +133,7 @@ const PrototypePurchaseScreen = () => {
       <div className="plist-top-banner">
         <div className="plist-banner-content">
           <h5 className="plist-welcome-header">Things to Purchase</h5>
+          <h5 className="subheader">Budget Tracker</h5>
           <ProgressBar style={{width: '75%', marginBottom: '15px'}} animated variant="success" now={currentSpend} label={`${currentSpend}%`}/>
           <Button style={{marginTop: '10px'}} variant="primary" size="lg" onClick={() => setAddingItemModalOpen(true)}>Add Item</Button>
           <Button style={{marginTop: '10px'}} variant="outline-primary" onClick={() => setAddingRoomModalOpen(true)}>Add Room</Button>

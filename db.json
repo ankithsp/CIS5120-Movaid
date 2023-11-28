@@ -26,74 +26,88 @@
   ],
   "items": [
     {
-      "id": "152b70e2-f6bb-44ef-9958-1a657ffa129c",
-      "name": "Kitchen Utensils",
+      "id": "0e4346d9-d4aa-40e2-b61e-6f1f1d974a28",
+      "name": "Knives",
       "checked": false,
       "price": 20,
       "purchaseListId": "1"
     },
     {
-      "id": "120d749a-4c80-4ebe-aff9-eea4eed9ca14",
-      "name": "Pots and Pans",
+      "id": "51fa1015-b799-4596-91c3-36f5ae9bf9f4",
+      "name": "Mixing Bowl",
+      "checked": true,
+      "price": 20,
+      "purchaseListId": "1"
+    },
+    {
+      "id": "ab3a0618-96e7-4527-b852-72a4a56edce0",
+      "name": "Cutting Board",
+      "checked": true,
+      "price": 20,
+      "purchaseListId": "1"
+    },
+    {
+      "id": "4f6484c3-7029-47c2-8099-67eeba62638c",
+      "name": "Sponge",
       "checked": false,
       "price": 20,
       "purchaseListId": "1"
     },
     {
-      "id": "82a7da98-d67b-4cfa-acff-c11464597b4e",
-      "name": "Dish Soap",
-      "checked": false,
+      "id": "9dfe41c3-55ab-4bb2-abdd-32c460a4d814",
+      "name": "Dish Rack",
+      "checked": true,
       "price": 20,
       "purchaseListId": "1"
     },
     {
-      "id": "fad1cc61-5a95-4db0-97f1-e16aca856aff",
-      "name": "Sheets",
-      "checked": false,
-      "price": 20,
-      "purchaseListId": "3"
-    },
-    {
-      "id": "5007dda2-35e9-4d65-9dbf-5be64e870117",
-      "name": "Pillows",
-      "checked": false,
-      "price": 20,
-      "purchaseListId": "3"
-    },
-    {
-      "id": "aef827c5-5ac1-42fb-a16b-d495f63acbdd",
-      "name": "Desk Lamp",
-      "checked": false,
-      "price": 20,
-      "purchaseListId": "3"
-    },
-    {
-      "id": "f6048c87-90cd-4ba9-aaf2-58dbfdd8e7ee",
-      "name": "Hamper",
-      "checked": false,
-      "price": 20,
-      "purchaseListId": "3"
-    },
-    {
-      "id": "45dc75eb-4938-46a8-8a98-e9d0791eacc4",
-      "name": "Plates",
-      "checked": false,
-      "price": 20,
-      "purchaseListId": "1"
-    },
-    {
-      "id": "359b5e21-ac50-4f20-a745-2b98a378dfef",
+      "id": "40da5e06-75ca-471f-a7f8-485443edec9e",
       "name": "Couch",
+      "checked": true,
+      "price": 20,
+      "purchaseListId": "2"
+    },
+    {
+      "id": "20f63bfa-ca45-4c0b-88c7-f2925013f8e3",
+      "name": "Lamp",
       "checked": false,
       "price": 20,
       "purchaseListId": "2"
     },
     {
-      "id": "5e328d3e-683b-4358-bc60-87b8b5cbe887",
-      "name": "Rug",
-      "checked": false,
-      "price": 0,
+      "id": "2dded49c-70bc-4245-b90b-4eb1af7ebabd",
+      "name": "TV Stand",
+      "checked": true,
+      "price": 20,
       "purchaseListId": "2"
+    },
+    {
+      "id": "b8dc7555-f8e1-417d-b0f6-878f65cb2fea",
+      "name": "Hat Rack",
+      "checked": false,
+      "price": 20,
+      "purchaseListId": "2"
+    },
+    {
+      "id": "b99e27ed-bd4e-4a18-b863-5f725895b477",
+      "name": "Bed",
+      "checked": false,
+      "price": 20,
+      "purchaseListId": "3"
+    },
+    {
+      "id": "ee473ee1-31e3-4f15-8e9e-6bc6e2c61fb0",
+      "name": "Desk Lamp",
+      "checked": true,
+      "price": 20,
+      "purchaseListId": "3"
+    },
+    {
+      "id": "b62b2c3d-3419-48fa-b380-fb455dc25ad0",
+      "name": "Closet Hangers",
+      "checked": false,
+      "price": 20,
+      "purchaseListId": "3"
     }
   ],
   "todoTasks": [
