@@ -146,33 +146,37 @@ const PrototypeMainScreen = () => {
           <span className="open-all-recommendations">Open full list</span>
           {` >`}
         </b>
-        <div className="checklist-item-7">
-          <img className="circle-icon16" alt="" src="/circle1@2x.png" />
-          <div className="trails-around-philadelphia">Dish Soap</div>
+        <div className="budget-tracker">
+          <div className="budget-tracker-contents">
+            <div className="current-level-readout">
+              <img
+                className="current-level-readout-child"
+                alt=""
+                src="/polygon-1.svg"
+              />
+              <div className="current-level-readout-item">$1,700</div>
+            </div>
+            <div className="budget-slider">
+              <div className="background-line" />
+              <img
+                className="foreground-bold-line"
+                alt=""
+                src="/foreground-bold-line.svg"
+              />
+              <div className="lower-bound">$0</div>
+              <div className="upper-bound">$3,000</div>
+            </div>
+          </div>
         </div>
-        <div className="checklist-item-6">
-          <img className="circle-icon16" alt="" src="/circle1@2x.png" />
-          <div className="trails-around-philadelphia">Hand Soap</div>
-        </div>
-        <div className="checklist-item-53">
-          <img className="circle-icon16" alt="" src="/circle1@2x.png" />
-          <div className="trails-around-philadelphia">Toiletries</div>
-        </div>
-        <div className="checklist-item-43">
-          <img className="circle-icon16" alt="" src="/circle1@2x.png" />
-          <div className="trails-around-philadelphia">Couch</div>
-        </div>
-        <div className="checklist-item-35">
-          <img className="circle-icon16" alt="" src="/circle1@2x.png" />
-          <div className="trails-around-philadelphia">Desk</div>
-        </div>
-        <div className="checklist-item-25">
-          <img className="circle-icon16" alt="" src="/circle1@2x.png" />
-          <div className="trails-around-philadelphia">Bedsheets</div>
-        </div>
-        <div className="checklist-item-15">
-          <img className="circle-icon27" alt="" src="/circle1@2x.png" />
-          <div className="trails-around-philadelphia">Kitchen Utensils</div>
+        <div className="curated-snippets">
+          <p className="essential-items-remaining">
+            <b className="b">4</b>
+            <span> Essential items remaining</span>
+          </p>
+          <p className="essential-items-remaining">
+            <b className="b">{`1 `}</b>
+            <span>Essential item not available nearby</span>
+          </p>
         </div>
         <div className="things-to-purchase">Things to Purchase</div>
       </div>
