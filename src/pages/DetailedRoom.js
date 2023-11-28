@@ -165,7 +165,7 @@ const DetailedRoom = () => {
         if (newItemName.trim() !== '') {
 
             try {
-                const updatedItem = { id: uuidv4(), name: newItemName, checked: false, price: 20, purchaseListId: 1 }
+                const updatedItem = { id: uuidv4(), name: newItemName, checked: false, price: 20, purchaseListId: roomId }
 
                 const response = await fetch(`http://localhost:8000/purchaseList/${roomId}/items/`, {
                     method: 'POST',
