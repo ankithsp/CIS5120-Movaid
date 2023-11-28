@@ -53,7 +53,7 @@ const Homepage = () => {
                     <ListGroup>
                         <ListGroup.Item action style={{fontFamily: `Georgia, 'Times New Roman', Times, serif`, textAlign: 'left'}}>
                             <div className="list-item-container">
-                                <div className="list-item-text">This is an example of a todo item, overflowing to newline</div>
+                                <div className="list-item-text">Follow up with management regarding mailbox access</div>
                                 <div className="list-item-image">
                                     <img src="/high-priority-icon.png" alt="High Priority Icon" />
                                 </div>
@@ -61,7 +61,7 @@ const Homepage = () => {
                         </ListGroup.Item>
                         <ListGroup.Item action style={{fontFamily: `Georgia, 'Times New Roman', Times, serif`, textAlign: 'left'}}>
                             <div className="list-item-container">
-                                <div className="list-item-text">This is an example of a todo item, overflowing to newline</div>
+                                <div className="list-item-text">Finish & turn in remaining paperwork</div>
                                 <div className="list-item-image">
                                     <img src="/medium-priority-icon.png" alt="High Priority Icon" />
                                 </div>
@@ -69,7 +69,7 @@ const Homepage = () => {
                         </ListGroup.Item>
                         <ListGroup.Item action style={{fontFamily: `Georgia, 'Times New Roman', Times, serif`, textAlign: 'left'}}>
                             <div className="list-item-container">
-                                <div className="list-item-text">This is an example of a todo item, overflowing to newline</div>
+                                <div className="list-item-text">Plan daily work commute route</div>
                                 <div className="list-item-image">
                                     <img src="/low-priority-icon.png" alt="High Priority Icon" />
                                 </div>
