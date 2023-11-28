@@ -641,9 +641,9 @@
   overflow: hidden;
 }
 
-.scrollable-content {
+.plist-scrollable-content {
   overflow-y: scroll;
-  height: calc(73%);
+  height: calc(67.5%);
   /* Adjusted height to accommodate top banner and bottom bar */
 }
 
@@ -747,10 +747,6 @@
   display: flex; /* Use flexbox */
   align-items: center; /* Center vertically */
   justify-content: center; /* Center horizontally */
-}
-
-.list-item-image img {
-  
 }
 
 .date-widget-container {

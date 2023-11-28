@@ -80,6 +80,20 @@
       "checked": false,
       "price": 20,
       "purchaseListId": "1"
+    },
+    {
+      "id": "359b5e21-ac50-4f20-a745-2b98a378dfef",
+      "name": "Couch",
+      "checked": false,
+      "price": 20,
+      "purchaseListId": "2"
+    },
+    {
+      "id": "5e328d3e-683b-4358-bc60-87b8b5cbe887",
+      "name": "Rug",
+      "checked": false,
+      "price": 0,
+      "purchaseListId": "2"
     }
   ],
   "todoTasks": [
