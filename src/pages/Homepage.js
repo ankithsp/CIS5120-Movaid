@@ -8,7 +8,7 @@ import "./Homepage.css"
 const Homepage = () => {
 
     const [itemsList, setItemsList] = useState([]);
-
+    const [currBudgetValue, setCurrBudgetValue] = useState(1400);
     useEffect(() => {
         const fetchItems = async () => {
             try {
@@ -47,8 +47,12 @@ const Homepage = () => {
                     <div className="full-list-link">
                         <a href="/prototype-purchase-screen">Open Full List <span>&#8594;</span></a>
                     </div> */}
-
-                    <ProgressBar style={{ width: '100%', marginBottom: '15px' }} animated variant="success" now={45} label={`${45}%`} />
+                    <ProgressBar style={{ width: '100%', marginBottom: '15px' }} animated variant="success" now={48} label={`$${currBudgetValue}`} />
+                    <div className="budget-text">
+                    <h6 className="budget-start">$0</h6>
+                    <h6 className="budget-end">$3000</h6>
+                    </div>
+                    
                     <ListGroup>
                         <ListGroup.Item style={{backgroundColor: 'inherit', fontFamily: `Georgia, 'Times New Roman', Times, serif`, textAlign: 'left' }}>
                             <li>4 Essential Items Remaining</li>
