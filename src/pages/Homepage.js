@@ -60,6 +60,10 @@ const Homepage = () => {
                         </ListGroup.Item>
                     </ListGroup>
 
+                    <div className="full-list-link">
+                        <a href="/prototype-purchase-screen">Open Full List <span>&#8594;</span></a>
+                    </div>
+
 
                 </div>
                 <h5 className="widget-title">To-Do Items</h5>
