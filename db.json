@@ -73,6 +73,13 @@
       "checked": false,
       "price": 20,
       "purchaseListId": "3"
+    },
+    {
+      "id": "45dc75eb-4938-46a8-8a98-e9d0791eacc4",
+      "name": "Plates",
+      "checked": false,
+      "price": 20,
+      "purchaseListId": "1"
     }
   ],
   "todoTasks": [

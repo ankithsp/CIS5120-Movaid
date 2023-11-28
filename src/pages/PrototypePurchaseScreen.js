@@ -6,8 +6,9 @@ import DetailedItemView from "../components/DetailedItemView";
 import DeleteItem from "../components/DeleteItem";
 import { Link, useNavigate } from "react-router-dom";
 import "./PrototypePurchaseScreen.css";
-import { Button, ListGroup, ProgressBar } from "react-bootstrap";
+import { Button, Form, ListGroup, Modal, ProgressBar } from "react-bootstrap";
 import { BagFill, House, ClipboardCheck, CalendarWeek, Map } from "react-bootstrap-icons";
+import { v4 as uuidv4 } from 'uuid';
 
 const PrototypePurchaseScreen = () => {
 
@@ -24,6 +25,9 @@ const PrototypePurchaseScreen = () => {
 
   const [roomsList, setRoomsList] = useState([]);
   const [roomItems, setRoomItems] = useState({});
+
+  const [addingRoomModalOpen, setAddingRoomModalOpen] = useState(false);
+  const [roomToAdd, setRoomToAdd] = useState('');
 
   useEffect(() => {
     const fetchRooms = async () => {
@@ -65,15 +69,68 @@ const PrototypePurchaseScreen = () => {
     });
   }, [roomsList]);
 
+  const handleAddRoom = async () => {
+    // Backend Request
+    try {
+      const newRoom = { id: uuidv4(), name: roomToAdd, userId: 1 }
+
+      const response = await fetch(`http://localhost:8000/purchaseList/`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newRoom),
+      });
+
+      if (response.ok) {
+        console.log('New room added successfully');
+        // You can perform additional actions after a successful PUT request
+        const updatedResponse = await fetch('http://localhost:8000/purchaseList');
+        const updatedData = await updatedResponse.json();
+        setRoomsList(updatedData);
+
+        setRoomToAdd('');
+        setAddingRoomModalOpen(false);
+      } else {
+        console.error('Failed to add item');
+      }
+    } catch (error) {
+      console.error('Error making POST request:', error);
+    }
+  }
+
   return (
     <div className="screen-container">
       <div className="plist-top-banner">
         <div className="plist-banner-content">
           <h5 className="plist-welcome-header">Things to Purchase</h5>
           <ProgressBar style={{width: '75%', marginBottom: '15px'}} animated variant="success" now={currentSpend} label={`${currentSpend}%`}/>
-          <Button style={{marginTop: '10px'}} variant="primary" size="lg">Add Room</Button>
+          <Button style={{marginTop: '10px'}} variant="primary" size="lg" onClick={() => setAddingRoomModalOpen(true)}>Add Room</Button>
         </div>
       </div>
+
+      <Modal show={addingRoomModalOpen} onHide={() => setAddingRoomModalOpen(false)} >
+        <Modal.Header closeButton>
+          <Modal.Title>Add a New Room</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form>
+            <Form.Group controlId="roomToAdd">
+              <Form.Label>Room Name</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter room name"
+                value={roomToAdd}
+                onChange={(e) => setRoomToAdd(e.target.value)}
+              />
+            </Form.Group>
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => setAddingRoomModalOpen(false)}>Close</Button>
+          <Button variant="primary" onClick={handleAddRoom}>Add Room</Button>
+        </Modal.Footer>
+      </Modal>
 
       <div className="scrollable-content">
       {roomsList.map((room) => (
