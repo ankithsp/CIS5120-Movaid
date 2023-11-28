@@ -559,7 +559,7 @@
 
 
 
-.screen-container {
+/* .screen-container {
   position: relative;
   background-color: var(--color-white);
   top: 25px;
@@ -571,7 +571,7 @@
   color: var(--color-black);
   font-family: var(--font-marko-one);
   text-align: center;
-}
+} */
 
 .screen-header {
   font-size: var(--font-size-11xl);
@@ -625,4 +625,147 @@
   text-align: left;
   list-style-type:circle;
   margin: 10px;
+}
+
+
+
+.screen-container {
+  width: 390px;
+  height: 844px;
+  margin: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid #ccc;
+  overflow: hidden;
+}
+
+.scrollable-content {
+  overflow-y: scroll;
+  height: calc(73%);
+  /* Adjusted height to accommodate top banner and bottom bar */
+}
+
+.plist-top-banner {
+  position: sticky;
+  top: 0;
+  background-color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.plist-banner-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.plist-welcome-header {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  /* Spacing between the welcome header and subheader */
+}
+
+.bottom-bar {
+  position: sticky;
+  bottom: 0;
+  background-color: #f0f0f0;
+  padding: 10px;
+  height: 60px; /* Adjusted height to make the bottom bar taller */
+  margin-top: -40px; /* Negative margin to expand the bottom bar upward */
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.rooms-widget-container {
+  background-color: rgba(213, 177, 149, .4);
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 5px;
+  display: grid;
+  grid-template-rows: auto auto; /* Two rows, first row adjusts to content, second row takes the remaining space */
+  gap: 10px; /* Adjust the gap between rows as needed */
+}
+
+.widget-title {
+  text-decoration: none;
+  font-weight: bold;
+  text-align:left;
+  margin-left: 25px;
+  margin-bottom: 0rem;
+}
+
+.rooms-widget-buttons {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.icon-wrapper {
+  flex: 1;
+  text-align: center;
+}
+
+.navbar-link {
+  text-decoration: none; /* Remove underline */
+  color: gray; /* Inherit the color from the parent */
+  transition: color 0.3s ease;
+}
+
+.navbar-link:hover {
+  color: black; /* Preserve the color on hover */
+}
+
+.icon-subtext {
+  font-size: 11px;
+}
+
+.list-item-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.list-item-text {
+  flex-grow: 1;
+  padding-right: 10px;
+}
+
+.list-item-image {
+  background-color: #fff;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 8px;
+  padding: 5px;
+  width: 75px;
+  height: 40px;
+  overflow: hidden;
+  display: flex; /* Use flexbox */
+  align-items: center; /* Center vertically */
+  justify-content: center; /* Center horizontally */
+}
+
+.list-item-image img {
+  
+}
+
+.date-widget-container {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.date-section {
+  flex: 1;
+}
+
+.events-section {
+  flex: 2;
 }

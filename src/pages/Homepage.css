@@ -12,7 +12,7 @@
 
 .scrollable-content {
     overflow-y: scroll;
-    height: calc(75%);
+    height: calc(73%);
     /* Adjusted height to accommodate top banner and bottom bar */
 }
 
