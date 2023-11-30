@@ -28,21 +28,21 @@
     {
       "id": "0e4346d9-d4aa-40e2-b61e-6f1f1d974a28",
       "name": "Knives",
-      "checked": false,
+      "checked": true,
       "price": 20,
       "purchaseListId": "1"
     },
     {
       "id": "51fa1015-b799-4596-91c3-36f5ae9bf9f4",
       "name": "Mixing Bowl",
-      "checked": true,
+      "checked": false,
       "price": 20,
       "purchaseListId": "1"
     },
     {
       "id": "ab3a0618-96e7-4527-b852-72a4a56edce0",
       "name": "Cutting Board",
-      "checked": true,
+      "checked": false,
       "price": 20,
       "purchaseListId": "1"
     },
@@ -120,19 +120,25 @@
     {
       "id": 2,
       "desc": "Schedule an appointment with landlord regarding parking permits",
-      "priority": 3,
+      "priority": 2,
       "completed": false
     },
     {
       "id": 3,
       "desc": "Purchase moving boxes",
-      "priority": 3,
+      "priority": 1,
       "completed": true
     },
     {
       "id": 4,
       "desc": "Plan daily commute route",
-      "priority": 3,
+      "priority": 2,
+      "completed": false
+    },
+    {
+      "id": 5,
+      "desc": "Greet neighbors",
+      "priority": 1,
       "completed": false
     }
   ],

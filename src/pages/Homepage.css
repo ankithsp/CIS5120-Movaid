@@ -10,9 +10,9 @@
     overflow: hidden;
 }
 
-.scrollable-content {
+.home-scrollable-content {
     overflow-y: scroll;
-    height: calc(73%);
+    height: calc(72.5%);
     /* Adjusted height to accommodate top banner and bottom bar */
 }
 
@@ -125,17 +125,19 @@
     background-color: #fff;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 8px;
+    width: 75px; /* Fixed width */
+    height: 40px; /* Fixed height */
     padding: 5px;
-    width: 75px;
-    height: 40px;
     overflow: hidden;
-    display: flex; /* Use flexbox */
-    align-items: center; /* Center vertically */
-    justify-content: center; /* Center horizontally */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-  
+
 .list-item-image img {
-    
+    width: 100%; /* Make the image fill the container width */
+    height: 100%; /* Make the image fill the container height */
+    object-fit: contain;
 }
 
 .date-widget-container {

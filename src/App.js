@@ -6,7 +6,6 @@ import {
   useNavigationType,
   useLocation,
 } from "react-router-dom";
-import PrototypeMainScreen from "./pages/PrototypeMainScreen";
 import PrototypePurchaseScreen from "./pages/PrototypePurchaseScreen";
 import PrototypeGettingAroundScree from "./pages/PrototypeGettingAroundScree";
 import PrototypeMoveInPlanScreen from "./pages/PrototypeMoveInPlanScreen";
@@ -14,6 +13,7 @@ import PrototypeTodoScreen from "./pages/PrototypeTodoScreen";
 import PrototypeTodoScreen2 from "./pages/PrototypeTodoScreen2";
 import DetailedRoom from "./pages/DetailedRoom";
 import Homepage from "./pages/Homepage";
+import TodoPage from "./pages/TodoPage";
 
 function App() {
   const action = useNavigationType();
@@ -95,7 +95,7 @@ function App() {
       />
       <Route 
         path="/prototype-todo-screen" 
-        element={<PrototypeTodoScreen />} 
+        element={<TodoPage />} 
       />
       <Route
         path="/prototype-todo-screen-2"

@@ -1,0 +1,5 @@
+.todo-scrollable-content {
+    overflow-y: scroll;
+    height: calc(80%);
+    /* Adjusted height to accommodate top banner and bottom bar */
+}

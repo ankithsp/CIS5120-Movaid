@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Bag, HouseFill, ListTask, ClipboardCheck, CalendarWeek, Map } from "react-bootstrap-icons";
+import { Bag, HouseFill, ClipboardCheck, CalendarWeek, Map } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
-import { CardGroup, Card, ListGroup, Carousel } from "react-bootstrap";
+import { ListGroup, Badge } from "react-bootstrap";
 import "./Homepage.css"
 
 
@@ -34,13 +34,13 @@ const Homepage = () => {
                 </div>
             </div>
 
-            <div className="scrollable-content">
+            <div className="home-scrollable-content">
                 <h5 className="widget-title">Things to Purchase</h5>
                 <div className="widget-container">
-                    <ListGroup variant="flush">
+                    <ListGroup>
                         {itemsList.map((item) => (
-                            <ListGroup.Item key={item.id} style={{backgroundColor: 'inherit', fontFamily: `Georgia, 'Times New Roman', Times, serif` }}>
-                                <li style={{textAlign: 'left'}}>{item.name}</li>
+                            <ListGroup.Item key={item.id} style={{fontFamily: `Georgia, 'Times New Roman', Times, serif`, textAlign: 'left' }}>
+                                {item.name}
                             </ListGroup.Item>
                         ))}
                     </ListGroup>
@@ -51,30 +51,31 @@ const Homepage = () => {
                 <h5 className="widget-title">To-Do Items</h5>
                 <div className="widget-container">
                     <ListGroup>
-                        <ListGroup.Item action style={{fontFamily: `Georgia, 'Times New Roman', Times, serif`, textAlign: 'left'}}>
-                            <div className="list-item-container">
-                                <div className="list-item-text">Follow up with management regarding mailbox access</div>
-                                <div className="list-item-image">
-                                    <img src="/high-priority-icon.png" alt="High Priority Icon" />
-                                </div>
+                        <ListGroup.Item as="li" className="d-flex justify-content-between align-items-center" style={{fontFamily: `Georgia, 'Times New Roman', Times, serif`, textAlign: 'left'}}>
+                            <div className="ms-2 me-auto">
+                                <div>Super long task todo should overflow to newline</div>
                             </div>
+                            <Badge bg="danger" style={{fontSize: '20px'}}>
+                                !!!
+                            </Badge>
                         </ListGroup.Item>
-                        <ListGroup.Item action style={{fontFamily: `Georgia, 'Times New Roman', Times, serif`, textAlign: 'left'}}>
-                            <div className="list-item-container">
-                                <div className="list-item-text">Finish & turn in remaining paperwork</div>
-                                <div className="list-item-image">
-                                    <img src="/medium-priority-icon.png" alt="High Priority Icon" />
-                                </div>
+                        <ListGroup.Item as="li" className="d-flex justify-content-between align-items-center" style={{fontFamily: `Georgia, 'Times New Roman', Times, serif`, textAlign: 'left'}}>
+                            <div className="ms-2 me-auto">
+                                <div>Todo Task 2</div>
                             </div>
+                            <Badge bg="warning" style={{fontSize: '20px'}}>
+                                !!
+                            </Badge>
                         </ListGroup.Item>
-                        <ListGroup.Item action style={{fontFamily: `Georgia, 'Times New Roman', Times, serif`, textAlign: 'left'}}>
-                            <div className="list-item-container">
-                                <div className="list-item-text">Plan daily work commute route</div>
-                                <div className="list-item-image">
-                                    <img src="/low-priority-icon.png" alt="High Priority Icon" />
-                                </div>
+                        <ListGroup.Item as="li" className="d-flex justify-content-between align-items-center" style={{fontFamily: `Georgia, 'Times New Roman', Times, serif`, textAlign: 'left'}}>
+                            <div className="ms-2 me-auto">
+                                <div>Todo Task 3</div>
                             </div>
+                            <Badge bg="success" style={{fontSize: '20px'}}>
+                                !
+                            </Badge>
                         </ListGroup.Item>
+                        
                     </ListGroup>
                     <div className="full-list-link">
                         <a href="/prototype-purchase-screen">Open Full List <span>&#8594;</span></a>
