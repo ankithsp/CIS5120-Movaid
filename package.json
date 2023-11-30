@@ -20,6 +20,7 @@
     "react-bootstrap-icons": "^1.10.3",
     "react-dom": "^18.2.0",
     "react-leaflet": "^4.2.1",
+    "react-radio-group": "^3.0.3",
     "react-router-dom": "^6.2.1",
     "react-scripts": "5.0.1",
     "uuid": "^9.0.1",

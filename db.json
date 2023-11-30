@@ -140,6 +140,12 @@
       "desc": "Greet neighbors",
       "priority": 1,
       "completed": false
+    },
+    {
+      "id": "ee5f994e-cd92-44b0-9d02-645b81c5086b",
+      "desc": "gfdaasfd",
+      "priority": 2,
+      "completed": false
     }
   ],
   "moveInPlan": [

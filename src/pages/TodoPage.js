@@ -2,14 +2,19 @@ import React from "react";
 import "./TodoPage.css";
 import { Bag, House, CalendarWeek, Map, ClipboardCheckFill } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
-import { ListGroup, Badge, Accordion, Button } from "react-bootstrap";
+import { ListGroup, Badge, Accordion, Button, Modal, Form } from "react-bootstrap";
 import { useState, useEffect } from "react";
+import { v4 as uuidv4 } from 'uuid';
 
 
 const TodoPage = () => {
 
     const [completedTasksList, setCompletedTasksList] = useState([]);
     const [todoTasksList, setTodoTasksList] = useState([]);
+
+    const [taskToAdd, setTaskToAdd] = useState('');
+    const [taskToAddPriority, setTaskToAddPriority] = useState(0);
+    const [addingTaskModalOpen, setAddingTaskModalOpen] = useState(false);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -44,17 +49,103 @@ const TodoPage = () => {
         }
     }
 
+    const handleAddTask = async () => {
+
+        try {
+            const toAdd = { id: uuidv4(), desc: taskToAdd, priority: Number(taskToAddPriority), completed: false }
+      
+            const response = await fetch(`http://localhost:8000/todoTasks/`, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(toAdd),
+            });
+      
+            if (response.ok) {
+                console.log('New task added successfully');
+
+                setTaskToAdd('');
+                setTaskToAddPriority(0);
+                setAddingTaskModalOpen(false);
+            } else {
+              console.error('Failed to add task');
+            }
+          } catch (error) {
+            console.error('Error making POST request:', error);
+          }
+    }
+
     return (
         <div className="screen-container">
 
             <div className="top-banner">
                 <div className="banner-content">
                     <h2 className="welcome-header">To-Do Items</h2>
-                    <Button>
+                    <Button onClick={() => setAddingTaskModalOpen(true)}>
                         Add To-Do Task
                     </Button>
                 </div>
             </div>
+
+            <Modal show={addingTaskModalOpen} onHide={() => setAddingTaskModalOpen(false)} >
+                <Modal.Header closeButton>
+                    <Modal.Title>Add a New To-Do Task</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <Form>
+                        <Form.Group controlId="taskToAdd">
+                            <Form.Label>Task Description</Form.Label>
+                            <Form.Control
+                                type="text"
+                                placeholder="Enter task description"
+                                value={taskToAdd}
+                                onChange={(e) => setTaskToAdd(e.target.value)}
+                            />
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label>Priority Level</Form.Label>
+                            <div className="mb-3">
+                                <Form.Check
+                                    inline
+                                    label="High"
+                                    name="group1"
+                                    type="radio"
+                                    id={`high-prio`}
+                                    value={3}
+                                    onChange={(e) => setTaskToAddPriority(e.target.value)}
+                                    checked={taskToAddPriority === "3"}
+                                />
+                                <Form.Check
+                                    inline
+                                    label="Medium"
+                                    name="group1"
+                                    type={"radio"}
+                                    id={`med-prio`}
+                                    value={2}
+                                    onChange={(e) => setTaskToAddPriority(e.target.value)}
+                                    checked={taskToAddPriority === "2"}
+                                />
+                                <Form.Check
+                                    inline
+                                    label="Low"
+                                    name="group1"
+                                    type={"radio"}
+                                    id={`low-prio`}
+                                    value={1}
+                                    onChange={(e) => setTaskToAddPriority(e.target.value)}
+                                    checked={taskToAddPriority === "1"}
+                                />
+                            </div>
+                        </Form.Group>
+                    </Form>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={() => setAddingTaskModalOpen(false)}>Close</Button>
+                    <Button variant="primary" onClick={handleAddTask}>Add Task</Button>
+                </Modal.Footer>
+            </Modal>
+            
 
             <div className="todo-scrollable-content">
                 <Accordion defaultActiveKey="0" alwaysOpen >
