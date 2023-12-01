@@ -14,6 +14,7 @@ import PrototypeTodoScreen2 from "./pages/PrototypeTodoScreen2";
 import DetailedRoom from "./pages/DetailedRoom";
 import Homepage from "./pages/Homepage";
 import TodoPage from "./pages/TodoPage";
+import PlanPage from "./pages/PlanPage";
 
 function App() {
   const action = useNavigationType();
@@ -91,7 +92,7 @@ function App() {
       />
       <Route
         path="/prototype-movein-plan-screen"
-        element={<PrototypeMoveInPlanScreen />}
+        element={<PlanPage />}
       />
       <Route 
         path="/prototype-todo-screen" 

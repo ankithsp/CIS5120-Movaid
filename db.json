@@ -121,19 +121,19 @@
       "id": 2,
       "desc": "Schedule an appointment with landlord regarding parking permits",
       "priority": 2,
-      "completed": false
+      "completed": true
     },
     {
       "id": 3,
       "desc": "Purchase moving boxes",
       "priority": 1,
-      "completed": true
+      "completed": false
     },
     {
       "id": 4,
       "desc": "Plan daily commute route",
       "priority": 2,
-      "completed": false
+      "completed": true
     },
     {
       "id": 5,

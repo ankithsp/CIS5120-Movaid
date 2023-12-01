@@ -1,6 +1,6 @@
 import React from "react";
 import "./TodoPage.css";
-import { Bag, House, CalendarWeek, Map, ClipboardCheckFill } from "react-bootstrap-icons";
+import { Bag, House, CalendarWeek, Map, ClipboardCheckFill, Check, CheckCircle, CheckCircleFill, CheckLg } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
 import { ListGroup, Badge, Accordion, Button, Modal, Form } from "react-bootstrap";
 import { useState, useEffect } from "react";
@@ -36,18 +36,28 @@ const TodoPage = () => {
         fetchData();
     }, []);
 
-    const renderPriorityBadge = (priorityLevel) => {
-        switch(priorityLevel) {
-            case 1:
-            return <Badge bg="success" style={{ fontSize: '20px' }}>!</Badge>;
-        case 2:
-            return <Badge bg="warning" style={{ fontSize: '20px' }}>!!</Badge>;
-        case 3:
-            return <Badge bg="danger" style={{ fontSize: '20px' }}>!!!</Badge>;
-        default:
-            return null;
-        }
-    }
+    const renderPriorityBadge = (task) => {
+        return (
+            <>
+                {task.completed ? (
+                    <Button variant="outline-danger" onClick={() => handleTaskIncomplete(task)} style={{ borderRadius: '50%', padding: '8px', width: '36px', height: '36px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <div>
+                            <CheckCircleFill size={30} />
+                        </div>
+                        
+                    </Button>
+                ) : (
+                    <Button variant="outline-success" onClick={() => handleTaskCompletion(task)} style={{ borderRadius: '50%', padding: '8px', width: '36px', height: '36px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <div> <CheckCircle size={30} /> </div>
+                        
+                    </Button>
+                )}
+                {task.priority === 1 && <Badge bg="success" style={{ fontSize: '20px', marginLeft: '10px' }}>!</Badge>}
+                {task.priority === 2 && <Badge bg="warning" style={{ fontSize: '20px', marginLeft: '10px' }}>!!</Badge>}
+                {task.priority === 3 && <Badge bg="danger" style={{ fontSize: '20px', marginLeft: '10px' }}>!!!</Badge>}
+            </>
+        );
+    };
 
     const handleAddTask = async () => {
 
@@ -75,6 +85,53 @@ const TodoPage = () => {
             console.error('Error making POST request:', error);
           }
     }
+
+    const handleTaskCompletion = async (task) => {
+        try {
+            const response = await fetch(`http://localhost:8000/todoTasks/${task.id}`, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ completed: true }),
+            });
+
+            if (response.ok) {
+                console.log('Task marked as completed successfully');
+                // Remove the completed task from the todoTasksList and add it to completedTasksList
+                setTodoTasksList(todoTasksList.filter(todoTask => todoTask.id !== task.id));
+                setCompletedTasksList([...completedTasksList, task]);
+            } else {
+                console.error('Failed to mark task as completed');
+            }
+        } catch (error) {
+            console.error("Error making PATCH request:", error);
+        }
+    }
+    const handleTaskIncomplete = async (task) => {
+        console.log(task);
+        try {
+            // Assume you have an API endpoint to update the task completion status
+            const response = await fetch(`http://localhost:8000/todoTasks/${task.id}`, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ completed: false }),
+            });
+    
+            if (response.ok) {
+                console.log('Task marked as incomplete successfully');
+                // Remove the task from completedTasksList and add it to todoTasksList
+                setCompletedTasksList(completedTasksList.filter(completedTask => completedTask.id !== task.id));
+                setTodoTasksList([...todoTasksList, task]);
+            } else {
+                console.error('Failed to mark task as incomplete');
+            }
+        } catch (error) {
+            console.error('Error making PATCH request:', error);
+        }
+    };
 
     return (
         <div className="screen-container">
@@ -159,7 +216,7 @@ const TodoPage = () => {
                                         <div className="ms-2 me-auto">
                                             <div>{task.desc}</div>
                                         </div>
-                                        {renderPriorityBadge(task.priority)}
+                                        {renderPriorityBadge(task)}
                                     </ListGroup.Item>
                                 ))}
                                 
@@ -176,7 +233,7 @@ const TodoPage = () => {
                                         <div className="ms-2 me-auto">
                                             <div>{task.desc}</div>
                                         </div>
-                                        {renderPriorityBadge(task.priority)}
+                                        {renderPriorityBadge(task)}
                                     </ListGroup.Item>
                                 ))}
                                 

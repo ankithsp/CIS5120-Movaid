@@ -1,0 +1,25 @@
+.plan-scrollable-content {
+    overflow-y: scroll;
+    height: calc(72.5%);
+}
+
+.plan-widget-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    background-color: rgba(213, 177, 149, .4);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 5px;
+}
+
+.widget-left {
+    flex: 1;
+}
+
+.widget-right {
+    flex: 1;
+}
