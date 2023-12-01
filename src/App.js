@@ -15,6 +15,7 @@ import DetailedRoom from "./pages/DetailedRoom";
 import Homepage from "./pages/Homepage";
 import TodoPage from "./pages/TodoPage";
 import PlanPage from "./pages/PlanPage";
+import DiscoverPage from "./pages/DiscoverPage";
 
 function App() {
   const action = useNavigationType();
@@ -88,7 +89,7 @@ function App() {
       />
       <Route
         path="/prototype-getting-around-screen"
-        element={<PrototypeGettingAroundScree />}
+        element={<DiscoverPage />}
       />
       <Route
         path="/prototype-movein-plan-screen"
@@ -97,10 +98,6 @@ function App() {
       <Route 
         path="/prototype-todo-screen" 
         element={<TodoPage />} 
-      />
-      <Route
-        path="/prototype-todo-screen-2"
-        element={<PrototypeTodoScreen2 />}
       />
       <Route 
         path="/detailed-room-view"
