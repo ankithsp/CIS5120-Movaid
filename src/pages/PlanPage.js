@@ -3,7 +3,7 @@ import "./PlanPage.css";
 import { Bag, House, Map, ClipboardCheck, CalendarWeekFill } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { Button } from "react-bootstrap";
+import { Button, ListGroup } from "react-bootstrap";
 
 
 const PlanPage = () => {
@@ -42,12 +42,11 @@ const PlanPage = () => {
                         </div>
 
                         <div className="widget-right">
-                            <h3>Events:</h3>
-                            <ul>
+                            <ListGroup>
                                 {data.events.map((event, eventIndex) => (
-                                    <li key={eventIndex}>{event}</li>
+                                    <ListGroup.Item key={eventIndex} action >{event}</ListGroup.Item>
                                 ))}
-                            </ul>
+                            </ListGroup>
                         </div>
                     </div>
                 ))}

@@ -121,7 +121,7 @@
       "id": 2,
       "desc": "Schedule an appointment with landlord regarding parking permits",
       "priority": 2,
-      "completed": true
+      "completed": false
     },
     {
       "id": 3,
@@ -133,13 +133,13 @@
       "id": 4,
       "desc": "Plan daily commute route",
       "priority": 2,
-      "completed": true
+      "completed": false
     },
     {
       "id": 5,
       "desc": "Greet neighbors",
       "priority": 1,
-      "completed": false
+      "completed": true
     },
     {
       "id": "ee5f994e-cd92-44b0-9d02-645b81c5086b",

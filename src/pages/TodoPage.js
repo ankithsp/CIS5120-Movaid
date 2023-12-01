@@ -95,23 +95,23 @@ const TodoPage = () => {
                 },
                 body: JSON.stringify({ completed: true }),
             });
-
+    
             if (response.ok) {
                 console.log('Task marked as completed successfully');
-                // Remove the completed task from the todoTasksList and add it to completedTasksList
+                // Update state: remove the task from todoTasksList and add it to completedTasksList
                 setTodoTasksList(todoTasksList.filter(todoTask => todoTask.id !== task.id));
-                setCompletedTasksList([...completedTasksList, task]);
+                const newTask = {...task, completed: !task.completed};
+                setCompletedTasksList([...completedTasksList, newTask]);
             } else {
                 console.error('Failed to mark task as completed');
             }
         } catch (error) {
-            console.error("Error making PATCH request:", error);
+            console.error('Error making PATCH request:', error);
         }
-    }
+    };
+    
     const handleTaskIncomplete = async (task) => {
-        console.log(task);
         try {
-            // Assume you have an API endpoint to update the task completion status
             const response = await fetch(`http://localhost:8000/todoTasks/${task.id}`, {
                 method: 'PATCH',
                 headers: {
@@ -122,9 +122,10 @@ const TodoPage = () => {
     
             if (response.ok) {
                 console.log('Task marked as incomplete successfully');
-                // Remove the task from completedTasksList and add it to todoTasksList
+                // Update state: remove the task from completedTasksList and add it to todoTasksList
                 setCompletedTasksList(completedTasksList.filter(completedTask => completedTask.id !== task.id));
-                setTodoTasksList([...todoTasksList, task]);
+                const newTask = {...task, completed: !task.completed};
+                setTodoTasksList([...todoTasksList, newTask]);
             } else {
                 console.error('Failed to mark task as incomplete');
             }
