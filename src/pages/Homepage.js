@@ -8,21 +8,45 @@ import "./Homepage.css"
 const Homepage = () => {
 
     const [itemsList, setItemsList] = useState([]);
+    const [tasksList, setTasksList] = useState([]);
 
     useEffect(() => {
         const fetchItems = async () => {
             try {
                 const response = await fetch('http://localhost:8000/items?_limit=5');
                 const data = await response.json();
-                console.log(data);
                 setItemsList(data);
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
         }
 
+        const fetchTasks = async () => {
+            try {
+                const response = await fetch('http://localhost:8000/todoTasks');
+                const data = await response.json();
+                setTasksList(data);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        }
+
         fetchItems();
+        fetchTasks();
     }, []);
+
+    const renderPriorityBadge = (priorityLevel) => {
+        switch(priorityLevel) {
+            case 1:
+            return <Badge bg="success" style={{ fontSize: '20px' }}>!</Badge>;
+        case 2:
+            return <Badge bg="warning" style={{ fontSize: '20px' }}>!!</Badge>;
+        case 3:
+            return <Badge bg="danger" style={{ fontSize: '20px' }}>!!!</Badge>;
+        default:
+            return null;
+        }
+    }
 
     return (
         <div className="screen-container">
@@ -51,30 +75,15 @@ const Homepage = () => {
                 <h5 className="widget-title">To-Do Items</h5>
                 <div className="widget-container">
                     <ListGroup>
-                        <ListGroup.Item as="li" className="d-flex justify-content-between align-items-center" style={{fontFamily: `Georgia, 'Times New Roman', Times, serif`, textAlign: 'left'}}>
-                            <div className="ms-2 me-auto">
-                                <div>Super long task todo should overflow to newline</div>
-                            </div>
-                            <Badge bg="danger" style={{fontSize: '20px'}}>
-                                !!!
-                            </Badge>
-                        </ListGroup.Item>
-                        <ListGroup.Item as="li" className="d-flex justify-content-between align-items-center" style={{fontFamily: `Georgia, 'Times New Roman', Times, serif`, textAlign: 'left'}}>
-                            <div className="ms-2 me-auto">
-                                <div>Todo Task 2</div>
-                            </div>
-                            <Badge bg="warning" style={{fontSize: '20px'}}>
-                                !!
-                            </Badge>
-                        </ListGroup.Item>
-                        <ListGroup.Item as="li" className="d-flex justify-content-between align-items-center" style={{fontFamily: `Georgia, 'Times New Roman', Times, serif`, textAlign: 'left'}}>
-                            <div className="ms-2 me-auto">
-                                <div>Todo Task 3</div>
-                            </div>
-                            <Badge bg="success" style={{fontSize: '20px'}}>
-                                !
-                            </Badge>
-                        </ListGroup.Item>
+                        {tasksList.sort((a, b) => b.priority - a.priority).slice(0,3)
+                            .map((task) => (
+                                <ListGroup.Item key={task.id} as="li" className="d-flex justify-content-between align-items-center" style={{ fontFamily: `Georgia, 'Times New Roman', Times, serif`, textAlign: 'left' }}>
+                                    <div className="ms-2 me-auto">
+                                        <div>{task.desc}</div>
+                                    </div>
+                                    {renderPriorityBadge(task.priority)}
+                                </ListGroup.Item>
+                            ))}
                         
                     </ListGroup>
                     <div className="full-list-link">

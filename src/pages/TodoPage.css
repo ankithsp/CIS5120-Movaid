@@ -1,5 +1,23 @@
 .todo-scrollable-content {
     overflow-y: scroll;
     height: calc(80%);
+    margin: 20px;
     /* Adjusted height to accommodate top banner and bottom bar */
+}
+
+.accordion-button {
+    background-color: rgba(115, 93, 66, 0.7) !important;
+    font-size: 20px;
+}
+
+.accordion-body {
+    background-color: rgba(213, 177, 149, 0.4) !important;
+}
+
+.accordion-button:focus {
+    box-shadow: none;
+}
+
+.accordion-button:not(.collapsed) {
+    color: #212529;
 }

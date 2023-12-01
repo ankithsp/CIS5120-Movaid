@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
 import './DetailedRoom.css';
 import { useState, useCallback } from "react";
-import NavigationBar from "../components/NavigationBar";
+import { Link } from "react-router-dom";
 import { useNavigate, useSearchParams } from "react-router-dom";
+import { BagFill, House, ClipboardCheck, CalendarWeek, Map } from "react-bootstrap-icons";
 import { v4 as uuidv4 } from 'uuid';
 
 import { Button } from "react-bootstrap";
@@ -260,7 +261,39 @@ const DetailedRoom = () => {
 
                 <Checklist items={items} setItems={setItems} roomId={roomId} />
             </div>
-            <NavigationBar />
+            
+            <div className="bottom-bar">
+                <Link to="/" className="navbar-link">
+                    <div className="icon-wrapper">
+                        <House size={40} />
+                    </div>
+                </Link>
+                <Link to="/prototype-purchase-screen" style={{color: 'inherit'}}>
+                    <div className="icon-wrapper">
+                        <BagFill size={30} />
+                    </div>
+                    <div className="icon-subtext">Purchase</div>
+                </Link>
+                <Link to="/prototype-todo-screen" className="navbar-link">
+                    <div className="icon-wrapper">
+                        <ClipboardCheck size={30} />
+                    </div>
+                    <div className="icon-subtext">To-Do</div>
+                </Link>
+                <Link to="/prototype-movein-plan-screen" className="navbar-link">
+                    <div className="icon-wrapper">
+                        <CalendarWeek size={30} />
+                    </div>
+                    <div className="icon-subtext">Plan</div>
+                </Link>
+                <Link to="/prototype-getting-around-screen" className="navbar-link">
+                    <div className="icon-wrapper">
+                        <Map size={30} />
+                    </div>
+                    <div className="icon-subtext">Discover</div>
+                </Link>
+            </div>
+
         </div>
 
     );

@@ -148,12 +148,13 @@ const TodoPage = () => {
             
 
             <div className="todo-scrollable-content">
-                <Accordion defaultActiveKey="0" alwaysOpen >
+                <Accordion defaultActiveKey="0" alwaysOpen>
                     <Accordion.Item eventKey="0">
                         <Accordion.Header>To-Do Tasks</Accordion.Header>
                         <Accordion.Body>
                             <ListGroup>
-                                {todoTasksList.map((task) => (
+                                {todoTasksList.sort((a,b) => b.priority - a.priority)
+                                .map((task) => (
                                     <ListGroup.Item key={task.id} as="li" className="d-flex justify-content-between align-items-center" style={{ fontFamily: `Georgia, 'Times New Roman', Times, serif`, textAlign: 'left' }}>
                                         <div className="ms-2 me-auto">
                                             <div>{task.desc}</div>
@@ -169,7 +170,8 @@ const TodoPage = () => {
                         <Accordion.Header>Completed Tasks</Accordion.Header>
                         <Accordion.Body>
                             <ListGroup>
-                                {completedTasksList.map((task) => (
+                                {completedTasksList.sort((a,b) => b.priority - a.priority)
+                                .map((task) => (
                                     <ListGroup.Item key={task.id} as="li" className="d-flex justify-content-between align-items-center" style={{ fontFamily: `Georgia, 'Times New Roman', Times, serif`, textAlign: 'left' }}>
                                         <div className="ms-2 me-auto">
                                             <div>{task.desc}</div>

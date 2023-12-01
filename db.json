@@ -28,7 +28,7 @@
     {
       "id": "0e4346d9-d4aa-40e2-b61e-6f1f1d974a28",
       "name": "Knives",
-      "checked": true,
+      "checked": false,
       "price": 20,
       "purchaseListId": "1"
     },
