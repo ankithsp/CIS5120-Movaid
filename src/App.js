@@ -6,7 +6,6 @@ import {
   useNavigationType,
   useLocation,
 } from "react-router-dom";
-import PrototypeMainScreen from "./pages/PrototypeMainScreen";
 import PrototypePurchaseScreen from "./pages/PrototypePurchaseScreen";
 import PrototypeGettingAroundScree from "./pages/PrototypeGettingAroundScree";
 import PrototypeMoveInPlanScreen from "./pages/PrototypeMoveInPlanScreen";
@@ -14,6 +13,9 @@ import PrototypeTodoScreen from "./pages/PrototypeTodoScreen";
 import PrototypeTodoScreen2 from "./pages/PrototypeTodoScreen2";
 import DetailedRoom from "./pages/DetailedRoom";
 import Homepage from "./pages/Homepage";
+import TodoPage from "./pages/TodoPage";
+import PlanPage from "./pages/PlanPage";
+import DiscoverPage from "./pages/DiscoverPage";
 
 function App() {
   const action = useNavigationType();
@@ -87,19 +89,15 @@ function App() {
       />
       <Route
         path="/prototype-getting-around-screen"
-        element={<PrototypeGettingAroundScree />}
+        element={<DiscoverPage />}
       />
       <Route
         path="/prototype-movein-plan-screen"
-        element={<PrototypeMoveInPlanScreen />}
+        element={<PlanPage />}
       />
       <Route 
         path="/prototype-todo-screen" 
-        element={<PrototypeTodoScreen />} 
-      />
-      <Route
-        path="/prototype-todo-screen-2"
-        element={<PrototypeTodoScreen2 />}
+        element={<TodoPage />} 
       />
       <Route 
         path="/detailed-room-view"

@@ -35,14 +35,14 @@
     {
       "id": "51fa1015-b799-4596-91c3-36f5ae9bf9f4",
       "name": "Mixing Bowl",
-      "checked": true,
+      "checked": false,
       "price": 20,
       "purchaseListId": "1"
     },
     {
       "id": "ab3a0618-96e7-4527-b852-72a4a56edce0",
       "name": "Cutting Board",
-      "checked": true,
+      "checked": false,
       "price": 20,
       "purchaseListId": "1"
     },
@@ -120,43 +120,88 @@
     {
       "id": 2,
       "desc": "Schedule an appointment with landlord regarding parking permits",
-      "priority": 3,
+      "priority": 2,
       "completed": false
     },
     {
       "id": 3,
       "desc": "Purchase moving boxes",
-      "priority": 3,
-      "completed": true
+      "priority": 1,
+      "completed": false
     },
     {
       "id": 4,
       "desc": "Plan daily commute route",
-      "priority": 3,
+      "priority": 2,
+      "completed": true
+    },
+    {
+      "id": 5,
+      "desc": "Greet neighbors",
+      "priority": 1,
+      "completed": true
+    },
+    {
+      "id": "ee5f994e-cd92-44b0-9d02-645b81c5086b",
+      "desc": "gfdaasfd",
+      "priority": 2,
+      "completed": true
+    },
+    {
+      "id": "a8f06ad8-a405-4f74-a1ed-52c3d9e2d81a",
+      "desc": "Test Task",
+      "priority": 1,
       "completed": false
     }
   ],
   "moveInPlan": [
     {
-      "id": 1,
-      "date": "2023-11-21",
-      "desc": "Jane is coming to drop off some kitchen utensils.",
-      "timeStart": null,
+      "id": "1b93537c-d48b-4597-84eb-8391e9b39120",
+      "desc": "Facilities coming to replace the smoke detector",
+      "dateStart": "2023-12-02",
+      "dateEnd": null,
+      "timeStart": "13:00:00",
       "timeEnd": null
     },
     {
-      "id": 2,
-      "date": "2023-11-20",
-      "desc": "Appointment with the landlord to discuss parking permit.",
-      "timeStart": "T19:06:00",
+      "id": "34520",
+      "desc": "Testing grouping",
+      "dateStart": "2023-12-02",
+      "dateEnd": null,
+      "timeStart": "15:00:00",
       "timeEnd": null
     },
     {
-      "id": 3,
-      "date": "2023-11-19",
-      "desc": "Charlie is helping you build and set up your couch.",
-      "timeStart": "T19:06:00",
-      "timeEnd": "T19:07:00"
+      "id": "3434852389p520",
+      "desc": "Testing grouping again",
+      "dateStart": "2023-12-01",
+      "dateEnd": null,
+      "timeStart": "15:00:00",
+      "timeEnd": null
+    },
+    {
+      "id": "h37298d",
+      "desc": "Testing grouping once more",
+      "dateStart": "2023-12-05",
+      "dateEnd": null,
+      "timeStart": "15:00:00",
+      "timeEnd": null
+    },
+    {
+      "id": "9ecd2756-b817-4297-b37c-7085e9191d39",
+      "desc": "Testing",
+      "dateStart": "2023-12-02",
+      "dateEnd": null,
+      "timeStart": "13:41:00",
+      "timeEnd": null
+    },
+    {
+      "id": "3416263f-4e5e-4f8c-a204-16dc87ec22c9",
+      "desc": "testing weather",
+      "dateStart": "2023-12-04",
+      "dateEnd": null,
+      "timeStart": "13:50:00",
+      "timeEnd": null
     }
   ]
 }
