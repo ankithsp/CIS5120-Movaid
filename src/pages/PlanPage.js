@@ -57,7 +57,10 @@ const PlanPage = () => {
                     const date = forecastItem.dt_txt.split(' ')[0];
 
                     if (!groupedWeather[date]) {
-                        groupedWeather[date] = forecastItem.weather[0].icon;
+                        groupedWeather[date] = {
+                            icon: forecastItem.weather[0].icon,
+                            description: forecastItem.weather[0].description,
+                          };
                     }
                 });
 
@@ -132,9 +135,6 @@ const PlanPage = () => {
                     <Button onClick={() => setAddingEventModalOpen(true)} variant="primary" style={{marginBottom: '10px'}}>
                         Add Event
                     </Button>
-                    <Button variant="secondary" style={{marginBottom: '10px'}}>
-                        View in Calendar
-                    </Button>
                 </div>
             </div>
 
@@ -176,8 +176,12 @@ const PlanPage = () => {
                             </div>
                             <div className="plan-widget-icon-container">
                                 {weatherList[date] && (
-                                    <div className="plan-widget-icon-background">
-                                        <img src={`http://openweathermap.org/img/wn/${weatherList[date]}.png`} alt="Weather Icon" />
+                                    <div>
+                                        <div className="plan-widget-icon-background">
+                                            <img src={`http://openweathermap.org/img/wn/${weatherList[date].icon}.png`} alt="Weather Icon" />
+
+                                        </div>
+                                        <h5 style={{ fontSize: '12px' }}>{weatherList[date].description}</h5>
                                     </div>
                                 )}
                             </div>
