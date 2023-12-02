@@ -162,6 +162,30 @@
       "dateEnd": null,
       "timeStart": "13:00:00",
       "timeEnd": null
+    },
+    {
+      "id": "34520",
+      "desc": "Testing grouping",
+      "dateStart": "2023-12-02",
+      "dateEnd": null,
+      "timeStart": "15:00:00",
+      "timeEnd": null
+    },
+    {
+      "id": "3434852389p520",
+      "desc": "Testing grouping again",
+      "dateStart": "2023-12-01",
+      "dateEnd": null,
+      "timeStart": "15:00:00",
+      "timeEnd": null
+    },
+    {
+      "id": "h37298d",
+      "desc": "Testing grouping once more",
+      "dateStart": "2023-12-05",
+      "dateEnd": null,
+      "timeStart": "15:00:00",
+      "timeEnd": null
     }
   ]
 }

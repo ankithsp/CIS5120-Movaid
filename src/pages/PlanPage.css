@@ -16,10 +16,15 @@
     margin-top: 5px;
 }
 
-.widget-left {
+.plan-widget-left {
     flex: 1;
 }
 
-.widget-right {
+.plan-widget-right {
     flex: 1;
+}
+
+.event-list-item {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 20px;
 }

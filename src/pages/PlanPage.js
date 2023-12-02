@@ -9,7 +9,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 const PlanPage = () => {
 
-    const [eventsList, setEventsList] = useState([]);
+    const [eventsList, setEventsList] = useState({});
 
     const [addingEventModalOpen, setAddingEventModalOpen] = useState(false);
     const [eventToAdd, setEventToAdd] = useState('');
@@ -22,7 +22,20 @@ const PlanPage = () => {
                 const response = await fetch('http://localhost:8000/moveInPlan');
                 const data = await response.json();
                 console.log(data);
-                setEventsList(data);
+
+                // Grouping Events by Date
+                const groupedEvents = {};
+                data.forEach(event => {
+                    const date = event.dateStart;
+
+                    if(!groupedEvents[date]) {
+                        groupedEvents[date] = [];
+                    }
+
+                    groupedEvents[date].push(event);
+                })
+                setEventsList(groupedEvents);
+
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
@@ -30,12 +43,6 @@ const PlanPage = () => {
 
         fetchEvents();
     }, []);
-
-    // Sample data for demonstration
-    const sampleEventData = [
-        { date: "2023-12-01", weatherIcon: "🌤", highs: 25, lows: 15, events: ["Event 1", "Event 2"] },
-        { date: "2023-12-02", weatherIcon: "🌤", highs: 30, lows: 10, events: ["Event 1", "Event 2"] },
-    ];
 
     const handleAddEvent = async () => {
         try {
@@ -122,25 +129,23 @@ const PlanPage = () => {
             </Modal>
 
             <div className="plan-scrollable-content">
-                {sampleEventData.map((data, index) => (
-                    <div key={index} className="plan-widget-container">
-                        <div className="widget-left">
-                            <div>{data.date}</div>
-                            <div>{data.weatherIcon}</div>
-                            <div>H: {data.highs}°F</div>
-                            <div>L: {data.lows}°F</div>
+                {Object.keys(eventsList).sort().map(date => (
+                    <div key={date} className="plan-widget-container">
+                        <div className="plan-widget-left">
+                            <h5>{date}</h5>
                         </div>
-
-                        <div className="widget-right">
+                        <div className="plan-widget-right">
                             <ListGroup>
-                                {data.events.map((event, eventIndex) => (
-                                    <ListGroup.Item key={eventIndex} action >{event}</ListGroup.Item>
+                                {eventsList[date].map(event => (
+                                    <ListGroup.Item key={event.id} className="event-list-item">
+                                        <p>{event.desc}</p>
+                                        {event.timeEnd ? <p>{event.timeStart} - {event.timeEnd}</p> : <p>{event.timeStart}</p>}
+                                    </ListGroup.Item>
                                 ))}
                             </ListGroup>
                         </div>
                     </div>
                 ))}
-                
             </div>
 
             
