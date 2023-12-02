@@ -3,6 +3,7 @@ import "./DiscoverPage.css";
 import { House, Bag, ClipboardCheck, CalendarWeek, MapFill } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { ListGroup } from "react-bootstrap";
 
 
 const DiscoverPage = () => {
@@ -13,6 +14,20 @@ const DiscoverPage = () => {
             <div className="top-banner">
                 <div className="banner-content">
                     <h5 className="welcome-header">Discover Philadelphia</h5>
+                </div>
+            </div>
+
+            <div className="discover-scrollable-content">
+                <div className="discover-widget-title">Links</div>
+                <div>
+                    <ListGroup className="discover-links-list">
+                        <ListGroup.Item action href="https://philly.eater.com/maps/best-cheesesteak-philadelphia">
+                            Best Cheesesteaks in Philadelphia</ListGroup.Item>
+                        <ListGroup.Item action href="https://www.cntraveler.com/gallery/best-museums-in-philadelphia">
+                            Top Rated Museums in Philadelphia</ListGroup.Item>
+                        <ListGroup.Item action href="https://www.phillymag.com/be-well-philly/waterfall-hikes/">
+                            Hiking Trails Around Philadelphia</ListGroup.Item>
+                    </ListGroup>
                 </div>
             </div>
 

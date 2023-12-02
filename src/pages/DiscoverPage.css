@@ -1,0 +1,16 @@
+.discover-scrollable-content {
+    overflow-y: auto;
+    height: calc(75%);
+    margin: 20px;
+}
+
+.discover-widget-title {
+    text-decoration: none;
+    font-weight: bold;
+    text-align: left;
+}
+
+.discover-links-list {
+    text-align: left;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}

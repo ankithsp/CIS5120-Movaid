@@ -32,8 +32,13 @@ const TodoPage = () => {
                 console.error('Error fetching todo items:', error);
             }
         }
-
         fetchData();
+
+        const firstAccordionHeader = document.querySelector('.accordion-item:first-child .accordion-header:first-child .accordion-button');
+
+        if (firstAccordionHeader) {
+            firstAccordionHeader.click();
+        }
     }, []);
 
     const renderPriorityBadge = (task) => {
@@ -85,7 +90,6 @@ const TodoPage = () => {
             console.error('Error making POST request:', error);
           }
     }
-
     const handleTaskCompletion = async (task) => {
         try {
             const response = await fetch(`http://localhost:8000/todoTasks/${task.id}`, {
@@ -109,7 +113,6 @@ const TodoPage = () => {
             console.error('Error making PATCH request:', error);
         }
     };
-    
     const handleTaskIncomplete = async (task) => {
         try {
             const response = await fetch(`http://localhost:8000/todoTasks/${task.id}`, {
@@ -206,7 +209,7 @@ const TodoPage = () => {
             
 
             <div className="todo-scrollable-content">
-                <Accordion defaultActiveKey="0" alwaysOpen>
+                <Accordion alwaysOpen>
                     <Accordion.Item eventKey="0">
                         <Accordion.Header>To-Do Tasks</Accordion.Header>
                         <Accordion.Body>

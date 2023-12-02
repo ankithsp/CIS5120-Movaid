@@ -133,7 +133,7 @@
       "id": 4,
       "desc": "Plan daily commute route",
       "priority": 2,
-      "completed": false
+      "completed": true
     },
     {
       "id": 5,
@@ -145,6 +145,12 @@
       "id": "ee5f994e-cd92-44b0-9d02-645b81c5086b",
       "desc": "gfdaasfd",
       "priority": 2,
+      "completed": true
+    },
+    {
+      "id": "a8f06ad8-a405-4f74-a1ed-52c3d9e2d81a",
+      "desc": "Test Task",
+      "priority": 1,
       "completed": false
     }
   ],

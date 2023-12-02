@@ -1,5 +1,5 @@
 .plist-scrollable-content {
-  overflow-y: scroll;
+  overflow-y: auto;
   height: calc(64.5%);
   /* Adjusted height to accommodate top banner and bottom bar */
 }
