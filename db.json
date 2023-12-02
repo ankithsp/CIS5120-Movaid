@@ -156,25 +156,12 @@
   ],
   "moveInPlan": [
     {
-      "id": 1,
-      "date": "2023-11-21",
-      "desc": "Jane is coming to drop off some kitchen utensils.",
-      "timeStart": null,
+      "id": "1b93537c-d48b-4597-84eb-8391e9b39120",
+      "desc": "Facilities coming to replace the smoke detector",
+      "dateStart": "2023-12-02",
+      "dateEnd": null,
+      "timeStart": "13:00:00",
       "timeEnd": null
-    },
-    {
-      "id": 2,
-      "date": "2023-11-20",
-      "desc": "Appointment with the landlord to discuss parking permit.",
-      "timeStart": "T19:06:00",
-      "timeEnd": null
-    },
-    {
-      "id": 3,
-      "date": "2023-11-19",
-      "desc": "Charlie is helping you build and set up your couch.",
-      "timeStart": "T19:06:00",
-      "timeEnd": "T19:07:00"
     }
   ]
 }
