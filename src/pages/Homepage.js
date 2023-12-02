@@ -4,11 +4,18 @@ import { Link } from "react-router-dom";
 import { ListGroup, Badge } from "react-bootstrap";
 import "./Homepage.css"
 
+// For Weather Data API, using OpenWeatherMap
+const apiKey = '10f988116a40bcedd5940f2715931b48';
+const lat = 39.952583
+const long = -75.165222
+const apiURL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${apiKey}`;
 
 const Homepage = () => {
 
     const [itemsList, setItemsList] = useState([]);
     const [tasksList, setTasksList] = useState([]);
+    const [eventsList, setEventsList] = useState([]);
+    const [weather, setWeather] = useState({});
 
     useEffect(() => {
         const fetchItems = async () => {
@@ -31,8 +38,34 @@ const Homepage = () => {
             }
         }
 
+        const fetchEvents = async () => {
+            try {
+                const response = await fetch('http://localhost:8000/moveInPlan');
+                const data = await response.json();
+
+                const today = new Date().toISOString().split('T')[0]; // Get current date in 'YYYY-MM-DD' format
+                const eventsToday = data.filter(event => event.dateStart === today);
+
+                setEventsList(eventsToday);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        }
+
+        const fetchWeather = async () => {
+            try {
+                const response = await fetch(apiURL);
+                const data = await response.json();
+                setWeather(data.weather[0]);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        }
+
         fetchItems();
         fetchTasks();
+        fetchEvents();
+        fetchWeather();
     }, []);
 
     const renderPriorityBadge = (priorityLevel) => {
@@ -47,6 +80,16 @@ const Homepage = () => {
             return null;
         }
     }
+    const formatDate = (dateString) => {
+        const options = { weekday: 'short', month: 'short', day: 'numeric' };
+        const date = new Date(dateString + 'T00:00:00'); // Set time to midnight UTC
+        return date.toLocaleDateString('en-US', options);
+    };
+    const formatTime = (timeString) => {
+        const options = { hour: 'numeric', minute: 'numeric', hour12: true };
+        const time = new Date(`1970-01-01T${timeString}`);
+        return time.toLocaleTimeString('en-US', options);
+    };
 
     return (
         <div className="screen-container">
@@ -92,21 +135,32 @@ const Homepage = () => {
                 </div>
                 <h5 className="widget-title">Move-In Plan</h5>
                 <div className="widget-container">
-                    <div className="date-widget-container">
+                    <div className="plan-widget-top">
                         {/* Date Section */}
-                        <div className="date-section">
-                            <p>{new Date().toLocaleDateString()}</p>
+                        <div className="plan-widget-date">
+                            <h5>{formatDate(new Date().toISOString().split("T")[0])}</h5>
+                        </div>
+                        <div className="plan-widget-icon-container">
+                            <div>
+                                <div className="plan-widget-icon-background">
+                                    <img src={`http://openweathermap.org/img/wn/${weather.icon}.png`} alt="Weather Icon" />
+                                </div>
+                                <h5 style={{ fontSize: '12px' }}>{weather.description}</h5>
+                            </div>
                         </div>
 
-                        {/* Events Section */}
-                        <div className="events-section">
-                            <ListGroup>
-                                {/* List of up to three events goes here */}
-                                <ListGroup.Item action>Event 1</ListGroup.Item>
-                                <ListGroup.Item action>Event 2</ListGroup.Item>
-                                <ListGroup.Item action>Event 3</ListGroup.Item>
-                            </ListGroup>
-                        </div>
+
+                    </div>
+                    {/* Events Section */}
+                    <div className="plan-widget-bottom">
+                        <ListGroup>
+                            {eventsList.map(event => (
+                                <ListGroup.Item key={event.id} className="event-list-item" action>
+                                    <p>{event.desc}</p>
+                                    {event.timeEnd ? <p><strong>{formatTime(event.timeStart)} - {formatTime(event.timeEnd)}</strong></p> : <p><strong>{formatTime(event.timeStart)}</strong></p>}
+                                </ListGroup.Item>
+                            ))}
+                        </ListGroup>
                     </div>
                     <div className="full-list-link">
                         <a href="/prototype-purchase-screen">Open Full Plan <span>&#8594;</span></a>
