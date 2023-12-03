@@ -14,7 +14,7 @@
     flex-direction: column;
 }
 
-.plan-widget-top {
+.plan-widget-left {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -46,4 +46,12 @@
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 18px;
     text-align: left;
+}
+
+.plan-widget-currTemp-text{
+    font-size: 15px;
+}
+
+.plan-widget-highLowTemp-text{
+    font-size: 13px;
 }

@@ -3,20 +3,21 @@ import "./PlanPage.css";
 import { Bag, House, Map, ClipboardCheck, CalendarWeekFill } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { Button, ListGroup, Form, Modal } from "react-bootstrap";
+import { Button, ListGroup, Form, Modal, Stack } from "react-bootstrap";
 import { v4 as uuidv4 } from 'uuid';
 
 // For Weather Data API, using OpenWeatherMap
 const apiKey = '10f988116a40bcedd5940f2715931b48';
 const lat = 39.952583
 const long = -75.165222
-const apiURL = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${long}&appid=${apiKey}`;
+const units = 'metric';
+const apiURL = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${long}&units=${units}&appid=${apiKey}`;
 
 const PlanPage = () => {
 
     const [eventsList, setEventsList] = useState({});
     const [weatherList, setWeatherList] = useState({});
-
+    // const [datesList, setDatesList] = useState({});
     const [addingEventModalOpen, setAddingEventModalOpen] = useState(false);
     const [eventToAdd, setEventToAdd] = useState('');
     const [eventToAddDateStart, setEventToAddDateStart] = useState(''); 
@@ -27,7 +28,6 @@ const PlanPage = () => {
             try {
                 const response = await fetch('http://localhost:8000/moveInPlan');
                 const data = await response.json();
-                console.log(data);
 
                 // Grouping Events by Date
                 const groupedEvents = {};
@@ -37,7 +37,6 @@ const PlanPage = () => {
                     if(!groupedEvents[date]) {
                         groupedEvents[date] = [];
                     }
-
                     groupedEvents[date].push(event);
                 })
                 setEventsList(groupedEvents);
@@ -55,17 +54,18 @@ const PlanPage = () => {
                 const groupedWeather = {};
                 data.list.forEach(forecastItem => {
                     const date = forecastItem.dt_txt.split(' ')[0];
-
                     if (!groupedWeather[date]) {
                         groupedWeather[date] = {
+                            temp: forecastItem.main.temp,
+                            temp_high: forecastItem.main.temp_max,
+                            temp_low: forecastItem.main.temp_min,
                             icon: forecastItem.weather[0].icon,
                             description: forecastItem.weather[0].description,
                           };
                     }
                 });
-
+                
                 setWeatherList(groupedWeather);
-
             } catch (error) {
                 console.error('Error fetching weather data:', error);
             }
@@ -170,7 +170,42 @@ const PlanPage = () => {
             <div className="plan-scrollable-content">
                 {Object.keys(eventsList).sort().map(date => (
                     <div key={date} className="plan-widget-container">
-                        <div className="plan-widget-top">
+                        <Stack direction="horizontal" gap={3}>
+                            <Stack className="plan-widget-left" direction="vertical" gap={2}>
+                                <div className="plan-widget-date">
+                                    <h5>{formatDate(date)}</h5>
+                                </div>
+                                <div className="plan-widget-icon-container">
+                                    {weatherList[date] && (
+                                        <div>
+                                            <div className="plan-widget-icon-background">
+                                                <img src={`http://openweathermap.org/img/wn/${weatherList[date].icon}.png`} alt="Weather Icon" />
+                                            </div>
+                                            <h5 style={{ fontSize: '12px' }}>{weatherList[date].description}</h5>
+                                        </div>
+                                    )}
+                                </div>
+                                <div className="plan-widget-temp">
+                                    {weatherList[date] && (
+                                        <div>
+                                            <p className="plan-widget-currTemp-text">{weatherList[date].temp} &deg;F</p>
+                                            <p className="plan-widget-highLowTemp-text">H: {weatherList[date].temp_high}  L: {weatherList[date].temp_low}</p>
+                                        </div>
+                                        )}
+                                </div>
+                            </Stack>
+                            <Stack className="plan-widget-right"direction="vertical" gap={2}>
+                                <ListGroup>
+                                    {eventsList[date].map(event => (
+                                        <ListGroup.Item key={event.id} className="event-list-item" action>
+                                            <p>{event.desc}</p>
+                                            {event.timeEnd ? <p><strong>{formatTime(event.timeStart)} - {formatTime(event.timeEnd)}</strong></p> : <p><strong>{formatTime(event.timeStart)}</strong></p>}
+                                        </ListGroup.Item>
+                                    ))}
+                                </ListGroup>
+                            </Stack>
+                        </Stack>
+                        {/* <div className="plan-widget-top">
                             <div className="plan-widget-date">
                                 <h5>{formatDate(date)}</h5>
                             </div>
@@ -179,7 +214,6 @@ const PlanPage = () => {
                                     <div>
                                         <div className="plan-widget-icon-background">
                                             <img src={`http://openweathermap.org/img/wn/${weatherList[date].icon}.png`} alt="Weather Icon" />
-
                                         </div>
                                         <h5 style={{ fontSize: '12px' }}>{weatherList[date].description}</h5>
                                     </div>
@@ -195,7 +229,7 @@ const PlanPage = () => {
                                     </ListGroup.Item>
                                 ))}
                             </ListGroup>
-                        </div>
+                        </div> */}
                     </div>
                 ))}
             </div>
@@ -208,6 +242,7 @@ const PlanPage = () => {
                     <div className="icon-wrapper">
                         <House size={40} />
                     </div>
+                    
                 </Link>
                 <Link to="/purchase" className="navbar-link">
                     <div className="icon-wrapper">
