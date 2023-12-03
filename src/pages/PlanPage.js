@@ -163,7 +163,7 @@ const PlanPage = () => {
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={() => setAddingEventModalOpen(false)}>Close</Button>
-                    <Button variant="primary" onClick={() => handleAddEvent()}>Add Item</Button>
+                    <Button variant="primary" onClick={() => handleAddEvent()}>Add Event</Button>
                 </Modal.Footer>
             </Modal>
 
