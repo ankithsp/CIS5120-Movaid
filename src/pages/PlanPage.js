@@ -163,7 +163,7 @@ const PlanPage = () => {
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={() => setAddingEventModalOpen(false)}>Close</Button>
-                    <Button variant="primary" onClick={() => handleAddEvent()}>Add Item</Button>
+                    <Button variant="primary" onClick={() => handleAddEvent()}>Add Event</Button>
                 </Modal.Footer>
             </Modal>
 
@@ -244,25 +244,25 @@ const PlanPage = () => {
                     </div>
                     
                 </Link>
-                <Link to="/prototype-purchase-screen" className="navbar-link">
+                <Link to="/purchase" className="navbar-link">
                     <div className="icon-wrapper">
                         <Bag size={30} />
                     </div>
                     <div className="icon-subtext">Purchase</div>
                 </Link>
-                <Link to="/prototype-todo-screen" className="navbar-link">
+                <Link to="/todo" className="navbar-link">
                     <div className="icon-wrapper">
                         <ClipboardCheck size={30} />
                     </div>
                     <div className="icon-subtext">To-Do</div>
                 </Link>
-                <Link to="/prototype-movein-plan-screen" style={{ color: 'inherit' }}>
+                <Link to="/plan" style={{ color: 'inherit' }}>
                     <div className="icon-wrapper">
                         <CalendarWeekFill size={30} />
                     </div>
                     <div className="icon-subtext">Plan</div>
                 </Link>
-                <Link to="/prototype-getting-around-screen" className="navbar-link">
+                <Link to="/discover" className="navbar-link">
                     <div className="icon-wrapper">
                         <Map size={30} />
                     </div>

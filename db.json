@@ -70,14 +70,14 @@
     {
       "id": "20f63bfa-ca45-4c0b-88c7-f2925013f8e3",
       "name": "Lamp",
-      "checked": false,
+      "checked": true,
       "price": 20,
       "purchaseListId": "2"
     },
     {
       "id": "2dded49c-70bc-4245-b90b-4eb1af7ebabd",
       "name": "TV Stand",
-      "checked": true,
+      "checked": false,
       "price": 20,
       "purchaseListId": "2"
     },
