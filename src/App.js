@@ -6,7 +6,6 @@ import {
   useNavigationType,
   useLocation,
 } from "react-router-dom";
-import PrototypePurchaseScreen from "./pages/PrototypePurchaseScreen";
 import PrototypeGettingAroundScree from "./pages/PrototypeGettingAroundScree";
 import PrototypeMoveInPlanScreen from "./pages/PrototypeMoveInPlanScreen";
 import PrototypeTodoScreen from "./pages/PrototypeTodoScreen";
@@ -16,6 +15,7 @@ import Homepage from "./pages/Homepage";
 import TodoPage from "./pages/TodoPage";
 import PlanPage from "./pages/PlanPage";
 import DiscoverPage from "./pages/DiscoverPage";
+import PurchasePage from "./pages/PurchasePage";
 
 function App() {
   const action = useNavigationType();
@@ -37,19 +37,19 @@ function App() {
         title = "";
         metaDescription = "";
         break;
-      case "/prototype-purchase-screen":
+      case "/purchase":
         title = "";
         metaDescription = "";
         break;
-      case "/prototype-getting-around-screen":
+      case "/discover":
         title = "";
         metaDescription = "";
         break;
-      case "/prototype-movein-plan-screen":
+      case "/plan":
         title = "";
         metaDescription = "";
         break;
-      case "/prototype-todo-screen":
+      case "/todo":
         title = "";
         metaDescription = "";
         break;
@@ -84,19 +84,19 @@ function App() {
         element={<Homepage />} 
       />
       <Route
-        path="/prototype-purchase-screen"
-        element={<PrototypePurchaseScreen />}
+        path="/purchase"
+        element={<PurchasePage />}
       />
       <Route
-        path="/prototype-getting-around-screen"
+        path="/discover"
         element={<DiscoverPage />}
       />
       <Route
-        path="/prototype-movein-plan-screen"
+        path="/plan"
         element={<PlanPage />}
       />
       <Route 
-        path="/prototype-todo-screen" 
+        path="/todo" 
         element={<TodoPage />} 
       />
       <Route 

@@ -149,7 +149,7 @@ const DetailedRoom = () => {
     const roomId = searchParams.get("roomId");
 
     const onBackArrowClick = useCallback(() => {
-        navigate("/prototype-purchase-screen");
+        navigate("/purchase");
     }, [navigate]);
 
     const [items, setItems] = useState([]);
@@ -268,25 +268,25 @@ const DetailedRoom = () => {
                         <House size={40} />
                     </div>
                 </Link>
-                <Link to="/prototype-purchase-screen" style={{color: 'inherit'}}>
+                <Link to="/purchase" style={{color: 'inherit'}}>
                     <div className="icon-wrapper">
                         <BagFill size={30} />
                     </div>
                     <div className="icon-subtext">Purchase</div>
                 </Link>
-                <Link to="/prototype-todo-screen" className="navbar-link">
+                <Link to="/todo" className="navbar-link">
                     <div className="icon-wrapper">
                         <ClipboardCheck size={30} />
                     </div>
                     <div className="icon-subtext">To-Do</div>
                 </Link>
-                <Link to="/prototype-movein-plan-screen" className="navbar-link">
+                <Link to="/plan" className="navbar-link">
                     <div className="icon-wrapper">
                         <CalendarWeek size={30} />
                     </div>
                     <div className="icon-subtext">Plan</div>
                 </Link>
-                <Link to="/prototype-getting-around-screen" className="navbar-link">
+                <Link to="/discover" className="navbar-link">
                     <div className="icon-wrapper">
                         <Map size={30} />
                     </div>

@@ -12,7 +12,7 @@
 
 .home-scrollable-content {
     overflow-y: auto;
-    height: calc(72.5%);
+    height: calc(70%);
     /* Adjusted height to accommodate top banner and bottom bar */
 }
 

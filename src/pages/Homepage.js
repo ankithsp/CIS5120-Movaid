@@ -153,14 +153,17 @@ const Homepage = () => {
                     </div>
                     {/* Events Section */}
                     <div className="plan-widget-bottom">
-                        <ListGroup>
-                            {eventsList.map(event => (
-                                <ListGroup.Item key={event.id} className="event-list-item" action>
-                                    <p>{event.desc}</p>
-                                    {event.timeEnd ? <p><strong>{formatTime(event.timeStart)} - {formatTime(event.timeEnd)}</strong></p> : <p><strong>{formatTime(event.timeStart)}</strong></p>}
-                                </ListGroup.Item>
-                            ))}
-                        </ListGroup>
+                        {eventsList.length > 0 ? 
+                            <ListGroup>
+                                {eventsList.map(event => (
+                                    <ListGroup.Item key={event.id} className="event-list-item" action>
+                                        <p>{event.desc}</p>
+                                        {event.timeEnd ? <p><strong>{formatTime(event.timeStart)} - {formatTime(event.timeEnd)}</strong></p> : <p><strong>{formatTime(event.timeStart)}</strong></p>}
+                                    </ListGroup.Item>
+                                ))}
+                            </ListGroup>
+                        : <div>No events planned for today.</div>}
+                        
                     </div>
                     <div className="full-list-link">
                         <a href="/prototype-purchase-screen">Open Full Plan <span>&#8594;</span></a>
@@ -189,25 +192,25 @@ const Homepage = () => {
                         <HouseFill size={40} />
                     </div>
                 </Link>
-                <Link to="/prototype-purchase-screen" className="navbar-link">
+                <Link to="/purchase" className="navbar-link">
                     <div className="icon-wrapper">
                         <Bag size={30} />
                     </div>
                     <div className="icon-subtext">Purchase</div>
                 </Link>
-                <Link to="/prototype-todo-screen" className="navbar-link">
+                <Link to="/todo" className="navbar-link">
                     <div className="icon-wrapper">
                         <ClipboardCheck size={30} />
                     </div>
                     <div className="icon-subtext">To-Do</div>
                 </Link>
-                <Link to="/prototype-movein-plan-screen" className="navbar-link">
+                <Link to="/plan" className="navbar-link">
                     <div className="icon-wrapper">
                         <CalendarWeek size={30} />
                     </div>
                     <div className="icon-subtext">Plan</div>
                 </Link>
-                <Link to="/prototype-getting-around-screen" className="navbar-link">
+                <Link to="/discover" className="navbar-link">
                     <div className="icon-wrapper">
                         <Map size={30} />
                     </div>

@@ -254,25 +254,25 @@ const TodoPage = () => {
                         <House size={40} />
                     </div>
                 </Link>
-                <Link to="/prototype-purchase-screen" className="navbar-link">
+                <Link to="/purchase" className="navbar-link">
                     <div className="icon-wrapper">
                         <Bag size={30} />
                     </div>
                     <div className="icon-subtext">Purchase</div>
                 </Link>
-                <Link to="/prototype-todo-screen" style={{ color: 'inherit' }}>
+                <Link to="/todo" style={{ color: 'inherit' }}>
                     <div className="icon-wrapper">
                         <ClipboardCheckFill size={30} />
                     </div>
                     <div className="icon-subtext">To-Do</div>
                 </Link>
-                <Link to="/prototype-movein-plan-screen" className="navbar-link">
+                <Link to="/plan" className="navbar-link">
                     <div className="icon-wrapper">
                         <CalendarWeek size={30} />
                     </div>
                     <div className="icon-subtext">Plan</div>
                 </Link>
-                <Link to="/prototype-getting-around-screen" className="navbar-link">
+                <Link to="/discover" className="navbar-link">
                     <div className="icon-wrapper">
                         <Map size={30} />
                     </div>

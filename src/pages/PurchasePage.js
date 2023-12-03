@@ -5,12 +5,12 @@ import AddingNewItem from "../components/AddingNewItem";
 import DetailedItemView from "../components/DetailedItemView";
 import DeleteItem from "../components/DeleteItem";
 import { Link, useNavigate } from "react-router-dom";
-import "./PrototypePurchaseScreen.css";
+import "./PurchasePage.css";
 import { Button, Form, ListGroup, Modal, ModalHeader, ProgressBar } from "react-bootstrap";
 import { BagFill, House, ClipboardCheck, CalendarWeek, Map } from "react-bootstrap-icons";
 import { v4 as uuidv4 } from 'uuid';
 
-const PrototypePurchaseScreen = () => {
+const PurchasePage = () => {
 
   // const [isAddNewRoomOpen, setAddNewRoomOpen] = useState(false);
   // const [isAddingNewItemOpen, setAddingNewItemOpen] = useState(false);
@@ -236,25 +236,25 @@ const PrototypePurchaseScreen = () => {
             <House size={40} />
           </div>
         </Link>
-        <Link to="/prototype-purchase-screen" style={{ color: 'inherit' }}>
+        <Link to="/purchase" style={{ color: 'inherit' }}>
           <div className="icon-wrapper">
             <BagFill size={30} />
           </div>
           <div className="icon-subtext">Purchase</div>
         </Link>
-        <Link to="/prototype-todo-screen" className="navbar-link">
+        <Link to="/todo" className="navbar-link">
           <div className="icon-wrapper">
             <ClipboardCheck size={30} />
           </div>
           <div className="icon-subtext">To-Do</div>
         </Link>
-        <Link to="/prototype-movein-plan-screen" className="navbar-link">
+        <Link to="/plan" className="navbar-link">
           <div className="icon-wrapper">
             <CalendarWeek size={30} />
           </div>
           <div className="icon-subtext">Plan</div>
         </Link>
-        <Link to="/prototype-getting-around-screen" className="navbar-link">
+        <Link to="/discover" className="navbar-link">
           <div className="icon-wrapper">
             <Map size={30} />
           </div>
@@ -265,4 +265,4 @@ const PrototypePurchaseScreen = () => {
   );
 };
 
-export default PrototypePurchaseScreen;
+export default PurchasePage;
