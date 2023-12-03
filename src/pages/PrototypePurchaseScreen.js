@@ -29,6 +29,8 @@ const PrototypePurchaseScreen = () => {
   const [addingRoomModalOpen, setAddingRoomModalOpen] = useState(false);
   const [roomToAdd, setRoomToAdd] = useState('');
 
+  const [budgetLevel, setBudgetLevel] = useState({}); 
+
   const [addingItemModalOpen, setAddingItemModalOpen] = useState(false);
   const [itemToAdd, setItemToAdd] = useState('');
   const [selectedRoom, setSelectedRoom] = useState('');
@@ -40,6 +42,21 @@ const PrototypePurchaseScreen = () => {
         const data = await response.json();
         console.log(data);
         setRoomsList(data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchRooms();
+  }, []);
+
+  useEffect(() => {
+    const fetchRooms = async () => {
+      try {
+        const response = await fetch('http://localhost:8000/budget-tracker');
+        const data = await response.json();
+        // console.log(data[0]);
+        setBudgetLevel(data[0]);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -134,7 +151,7 @@ const PrototypePurchaseScreen = () => {
         <div className="plist-banner-content">
           <h5 className="plist-welcome-header">Things to Purchase</h5>
           <h5 className="subheader">Budget Tracker</h5>
-          <ProgressBar style={{width: '75%', marginBottom: '15px'}} animated variant="success" now={currentSpend} label={`${currentSpend}%`}/>
+          <ProgressBar style={{width: '75%', marginBottom: '15px'}} animated variant="success" min= {0} now={budgetLevel.currLevel} max={budgetLevel.totalBudget} label={`$${budgetLevel.currLevel}`}/>
           <Button style={{marginTop: '10px'}} variant="primary" size="lg" onClick={() => setAddingItemModalOpen(true)}>Add Item</Button>
           <Button style={{marginTop: '10px'}} variant="outline-primary" onClick={() => setAddingRoomModalOpen(true)}>Add Room</Button>
           

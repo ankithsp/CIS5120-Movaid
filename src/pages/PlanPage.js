@@ -22,6 +22,7 @@ const PlanPage = () => {
     const [eventToAdd, setEventToAdd] = useState('');
     const [eventToAddDateStart, setEventToAddDateStart] = useState(''); 
     const [eventToAddDateEnd, setEventToAddDateEnd] = useState(''); 
+    const today = new Date();
 
     useEffect(() => {
         const fetchEvents = async () => {
@@ -40,7 +41,8 @@ const PlanPage = () => {
                     groupedEvents[date].push(event);
                 })
                 setEventsList(groupedEvents);
-
+                console.log(today);
+                
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
@@ -74,7 +76,7 @@ const PlanPage = () => {
         fetchEvents();
         fetchWeather();
     }, []);
-
+    
     const handleAddEvent = async () => {
         try {
             const startDate = new Date(eventToAddDateStart);

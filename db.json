@@ -7,6 +7,13 @@
       "city": "Philadelphia"
     }
   ],
+  "budget-tracker": [
+    {
+      "id": 1,
+      "currLevel": 1000,
+      "totalBudget": 3000
+    }
+  ],
   "purchaseList": [
     {
       "id": 1,
