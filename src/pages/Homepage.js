@@ -112,7 +112,7 @@ const Homepage = () => {
                         ))}
                     </ListGroup>
                     <div className="full-list-link">
-                        <a href="/prototype-purchase-screen">Open Full List <span>&#8594;</span></a>
+                        <a href="/purchase">Open Full List <span>&#8594;</span></a>
                     </div>
                 </div>
                 <h5 className="widget-title">To-Do Items</h5>
@@ -130,7 +130,7 @@ const Homepage = () => {
                         
                     </ListGroup>
                     <div className="full-list-link">
-                        <a href="/prototype-purchase-screen">Open Full List <span>&#8594;</span></a>
+                        <a href="/todo">Open Full List <span>&#8594;</span></a>
                     </div>
                 </div>
                 <h5 className="widget-title">Move-In Plan</h5>
@@ -166,7 +166,7 @@ const Homepage = () => {
                         
                     </div>
                     <div className="full-list-link">
-                        <a href="/prototype-purchase-screen">Open Full Plan <span>&#8594;</span></a>
+                        <a href="/plan">Open Full Plan <span>&#8594;</span></a>
                     </div>
                 </div>
                 <h5 className="widget-title">Discover Philadelphia</h5>
@@ -180,7 +180,7 @@ const Homepage = () => {
                         style={{fontFamily: `Georgia, 'Times New Roman', Times, serif`, textAlign: 'left'}}>Hiking Trails Around Philadelphia</ListGroup.Item>
                     </ListGroup>
                     <div className="full-list-link">
-                        <a href="/prototype-purchase-screen">Open All Recommendations <span>&#8594;</span></a>
+                        <a href="/discover">Open All Recommendations <span>&#8594;</span></a>
                     </div>
                 </div>
                 

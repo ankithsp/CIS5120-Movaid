@@ -43,7 +43,7 @@ const DiscoverPage = () => {
                 <div className="screen-container">
                     <div>
                         <MapComponent locations={locations} />
-                        <Button variant="secondary" style={{ position: "absolute", bottom: "50px", left: "115px" }} onClick={() => setShowMap(false)}>Close Map</Button>
+                        <Button variant="secondary" style={{ position: "absolute", bottom: "50px", left: "35%" }} onClick={() => setShowMap(false)}>Close Map</Button>
                     </div >
                 </div>
                 :
