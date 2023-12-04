@@ -67,6 +67,7 @@
     margin-left: 20px;
     margin-right: 20px;
     margin-top: 5px;
+    font-family: var(--font-montserrat);
 }
 
 .widget-title {
@@ -106,7 +107,8 @@
     text-align: right;
     color: #007bff;
     font-size: 14px;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    /* font-family: Georgia, 'Times New Roman', Times, serif; */
+    font-family: var(--font-montserrat);
 }
 
 .list-item-container {
@@ -162,11 +164,13 @@
 .event-list-item {
     background-color: #f8f9fa;
     margin-bottom: 5px;
+    font-family: var(--font-montserrat);
 }
 
 .widget-budget-tracker-container{
     display: flex;
     align-items: center;
+    font-family: var(--font-marko-one);
 }
 
 .budget-start {
@@ -177,4 +181,15 @@
 .budget-end {
     font-size: 15px;
     margin-left: 5px;
+}
+
+.plan-widget-currTemp-text{
+    align-items: center;
+    font-size: 12px;
+}
+
+.plan-widget-highLowTemp-text{
+    align-items: center;
+    font-size: 10px;
+    margin-top: -10px;
 }
