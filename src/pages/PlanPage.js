@@ -10,7 +10,7 @@ import { v4 as uuidv4 } from 'uuid';
 const apiKey = '10f988116a40bcedd5940f2715931b48';
 const lat = 39.952583
 const long = -75.165222
-const units = 'metric';
+const units = 'imperial';
 const apiURL = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${long}&units=${units}&appid=${apiKey}`;
 
 const PlanPage = () => {
@@ -170,31 +170,33 @@ const PlanPage = () => {
             <div className="plan-scrollable-content">
                 {Object.keys(eventsList).sort().map(date => (
                     <div key={date} className="plan-widget-container">
-                        <Stack direction="horizontal" gap={3}>
-                            <Stack className="plan-widget-left" direction="vertical" gap={2}>
+                        <Stack direction="vertical" gap={2}>
+                            <Stack className="plan-widget-top" direction="horizontal" gap={1}>
                                 <div className="plan-widget-date">
                                     <h5>{formatDate(date)}</h5>
                                 </div>
-                                <div className="plan-widget-icon-container">
-                                    {weatherList[date] && (
-                                        <div>
-                                            <div className="plan-widget-icon-background">
-                                                <img src={`http://openweathermap.org/img/wn/${weatherList[date].icon}.png`} alt="Weather Icon" />
+                                <Stack className="plan-widget-top-right" direction="vertical">
+                                    <div className="plan-widget-icon-container">
+                                        {weatherList[date] && (
+                                            <div>
+                                                <div className="plan-widget-icon-background">
+                                                    <img src={`http://openweathermap.org/img/wn/${weatherList[date].icon}.png`} alt="Weather Icon" />
+                                                </div>
+                                                <h5 style={{ fontSize: '12px' }}>{weatherList[date].description}</h5>
                                             </div>
-                                            <h5 style={{ fontSize: '12px' }}>{weatherList[date].description}</h5>
-                                        </div>
-                                    )}
-                                </div>
-                                <div className="plan-widget-temp">
-                                    {weatherList[date] && (
-                                        <div>
-                                            <p className="plan-widget-currTemp-text">{weatherList[date].temp} &deg;F</p>
-                                            <p className="plan-widget-highLowTemp-text">H: {weatherList[date].temp_high}  L: {weatherList[date].temp_low}</p>
-                                        </div>
                                         )}
-                                </div>
+                                    </div>
+                                    <div className="plan-widget-temp">
+                                        {weatherList[date] && (
+                                            <div>
+                                                <p className="plan-widget-currTemp-text">{weatherList[date].temp} &deg;F</p>
+                                                <p className="plan-widget-highLowTemp-text">H: {weatherList[date].temp_high}  L: {weatherList[date].temp_low}</p>
+                                            </div>
+                                            )}
+                                    </div>
+                                </Stack>
                             </Stack>
-                            <Stack className="plan-widget-right"direction="vertical" gap={2}>
+                            <Stack className="plan-widget-bottom"direction="vertical" gap={1}>
                                 <ListGroup>
                                     {eventsList[date].map(event => (
                                         <ListGroup.Item key={event.id} className="event-list-item" action>

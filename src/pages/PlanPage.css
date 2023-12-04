@@ -14,7 +14,7 @@
     flex-direction: column;
 }
 
-.plan-widget-left {
+.plan-widget-top {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -24,11 +24,13 @@
 .plan-widget-date {
     font-size: 1.2em;
     font-weight: bold;
+    width: 60%;
 }
 
 .plan-widget-icon-container {
     display: flex;
     align-items: center;
+    margin-left: 15px;
 }
 
 .plan-widget-icon-background {
@@ -49,9 +51,12 @@
 }
 
 .plan-widget-currTemp-text{
+    align-items: center;
     font-size: 15px;
 }
 
 .plan-widget-highLowTemp-text{
+    align-items: center;
     font-size: 13px;
+    margin-top: -10px;
 }
