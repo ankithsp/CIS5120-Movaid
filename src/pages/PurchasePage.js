@@ -277,9 +277,12 @@ const PurchasePage = () => {
         <div key={room.id}>
           <h5 className="widget-title">{room.name}</h5>
           <div className="rooms-widget-container">
-            <div className="rooms-widget-item-count"> 
-              <p>{numCheckedItems[room.id][0]} / {numCheckedItems[room.id][1]} purchased</p>
-            </div>
+            {numCheckedItems[room.id] && 
+                <div className="rooms-widget-item-count">
+                  <p>{numCheckedItems[room.id][0]} / {numCheckedItems[room.id][1]} purchased</p>
+                </div>
+            }
+            
             <ListGroup>
               {roomItems[room.id] && roomItems[room.id].length === 0 ? (
                 <p className="rooms-widget-checked-items">The list is empty. Add an item!</p>

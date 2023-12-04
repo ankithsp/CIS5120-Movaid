@@ -162,15 +162,18 @@ const Homepage = () => {
                             <h5 style={{textAlign:"left"}}>{formatDate(new Date().toISOString().split("T")[0])}</h5>
                         </div>
                         <div className="plan-widget-icon-container">
-                            <div>
-                                <div className="plan-widget-icon-background">
-                                    <img src={`http://openweathermap.org/img/wn/${weather[1].icon}.png`} alt="Weather Icon" />
+                            {weather[0] && weather[1] && 
+                                <div>
+                                    <div className="plan-widget-icon-background">
+                                        <img src={`http://openweathermap.org/img/wn/${weather[1].icon}.png`} alt="Weather Icon" />
+                                    </div>
+                                    {/* Citation: https://stackoverflow.com/questions/48387180/is-it-possible-to-capitalize-first-letter-of-text-string-in-react-native-how-to#:~:text=React%20native%20now%20lets%20you,No%20function%20necessary.&text=Instead%20of%20using%20a%20function,this%20as%20a%20common%20component.&text=just%20use%20javascript. */}
+                                    <h5 style={{ fontSize: '12px', textTransform: 'capitalize' }}>{weather[1].description}</h5>
+                                    <p className="plan-widget-currTemp-text">{weather[0].temp} &deg;F</p>
+                                    <p className="plan-widget-highLowTemp-text">H: {weather[0].temp_max}  L: {weather[0].temp_min}</p>
                                 </div>
-                                {/* Citation: https://stackoverflow.com/questions/48387180/is-it-possible-to-capitalize-first-letter-of-text-string-in-react-native-how-to#:~:text=React%20native%20now%20lets%20you,No%20function%20necessary.&text=Instead%20of%20using%20a%20function,this%20as%20a%20common%20component.&text=just%20use%20javascript. */}
-                                <h5 style={{ fontSize: '12px', textTransform: 'capitalize'}}>{weather[1].description}</h5>
-                                <p className="plan-widget-currTemp-text">{weather[0].temp} &deg;F</p>
-                                <p className="plan-widget-highLowTemp-text">H: {weather[0].temp_max}  L: {weather[0].temp_min}</p>
-                            </div>
+                            }
+                            
                         </div>
 
 
