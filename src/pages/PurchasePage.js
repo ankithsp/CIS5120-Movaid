@@ -27,7 +27,8 @@ const PurchasePage = () => {
 
   const [roomsList, setRoomsList] = useState([]);
   const [roomItems, setRoomItems] = useState({});
-  const [allRoomItems, setAllRoomItems] = useState({});
+  // const [allRoomItems, setAllRoomItems] = useState({});
+  const [numCheckedItems, setNumCheckedItems] = useState({});
 
   const [addingRoomModalOpen, setAddingRoomModalOpen] = useState(false);
   const [roomToAdd, setRoomToAdd] = useState('');
@@ -67,21 +68,34 @@ const PurchasePage = () => {
   }, []);
 
 
-  const getAllRoomItems = async (roomId) => {
+  // const getAllRoomItems = async (roomId) => {
+  //   try {
+  //     const response = await fetch(`http://localhost:8000/purchaseList/${roomId}/items`);
+  //     const data = await response.json();
+  //     setAllRoomItems((prevItems) => ({
+  //       ...prevItems,
+  //       [roomId]: data,
+  //     }));
+  //   } catch (error) {
+  //     console.error('Error fetching data:', error);
+  //     setAllRoomItems((prevItems) => ({
+  //       ...prevItems,
+  //       [roomId]: [],
+  //     }));
+  //   }
+  // };
+
+  const getNumCheckedItems = async (roomId) => {
     try {
-      const response = await fetch(`http://localhost:8000/purchaseList/${roomId}`);
+      const response = await fetch(`http://localhost:8000/purchaseList/${roomId}/items`);
       const data = await response.json();
-      // console.log(data);
-      setAllRoomItems((prevItems) => ({
+      const filteredItems = data.filter(item => item.checked === true);
+      setNumCheckedItems((prevItems) => ({
         ...prevItems,
-        [roomId]: data,
+        [roomId]: [filteredItems.length, data.length],
       }));
     } catch (error) {
       console.error('Error fetching data:', error);
-      setAllRoomItems((prevItems) => ({
-        ...prevItems,
-        [roomId]: [],
-      }));
     }
   };
 
@@ -103,23 +117,24 @@ const PurchasePage = () => {
     }
   };
 
-  const CheckedItemsCount = async (roomId) => {
-    try{
-      const allItems = await allRoomItems[roomId];
-      const checkedItems = allItems.filter(allItems => allItems.checked == true);
-    // console.log(checkedItems.length);
-    }
-    catch(error){
-      console.error('Could not process checked items count', error);
-    }
-  }
+  // const CheckedItemsCount = (allItems, roomId) => {
+  //   try{
+  //     // const items = allItems[roomId];
+  //     // const checkedItems = items.filter(items => items.checked == true);
+  //     console.log(allItems[roomId]);
+  //   }
+  //   catch(error){
+  //     console.error('Could not process checked items count', error);
+  //   }
+  // }
 
   useEffect(() => {
     // Fetch room items for each room
     roomsList.forEach((room) => {
       getRoomItems(room.id);
-      getAllRoomItems(room.id); // redundant call.. we should get all information and only show 3
-      CheckedItemsCount(room.id);
+      // getAllRoomItems(room.id); // redundant call.. we should get all information and only show 3
+      // CheckedItemsCount(room.id);
+      getNumCheckedItems(room.id);
     });
   }, [roomsList]);
 
@@ -262,15 +277,12 @@ const PurchasePage = () => {
         <div key={room.id}>
           <h5 className="widget-title">{room.name}</h5>
           <div className="rooms-widget-container">
-            <div className="rooms-widget-buttons">
-              <Button href={`/detailed-room-view?roomId=${room.id}`} variant="secondary" size="sm">View Full List</Button>
-            </div>
             <div className="rooms-widget-item-count"> 
-              {CheckedItemsCount}
+              <p>{numCheckedItems[room.id][0]} / {numCheckedItems[room.id][1]} purchased</p>
             </div>
             <ListGroup>
               {roomItems[room.id] && roomItems[room.id].length === 0 ? (
-                <p>The list is empty. Add an item!</p>
+                <p className="rooms-widget-checked-items">The list is empty. Add an item!</p>
               ) : (
                 <div>
                   {roomItems[room.id]?.map((item) => (
@@ -282,6 +294,9 @@ const PurchasePage = () => {
                 </div>
               )}
             </ListGroup>
+            <div className="rooms-widget-buttons">
+              <Button href={`/detailed-room-view?roomId=${room.id}`} variant="secondary" size="sm">View Full List</Button>
+            </div>
           </div>
         </div>
       )})}
