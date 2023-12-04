@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Bag, HouseFill, ClipboardCheck, CalendarWeek, Map } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
-import { ListGroup, Badge } from "react-bootstrap";
+import { ListGroup, Badge, ProgressBar, Container, Row, Col } from "react-bootstrap";
 import "./Homepage.css"
 
 // For Weather Data API, using OpenWeatherMap
@@ -13,6 +13,7 @@ const apiURL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=$
 const Homepage = () => {
 
     const [itemsList, setItemsList] = useState([]);
+    const [budgetLevel, setBudgetLevel] = useState({}); 
     const [tasksList, setTasksList] = useState([]);
     const [eventsList, setEventsList] = useState([]);
     const [weather, setWeather] = useState({});
@@ -27,6 +28,17 @@ const Homepage = () => {
                 console.error('Error fetching data:', error);
             }
         }
+
+        const fetchBudget = async () => {
+            try {
+              const response = await fetch('http://localhost:8000/budget-tracker');
+              const data = await response.json();
+              // console.log(data[0]);
+              setBudgetLevel(data[0]);
+            } catch (error) {
+              console.error('Error fetching data:', error);
+            }
+          };
 
         const fetchTasks = async () => {
             try {
@@ -63,6 +75,7 @@ const Homepage = () => {
         }
 
         fetchItems();
+        fetchBudget();
         fetchTasks();
         fetchEvents();
         fetchWeather();
@@ -104,6 +117,11 @@ const Homepage = () => {
             <div className="home-scrollable-content">
                 <h5 className="widget-title">Things to Purchase</h5>
                 <div className="widget-container">
+                    <div className="widget-budget-tracker-container">
+                        <p className="budget-start">$0</p>
+                        <ProgressBar style={{width: '75%', marginBottom: '15px'}} animated variant="success" min= {0} now={budgetLevel.currLevel} max={budgetLevel.totalBudget} label={`$${budgetLevel.currLevel}`}/>
+                        <p className="budget-end">${budgetLevel.totalBudget}</p>
+                    </div>    
                     <ListGroup>
                         {itemsList.map((item) => (
                             <ListGroup.Item key={item.id} style={{fontFamily: `Georgia, 'Times New Roman', Times, serif`, textAlign: 'left' }}>

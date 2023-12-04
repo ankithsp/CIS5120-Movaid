@@ -32,6 +32,7 @@ const DetailedRoom = () => {
                 if (response.ok) {
                     const data = await response.json();
                     console.log(data);
+                    console.log(data.length);
                     setItems(data);
                 } else {
                     console.error('Failed to fetch data from the backend');

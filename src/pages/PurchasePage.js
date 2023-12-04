@@ -27,6 +27,7 @@ const PurchasePage = () => {
 
   const [roomsList, setRoomsList] = useState([]);
   const [roomItems, setRoomItems] = useState({});
+  const [allRoomItems, setAllRoomItems] = useState({});
 
   const [addingRoomModalOpen, setAddingRoomModalOpen] = useState(false);
   const [roomToAdd, setRoomToAdd] = useState('');
@@ -40,7 +41,7 @@ const PurchasePage = () => {
       try {
         const response = await fetch('http://localhost:8000/purchaseList');
         const data = await response.json();
-        console.log(data);
+        // console.log(data);
         setRoomsList(data);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -66,11 +67,29 @@ const PurchasePage = () => {
   }, []);
 
 
+  const getAllRoomItems = async (roomId) => {
+    try {
+      const response = await fetch(`http://localhost:8000/purchaseList/${roomId}`);
+      const data = await response.json();
+      // console.log(data);
+      setAllRoomItems((prevItems) => ({
+        ...prevItems,
+        [roomId]: data,
+      }));
+    } catch (error) {
+      console.error('Error fetching data:', error);
+      setAllRoomItems((prevItems) => ({
+        ...prevItems,
+        [roomId]: [],
+      }));
+    }
+  };
+
   const getRoomItems = async (roomId) => {
     try {
       const response = await fetch(`http://localhost:8000/purchaseList/${roomId}/items?_limit=3`);
       const data = await response.json();
-      console.log(data);
+      // console.log(data);
       setRoomItems((prevItems) => ({
         ...prevItems,
         [roomId]: data,
@@ -84,12 +103,27 @@ const PurchasePage = () => {
     }
   };
 
+  const CheckedItemsCount = async (roomId) => {
+    try{
+      const allItems = await allRoomItems[roomId];
+      const checkedItems = allItems.filter(allItems => allItems.checked == true);
+    // console.log(checkedItems.length);
+    }
+    catch(error){
+      console.error('Could not process checked items count', error);
+    }
+  }
+
   useEffect(() => {
     // Fetch room items for each room
     roomsList.forEach((room) => {
       getRoomItems(room.id);
+      getAllRoomItems(room.id); // redundant call.. we should get all information and only show 3
+      CheckedItemsCount(room.id);
     });
   }, [roomsList]);
+
+  
 
   const handleAddRoom = async () => {
     // Backend Request
@@ -152,7 +186,11 @@ const PurchasePage = () => {
         <div className="plist-banner-content">
           <h5 className="plist-welcome-header">Things to Purchase</h5>
           <h5 className="subheader">Budget Tracker</h5>
-          <ProgressBar style={{width: '75%', marginBottom: '15px'}} animated variant="success" min= {0} now={budgetLevel.currLevel} max={budgetLevel.totalBudget} label={`$${budgetLevel.currLevel}`}/>
+          <div className="widget-budget-tracker-container-purchase">
+            <p className="budget-start-purchase">$0</p>
+            <ProgressBar className = "budget-tracker-bar" style={{width: '75%', marginBottom: '15px'}} animated variant="success" min= {0} now={budgetLevel.currLevel} max={budgetLevel.totalBudget} label={`$${budgetLevel.currLevel}`}/>
+            <p className="budget-end-purchase">${budgetLevel.totalBudget}</p>
+          </div>
           <Button style={{marginTop: '10px'}} variant="primary" size="lg" onClick={() => setAddingItemModalOpen(true)}>Add Item</Button>
           <Button style={{marginTop: '10px'}} variant="outline-primary" onClick={() => setAddingRoomModalOpen(true)}>Add Room</Button>
           
@@ -227,7 +265,9 @@ const PurchasePage = () => {
             <div className="rooms-widget-buttons">
               <Button href={`/detailed-room-view?roomId=${room.id}`} variant="secondary" size="sm">View Full List</Button>
             </div>
-            
+            <div className="rooms-widget-item-count"> 
+              {CheckedItemsCount}
+            </div>
             <ListGroup>
               {roomItems[room.id] && roomItems[room.id].length === 0 ? (
                 <p>The list is empty. Add an item!</p>

@@ -42,3 +42,23 @@
   display: flex;
   justify-content: space-evenly;
 }
+
+.widget-budget-tracker-container-purchase{
+  display: flex;
+  align-items: center;
+}
+
+.budget-tracker-bar{
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.budget-start-purchase {
+  font-size: 15px;
+  margin-right: 5px;
+}
+
+.budget-end-purchase {
+  font-size: 15px;
+  margin-left: 5px;
+}

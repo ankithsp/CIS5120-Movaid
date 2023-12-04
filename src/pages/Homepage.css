@@ -163,3 +163,18 @@
     background-color: #f8f9fa;
     margin-bottom: 5px;
 }
+
+.widget-budget-tracker-container{
+    display: flex;
+    align-items: center;
+}
+
+.budget-start {
+    font-size: 15px;
+    margin-right: 5px;
+}
+
+.budget-end {
+    font-size: 15px;
+    margin-left: 5px;
+}
