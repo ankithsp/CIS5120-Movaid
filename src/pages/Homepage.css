@@ -67,7 +67,7 @@
     margin-left: 20px;
     margin-right: 20px;
     margin-top: 5px;
-    font-family: var(--font-montserrat);
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 .widget-title {
@@ -108,7 +108,7 @@
     color: #007bff;
     font-size: 14px;
     /* font-family: Georgia, 'Times New Roman', Times, serif; */
-    font-family: var(--font-montserrat);
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 .list-item-container {
@@ -164,7 +164,7 @@
 .event-list-item {
     background-color: #f8f9fa;
     margin-bottom: 5px;
-    font-family: var(--font-montserrat);
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 .widget-budget-tracker-container{
