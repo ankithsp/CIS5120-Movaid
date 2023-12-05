@@ -47,20 +47,6 @@
       "purchaseListId": "1"
     },
     {
-      "id": "ab3a0618-96e7-4527-b852-72a4a56edce0",
-      "name": "Cutting Board",
-      "checked": false,
-      "price": 20,
-      "purchaseListId": "1"
-    },
-    {
-      "id": "4f6484c3-7029-47c2-8099-67eeba62638c",
-      "name": "Sponge",
-      "checked": false,
-      "price": 20,
-      "purchaseListId": "1"
-    },
-    {
       "id": "9dfe41c3-55ab-4bb2-abdd-32c460a4d814",
       "name": "Dish Rack",
       "checked": true,
@@ -165,7 +151,7 @@
     {
       "id": "1b93537c-d48b-4597-84eb-8391e9b39120",
       "desc": "Facilities coming to replace the smoke detector",
-      "dateStart": "2023-12-02",
+      "dateStart": "2023-12-05",
       "dateEnd": null,
       "timeStart": "13:00:00",
       "timeEnd": null
@@ -173,7 +159,7 @@
     {
       "id": "34520",
       "desc": "Testing grouping",
-      "dateStart": "2023-12-02",
+      "dateStart": "2023-12-06",
       "dateEnd": null,
       "timeStart": "15:00:00",
       "timeEnd": null
@@ -181,7 +167,7 @@
     {
       "id": "3434852389p520",
       "desc": "Testing grouping again",
-      "dateStart": "2023-12-01",
+      "dateStart": "2023-12-07",
       "dateEnd": null,
       "timeStart": "15:00:00",
       "timeEnd": null
@@ -189,7 +175,7 @@
     {
       "id": "h37298d",
       "desc": "Testing grouping once more",
-      "dateStart": "2023-12-05",
+      "dateStart": "2023-12-08",
       "dateEnd": null,
       "timeStart": "15:00:00",
       "timeEnd": null
@@ -197,7 +183,7 @@
     {
       "id": "9ecd2756-b817-4297-b37c-7085e9191d39",
       "desc": "Testing",
-      "dateStart": "2023-12-02",
+      "dateStart": "2023-12-05",
       "dateEnd": null,
       "timeStart": "13:41:00",
       "timeEnd": null
@@ -205,7 +191,7 @@
     {
       "id": "3416263f-4e5e-4f8c-a204-16dc87ec22c9",
       "desc": "testing weather",
-      "dateStart": "2023-12-04",
+      "dateStart": "2023-12-06",
       "dateEnd": null,
       "timeStart": "13:50:00",
       "timeEnd": null
