@@ -255,6 +255,9 @@ const PurchasePage = () => {
             <Form.Group controlId="roomSelect">
               <Form.Label>Select Room</Form.Label>
               <Form.Control as="select" onChange={(e) => setSelectedRoom(e.target.value)}>
+                <option key={'no-seleciton'} value={null}>
+                  Select a room...
+                </option>
                 {roomsList.map((room) => (
                   <option key={room.id} value={room.id}>
                     {room.name}
