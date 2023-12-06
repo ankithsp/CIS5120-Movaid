@@ -282,7 +282,7 @@ const PurchasePage = () => {
           <div className="rooms-widget-container">
             {numCheckedItems[room.id] && 
                 <div className="rooms-widget-item-count">
-                  <p>{numCheckedItems[room.id][0]} / {numCheckedItems[room.id][1]} purchased</p>
+                  <p>{numCheckedItems[room.id][0]} / {numCheckedItems[room.id][1]} items purchased</p>
                 </div>
             }
             

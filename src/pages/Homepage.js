@@ -91,7 +91,7 @@ const Homepage = () => {
         case 2:
             return <Badge bg="warning" style={{ fontSize: '20px' }}>!!</Badge>;
         case 3:
-            return <Badge bg="danger" style={{ fontSize: '20px' }}>!!!</Badge>;
+            return <Badge bg="danger" style={{ fontSize: '20px'}}>!!!</Badge>;
         default:
             return null;
         }

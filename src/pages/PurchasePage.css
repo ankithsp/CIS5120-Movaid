@@ -36,6 +36,7 @@
   display: grid;
   grid-template-rows: auto auto; /* Two rows, first row adjusts to content, second row takes the remaining space */
   gap: 10px; /* Adjust the gap between rows as needed */
+  box-shadow: 0px 5px 5px 1px grey;
 }
 
 .rooms-widget-buttons {
@@ -65,4 +66,9 @@
 
 .rooms-widget-checked-items {
   font-size: 10px;
+}
+
+.rooms-widget-item-count {
+  font-size: 17px;
+  margin-bottom: -10px;
 }
