@@ -49,6 +49,7 @@
   gap: 10px; /* Adjust the gap between rows as needed */
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Adjust the shadow values as needed */
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .rooms-widget-buttons {

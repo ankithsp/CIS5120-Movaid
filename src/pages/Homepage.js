@@ -111,7 +111,7 @@ const Homepage = () => {
         <div className="screen-container">
             <div className="top-banner">
                 <div className="banner-content">
-                    <img src="/Logo-purple.png" alt="Movaid Icon" className="app-icon" />
+                    <img src="/movaid-blue.png" alt="Movaid Icon" className="app-icon" />
                     <h2 className="welcome-header">Good Evening, John!</h2>
                     <p className="subheader">You are <strong>3 days</strong> away from moving into <br></br>123 Main Street</p>
                 </div>

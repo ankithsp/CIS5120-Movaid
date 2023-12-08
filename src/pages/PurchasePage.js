@@ -282,7 +282,7 @@ const PurchasePage = () => {
           <div className="rooms-widget-container">
             {numCheckedItems[room.id] && 
                 <div className="rooms-widget-item-count">
-                  <p>{numCheckedItems[room.id][0]} / {numCheckedItems[room.id][1]} items purchased</p>
+                  <p style={{fontSize: '20px'}}>{numCheckedItems[room.id][0]} / {numCheckedItems[room.id][1]} items purchased</p>
                 </div>
             }
             
@@ -293,7 +293,7 @@ const PurchasePage = () => {
                 <div>
                   {roomItems[room.id]?.map((item) => (
                     <ListGroup.Item action href={`/detailed-room-view?roomId=${room.id}`} key={item.id}
-                    style={{fontFamily: `Georgia, 'Times New Roman', Times, serif`, textAlign: 'left'}}>
+                    style={{fontFamily: `'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;`, textAlign: 'left', fontSize: '18px'}}>
                       {item.name}
                     </ListGroup.Item>
                   ))}
