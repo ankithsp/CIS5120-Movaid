@@ -25,7 +25,7 @@
     background-color: white;
     padding: 20px;
     text-align: center;
-    color: #2e367a;
+    color: black;
 
     background-image: url('/public/background-wide.png');
     background-size: cover;
@@ -52,7 +52,7 @@
 
 .subheader {
     font-size: 16px;
-    color: #2e367acb;
+    color: gray;
     /* Adjust the color of the subheader */
 }
 
@@ -65,13 +65,13 @@
     margin-top: -40px; /* Negative margin to expand the bottom bar upward */
     display: flex;
     justify-content: space-evenly;
-    color: #2e367a;
+    color: black;
 }
 
 .widget-container {
     /* background-color: rgba(213, 177, 149, .4); */
     background-color: white;
-    color: #2e367a;
+    color: black;
     border-radius: 10px;
     padding: 20px;
     margin-bottom: 20px;
@@ -105,7 +105,7 @@
 }
 
 .navbar-link:hover {
-    color: #2e367a; /* Preserve the color on hover */
+    color: black; /* Preserve the color on hover */
 }
 
 .icon-subtext {
@@ -178,7 +178,7 @@
 
 .event-list-item {
     background-color: #f8f9fa;
-    color: #2e367a;
+    color: black;
     margin-bottom: 5px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }

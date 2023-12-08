@@ -1,6 +1,6 @@
 .plist-scrollable-content {
   overflow-y: auto;
-  height: calc(64.5%);
+  height: calc(62%);
   /* Adjusted height to accommodate top banner and bottom bar */
 }
 
@@ -35,7 +35,9 @@
 }
 
 .rooms-widget-container {
-  background-color: rgba(213, 177, 149, .4);
+  /* background-color: rgba(213, 177, 149, .4); */
+  background-color: white;
+  color: black;
   border-radius: 10px;
   padding: 20px;
   margin-bottom: 20px;
@@ -45,7 +47,8 @@
   display: grid;
   grid-template-rows: auto auto; /* Two rows, first row adjusts to content, second row takes the remaining space */
   gap: 10px; /* Adjust the gap between rows as needed */
-  box-shadow: 0px 5px 5px 1px grey;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Adjust the shadow values as needed */
 }
 
 .rooms-widget-buttons {
