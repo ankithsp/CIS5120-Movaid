@@ -111,7 +111,7 @@ const Homepage = () => {
         <div className="screen-container">
             <div className="top-banner">
                 <div className="banner-content">
-                    <img src="/movaid-icon.png" alt="Movaid Icon" className="app-icon" />
+                    <img src="/Logo-purple.png" alt="Movaid Icon" className="app-icon" />
                     <h2 className="welcome-header">Good Evening, John!</h2>
                     <p className="subheader">You are <strong>3 days</strong> away from moving into <br></br>123 Main Street</p>
                 </div>
@@ -127,7 +127,7 @@ const Homepage = () => {
                     </div>    
                     <ListGroup>
                         {itemsList.map((item) => (
-                            <ListGroup.Item key={item.id} style={{textAlign: 'left' }}>
+                            <ListGroup.Item key={item.id} style={{textAlign: 'left', color: '#2e367a'}}>
                                 {item.name}
                             </ListGroup.Item>
                         ))}
@@ -141,7 +141,7 @@ const Homepage = () => {
                     <ListGroup>
                         {tasksList.sort((a, b) => b.priority - a.priority).slice(0,3)
                             .map((task) => (
-                                <ListGroup.Item key={task.id} as="li" className="d-flex justify-content-between align-items-center" style={{textAlign: 'left' }}>
+                                <ListGroup.Item key={task.id} as="li" className="d-flex justify-content-between align-items-center" style={{textAlign: 'left', color: '#2e367a' }}>
                                     <div className="ms-2 me-auto">
                                         <div>{task.desc}</div>
                                     </div>
@@ -184,7 +184,7 @@ const Homepage = () => {
                             <ListGroup>
                                 {eventsList.map(event => (
                                     <ListGroup.Item key={event.id} className="event-list-item" action>
-                                        <p style={{textAlign: "left"}}>{event.desc}</p>
+                                        <p style={{textAlign: "left", color: '#2e367a'}}>{event.desc}</p>
                                         {event.timeEnd ? <p><strong>{formatTime(event.timeStart)} - {formatTime(event.timeEnd)}</strong></p> : <p><strong>{formatTime(event.timeStart)}</strong></p>}
                                     </ListGroup.Item>
                                 ))}
@@ -200,11 +200,11 @@ const Homepage = () => {
                 <div className="widget-container">
                     <ListGroup>
                         <ListGroup.Item action href="https://philly.eater.com/maps/best-cheesesteak-philadelphia"
-                        style={{textAlign: 'left'}}>Best Cheesesteaks in Philadelphia</ListGroup.Item>
+                        style={{textAlign: 'left', color: '#2e367a'}}>Best Cheesesteaks in Philadelphia</ListGroup.Item>
                         <ListGroup.Item action href="https://www.cntraveler.com/gallery/best-museums-in-philadelphia"
-                        style={{textAlign: 'left'}}>Top Rated Museums in Philadelphia</ListGroup.Item>
+                        style={{textAlign: 'left', color: '#2e367a'}}>Top Rated Museums in Philadelphia</ListGroup.Item>
                         <ListGroup.Item action href="https://www.phillymag.com/be-well-philly/waterfall-hikes/"
-                        style={{textAlign: 'left'}}>Hiking Trails Around Philadelphia</ListGroup.Item>
+                        style={{textAlign: 'left', color: '#2e367a'}}>Hiking Trails Around Philadelphia</ListGroup.Item>
                     </ListGroup>
                     <div className="full-list-link">
                         <a href="/discover">Open All Recommendations <span>&#8594;</span></a>
