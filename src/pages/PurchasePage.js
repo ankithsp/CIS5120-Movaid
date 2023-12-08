@@ -203,7 +203,7 @@ const PurchasePage = () => {
           <h5 className="subheader">Budget Tracker</h5>
           <div className="widget-budget-tracker-container-purchase">
             <p className="budget-start-purchase">$0</p>
-            <ProgressBar className = "budget-tracker-bar" style={{width: '75%', marginBottom: '15px'}} animated variant="success" min= {0} now={budgetLevel.currLevel} max={budgetLevel.totalBudget} label={`$${budgetLevel.currLevel}`}/>
+            <ProgressBar className = "budget-tracker-bar" style={{width: '100%', marginBottom: '15px'}} animated variant="success" min= {0} now={budgetLevel.currLevel} max={budgetLevel.totalBudget} label={`$${budgetLevel.currLevel}`}/>
             <p className="budget-end-purchase">${budgetLevel.totalBudget}</p>
           </div>
           <Button style={{marginTop: '10px'}} variant="primary" size="lg" onClick={() => setAddingItemModalOpen(true)}>Add Item</Button>
