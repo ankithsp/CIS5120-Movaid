@@ -25,6 +25,9 @@ const DetailedRoom = () => {
     const [addItemModalOpen, setAddItemModalOpen] = useState(false);
     const [newItemName, setNewItemName] = useState('');
 
+    const [deletingRoomOpen, setDeletingRoomOpen] = useState(false);
+    const [roomToDelete, setRoomToDelete] = useState({});
+
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -147,6 +150,52 @@ const DetailedRoom = () => {
         }
     }
 
+    const handleDeleteRoomOnClick = (roomId, roomName) => {
+        setRoomToDelete({ id: roomId, name: roomName });
+        setDeletingRoomOpen(true);
+    }
+    const handleDeleteRoom = async (roomId) => {
+        try {
+            // Fetch items for the room
+            const responseItems = await fetch(`http://localhost:8000/purchaseList/${roomId}/items`);
+            if (responseItems.ok) {
+                const items = await responseItems.json();
+
+                // Delete each item in the room
+                for (const item of items) {
+                    const responseDeleteItem = await fetch(`http://localhost:8000/purchaseList/${roomId}/items/${item.id}`, {
+                        method: 'DELETE',
+                    });
+
+                    if (!responseDeleteItem.ok) {
+                        console.error(`Failed to delete item with id ${item.id}`);
+                        // Handle error or notify the user
+                        return;
+                    }
+                }
+
+                // Now, delete the room itself
+                const responseDeleteRoom = await fetch(`http://localhost:8000/purchaseList/${roomId}`, {
+                    method: 'DELETE',
+                });
+
+                if (responseDeleteRoom.ok) {
+                    console.log('Room deleted successfully');
+                    setRoomToDelete({});
+                    setDeletingRoomOpen(false);
+                    onBackArrowClick();
+                } else {
+                    console.error('Failed to delete room');
+                }
+            } else {
+                console.error('Failed to fetch items for the room');
+                // Handle error or notify the user
+            }
+        } catch (error) {
+            console.error('Error deleting room:', error);
+        }
+    };
+
     return (
         <div className="screen-container">
 
@@ -157,7 +206,11 @@ const DetailedRoom = () => {
             <div className="detailedRoom-top-banner">
                 <div className="detailedRoom-banner-content">
                     <h2 className="welcome-header">{roomName}</h2>
-                    <Button variant="primary" onClick={() => setAddItemModalOpen(true)}>Add New Item</Button>
+                    <div style={{paddingTop: '10px'}}>
+                        <Button variant="primary" onClick={() => setAddItemModalOpen(true)}>Add New Item</Button>
+                        <Button variant="outline-danger" onClick={() => handleDeleteRoomOnClick(roomId, roomName)} style={{marginLeft: '10px'}}>Delete Room</Button>
+                    </div>
+                    
                 </div>
             </div>
 
@@ -181,6 +234,20 @@ const DetailedRoom = () => {
                 <Modal.Footer>
                     <Button variant="secondary" onClick={() => setAddItemModalOpen(false)}>Close</Button>
                     <Button variant="primary" onClick={() => handleAddItem()}>Add Item</Button>
+                </Modal.Footer>
+            </Modal>
+
+            {/* Delete Room Modal */}
+            <Modal show={deletingRoomOpen} onHide={() => setDeletingRoomOpen(false)}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Delete the {roomToDelete.name} list?</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    This will delete the room and all the items in the list. Do you wish to continue?
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={() => setDeletingRoomOpen(false)}>Cancel</Button>
+                    <Button variant="primary" onClick={() => handleDeleteRoom(roomToDelete.id)}>Delete</Button>
                 </Modal.Footer>
             </Modal>
 

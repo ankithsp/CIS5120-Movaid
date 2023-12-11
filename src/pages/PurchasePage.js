@@ -32,7 +32,7 @@ const PurchasePage = () => {
   const [selectedRoom, setSelectedRoom] = useState('');
 
   const [deletingRoomOpen, setDeletingRoomOpen] = useState(false);
-  const [roomToDelete, setRoomToDelete] = useState('');
+  const [roomToDelete, setRoomToDelete] = useState({});
 
   useEffect(() => {
     const fetchRooms = async () => {
@@ -255,46 +255,48 @@ const PurchasePage = () => {
   }
   const handleDeleteRoom = async (roomId) => {
     try {
-      // Check if items exist for the room
-      const responseItemsCheck = await fetch(`http://localhost:8000/purchaseList/${roomId}/items`);
-      if (responseItemsCheck.ok) {
-        const items = await responseItemsCheck.json();
+      // Fetch items for the room
+      const responseItems = await fetch(`http://localhost:8000/purchaseList/${roomId}/items`);
+      if (responseItems.ok) {
+        const items = await responseItems.json();
 
-        // If items exist, delete them
-        if (items.length > 0) {
-          const responseItemsDelete = await fetch(`http://localhost:8000/purchaseList/${roomId}/items`, {
+        // Delete each item in the room
+        for (const item of items) {
+          const responseDeleteItem = await fetch(`http://localhost:8000/purchaseList/${roomId}/items/${item.id}`, {
             method: 'DELETE',
           });
 
-          if (!responseItemsDelete.ok) {
-            console.error('Failed to delete items in the room');
+          if (!responseDeleteItem.ok) {
+            console.error(`Failed to delete item with id ${item.id}`);
             // Handle error or notify the user
             return;
           }
         }
+
+        // Now, delete the room itself
+        const responseDeleteRoom = await fetch(`http://localhost:8000/purchaseList/${roomId}`, {
+          method: 'DELETE',
+        });
+
+        if (responseDeleteRoom.ok) {
+          console.log('Room deleted successfully');
+          // Update the state with the new room list (excluding the deleted room)
+          const updatedRoomsList = roomsList.filter((room) => room.id !== roomId);
+          setRoomsList(updatedRoomsList);
+          setRoomToDelete({});
+          setDeletingRoomOpen(false);
+        } else {
+          console.error('Failed to delete room');
+        }
       } else {
-        console.error('Failed to check items for the room');
+        console.error('Failed to fetch items for the room');
         // Handle error or notify the user
-        return;
-      }
-
-      // Now, delete the room itself
-      const responseRoom = await fetch(`http://localhost:8000/purchaseList/${roomId}`, {
-        method: 'DELETE',
-      });
-
-      if (responseRoom.ok) {
-        console.log('Room deleted successfully');
-        // Update the state with the new room list (excluding the deleted room)
-        const updatedRoomsList = roomsList.filter((room) => room.id !== roomId);
-        setRoomsList(updatedRoomsList);
-      } else {
-        console.error('Failed to delete room');
       }
     } catch (error) {
       console.error('Error deleting room:', error);
     }
   };
+  
 
   return (
     <div className="screen-container">
