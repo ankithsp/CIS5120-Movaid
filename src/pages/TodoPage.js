@@ -37,7 +37,9 @@ const TodoPage = () => {
         const firstAccordionHeader = document.querySelector('.accordion-item:first-child .accordion-header:first-child .accordion-button');
 
         if (firstAccordionHeader) {
-            firstAccordionHeader.click();
+            setTimeout(function() {
+                firstAccordionHeader.click();
+            }, 250);
         }
     }, []);
 
@@ -140,8 +142,8 @@ const TodoPage = () => {
     return (
         <div className="screen-container">
 
-            <div className="top-banner">
-                <div className="banner-content">
+            <div className="todo-top-banner">
+                <div className="todo-banner-content">
                     <h2 className="welcome-header">To-Do Items</h2>
                     <Button onClick={() => setAddingTaskModalOpen(true)}>
                         Add To-Do Task
@@ -209,14 +211,14 @@ const TodoPage = () => {
             
 
             <div className="todo-scrollable-content">
-                <Accordion alwaysOpen>
+                <Accordion alwaysOpen style={{borderRadius: '10px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.5)'}}>
                     <Accordion.Item eventKey="0">
                         <Accordion.Header>To-Do Tasks</Accordion.Header>
                         <Accordion.Body>
                             <ListGroup>
                                 {todoTasksList.sort((a,b) => b.priority - a.priority)
                                 .map((task) => (
-                                    <ListGroup.Item key={task.id} as="li" className="d-flex justify-content-between align-items-center" style={{ fontFamily: `Georgia, 'Times New Roman', Times, serif`, textAlign: 'left' }}>
+                                    <ListGroup.Item key={task.id} as="li" className="d-flex justify-content-between align-items-center" style={{ fontFamily: `Georgia, 'Times New Roman', Times, serif`, textAlign: 'left', fontSize: '18px' }}>
                                         <div className="ms-2 me-auto">
                                             <div>{task.desc}</div>
                                         </div>
@@ -233,7 +235,7 @@ const TodoPage = () => {
                             <ListGroup>
                                 {completedTasksList.sort((a,b) => b.priority - a.priority)
                                 .map((task) => (
-                                    <ListGroup.Item key={task.id} as="li" className="d-flex justify-content-between align-items-center" style={{ fontFamily: `Georgia, 'Times New Roman', Times, serif`, textAlign: 'left' }}>
+                                    <ListGroup.Item key={task.id} as="li" className="d-flex justify-content-between align-items-center" style={{ fontFamily: `Georgia, 'Times New Roman', Times, serif`, textAlign: 'left', fontSize: '18px' }}>
                                         <div className="ms-2 me-auto">
                                             <div>{task.desc}</div>
                                         </div>

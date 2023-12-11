@@ -12,7 +12,28 @@
     text-align: center;
 }
 
+.detailedRoom-top-banner {
+    position: sticky;
+    top: 0;
+    background-color: white;
+    padding: 20px;
+    text-align: center;
+    color: black;
+
+    background-image: url('/public/bg-3.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.detailedRoom-banner-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 10px;
+}
+
 .detailedRoom-scrollable-content {
+    padding-top: 10px;
     overflow-y: auto;
     height: calc(80%);
 }
@@ -20,7 +41,7 @@
 .detailedRoom-checklist-container {
     display: flex;
     margin-bottom: 10px;
-    background-color: rgba(213, 177, 149, .4);
+    background-color: white;
     border-radius: 10px;
     padding: 10px;
     margin-left: 20px;

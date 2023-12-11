@@ -154,8 +154,8 @@ const DetailedRoom = () => {
                 <ChevronLeft size={30} />
             </div>
 
-            <div className="top-banner">
-                <div className="banner-content">
+            <div className="detailedRoom-top-banner">
+                <div className="detailedRoom-banner-content">
                     <h2 className="welcome-header">{roomName}</h2>
                     <Button variant="primary" onClick={() => setAddItemModalOpen(true)}>Add New Item</Button>
                 </div>

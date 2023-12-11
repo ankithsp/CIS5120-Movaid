@@ -129,8 +129,8 @@ const PlanPage = () => {
     return (
         <div className="screen-container">
 
-            <div className="top-banner">
-                <div className="banner-content">
+            <div className="plan-top-banner">
+                <div className="plan-banner-content">
                     <h2 className="welcome-header">Move-In Plan</h2>
                     <Button onClick={() => setAddingEventModalOpen(true)} variant="primary" style={{marginBottom: '10px'}}>
                         Add Event
