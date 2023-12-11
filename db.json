@@ -29,16 +29,14 @@
       "id": 3,
       "name": "Bedroom",
       "userId": 1
+    },
+    {
+      "id": "6c89e54c-1cfb-4f0e-adad-b13d66ce2d22",
+      "name": "Test",
+      "userId": 1
     }
   ],
   "items": [
-    {
-      "id": "0e4346d9-d4aa-40e2-b61e-6f1f1d974a28",
-      "name": "Knives",
-      "checked": false,
-      "price": 20,
-      "purchaseListId": "1"
-    },
     {
       "id": "51fa1015-b799-4596-91c3-36f5ae9bf9f4",
       "name": "Mixing Bowl",
@@ -49,7 +47,7 @@
     {
       "id": "9dfe41c3-55ab-4bb2-abdd-32c460a4d814",
       "name": "Dish Rack",
-      "checked": true,
+      "checked": false,
       "price": 20,
       "purchaseListId": "1"
     },
@@ -61,20 +59,6 @@
       "purchaseListId": "2"
     },
     {
-      "id": "20f63bfa-ca45-4c0b-88c7-f2925013f8e3",
-      "name": "Lamp",
-      "checked": true,
-      "price": 20,
-      "purchaseListId": "2"
-    },
-    {
-      "id": "2dded49c-70bc-4245-b90b-4eb1af7ebabd",
-      "name": "TV Stand",
-      "checked": false,
-      "price": 20,
-      "purchaseListId": "2"
-    },
-    {
       "id": "b8dc7555-f8e1-417d-b0f6-878f65cb2fea",
       "name": "Hat Rack",
       "checked": false,
@@ -82,25 +66,53 @@
       "purchaseListId": "2"
     },
     {
-      "id": "b99e27ed-bd4e-4a18-b863-5f725895b477",
-      "name": "Bed",
-      "checked": false,
-      "price": 20,
-      "purchaseListId": "3"
-    },
-    {
       "id": "ee473ee1-31e3-4f15-8e9e-6bc6e2c61fb0",
       "name": "Desk Lamp",
-      "checked": true,
+      "checked": false,
       "price": 20,
       "purchaseListId": "3"
     },
     {
       "id": "b62b2c3d-3419-48fa-b380-fb455dc25ad0",
       "name": "Closet Hangers",
+      "checked": true,
+      "price": 20,
+      "purchaseListId": "3"
+    },
+    {
+      "id": "078abdc2-8db5-4611-b400-2952dd46da64",
+      "name": "Bed",
+      "checked": true,
+      "price": 20,
+      "purchaseListId": "3"
+    },
+    {
+      "id": "ad7f97f2-1321-44b9-88cd-c643ae7c9b9c",
+      "name": "Bedding",
       "checked": false,
       "price": 20,
       "purchaseListId": "3"
+    },
+    {
+      "id": "2ae29f19-d71b-42b9-a762-09067ece1997",
+      "name": "Nightstand",
+      "checked": false,
+      "price": 20,
+      "purchaseListId": "3"
+    },
+    {
+      "id": "4e8a8bdc-a1a7-41ea-a383-089b0f84be8d",
+      "name": "Sieve",
+      "checked": false,
+      "price": 0,
+      "purchaseListId": "1"
+    },
+    {
+      "id": "be2cf75f-f6b3-4f9f-9278-0641ebe1bb0c",
+      "name": "Hmmm",
+      "checked": false,
+      "price": 0,
+      "purchaseListId": "6c89e54c-1cfb-4f0e-adad-b13d66ce2d22"
     }
   ],
   "todoTasks": [

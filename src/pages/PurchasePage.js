@@ -7,17 +7,11 @@ import DeleteItem from "../components/DeleteItem";
 import { Link, useNavigate } from "react-router-dom";
 import "./PurchasePage.css";
 import { Button, Form, ListGroup, Modal, ModalHeader, ProgressBar } from "react-bootstrap";
-import { BagFill, House, ClipboardCheck, CalendarWeek, Map } from "react-bootstrap-icons";
+import { BagFill, House, ClipboardCheck, CalendarWeek, Map, Trash } from "react-bootstrap-icons";
 import { v4 as uuidv4 } from 'uuid';
 
 const PurchasePage = () => {
 
-  // const [isAddNewRoomOpen, setAddNewRoomOpen] = useState(false);
-  // const [isAddingNewItemOpen, setAddingNewItemOpen] = useState(false);
-  // const [isAddingNewItem1Open, setAddingNewItem1Open] = useState(false);
-  // const [isDetailedItemViewOpen, setDetailedItemViewOpen] = useState(false);
-  // const [isDeleteItemPopupOpen, setDeleteItemPopupOpen] = useState(false);
-  // const [isAddingNewItem2Open, setAddingNewItem2Open] = useState(false);
   const navigate = useNavigate();
 
   const budget = 100;
@@ -36,6 +30,9 @@ const PurchasePage = () => {
   const [addingItemModalOpen, setAddingItemModalOpen] = useState(false);
   const [itemToAdd, setItemToAdd] = useState('');
   const [selectedRoom, setSelectedRoom] = useState('');
+
+  const [deletingRoomOpen, setDeletingRoomOpen] = useState(false);
+  const [roomToDelete, setRoomToDelete] = useState('');
 
   useEffect(() => {
     const fetchRooms = async () => {
@@ -101,7 +98,7 @@ const PurchasePage = () => {
 
   const getRoomItems = async (roomId) => {
     try {
-      const response = await fetch(`http://localhost:8000/purchaseList/${roomId}/items?_limit=3`);
+      const response = await fetch(`http://localhost:8000/purchaseList/${roomId}/items?checked=false&_limit=3`);
       const data = await response.json();
       // console.log(data);
       setRoomItems((prevItems) => ({
@@ -185,6 +182,8 @@ const PurchasePage = () => {
       if (response.ok) {
         console.log('New item added successfully');
 
+        getRoomItems(roomId);
+        getNumCheckedItems(roomId);
         setItemToAdd('');
         setAddingItemModalOpen(false);
       } else {
@@ -194,6 +193,108 @@ const PurchasePage = () => {
       console.error('Error making POST request:', error);
     }
   }
+
+  const handleCheckItem = async (itemId, roomId) => {
+    // Find the item to be updated
+    console.log(itemId, roomId);
+    const itemToToggle = roomItems[roomId].find((item) => item.id === itemId);
+    try {
+      const response = await fetch(`http://localhost:8000/purchaseList/${roomId}/items/${itemId}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ checked: !itemToToggle.checked }),
+      });
+
+      if (response.ok) {
+        console.log('Checklist item updated successfully');
+
+        const updatedChecklist = roomItems[roomId].map((item) =>
+          item.id === itemId ? { ...item, checked: !item.checked } : item
+        );
+
+        // Update the state with the new checklist items
+        getRoomItems(roomId);
+        getNumCheckedItems(roomId);
+        console.log('New state:', updatedChecklist);
+      } else {
+        console.error('Failed to update item');
+      }
+
+    } catch (error) {
+      console.error('Error updating checked item:', error);
+      setRoomItems(roomItems);
+    }
+  }
+  const handleDeleteItem = async (itemId, e, roomId) => {
+
+    e.stopPropagation();
+    try {
+      const response = await fetch(`http://localhost:8000/purchaseList/${roomId}/items/${itemId}`, {
+        method: 'DELETE',
+      });
+
+      if (response.ok) {
+        console.log('Checklist item deleted successfully');
+
+        // Update the state by removing the deleted item
+        getRoomItems(roomId);
+        getNumCheckedItems(roomId);
+      } else {
+        console.error('Failed to delete item');
+      }
+    } catch (error) {
+      console.error('Error deleting item:', error);
+    }
+  }
+
+  const handleDeleteRoomOnClick = (room) => {
+    setRoomToDelete({id: room.id, name: room.name});
+    setDeletingRoomOpen(true);
+  }
+  const handleDeleteRoom = async (roomId) => {
+    try {
+      // Check if items exist for the room
+      const responseItemsCheck = await fetch(`http://localhost:8000/purchaseList/${roomId}/items`);
+      if (responseItemsCheck.ok) {
+        const items = await responseItemsCheck.json();
+
+        // If items exist, delete them
+        if (items.length > 0) {
+          const responseItemsDelete = await fetch(`http://localhost:8000/purchaseList/${roomId}/items`, {
+            method: 'DELETE',
+          });
+
+          if (!responseItemsDelete.ok) {
+            console.error('Failed to delete items in the room');
+            // Handle error or notify the user
+            return;
+          }
+        }
+      } else {
+        console.error('Failed to check items for the room');
+        // Handle error or notify the user
+        return;
+      }
+
+      // Now, delete the room itself
+      const responseRoom = await fetch(`http://localhost:8000/purchaseList/${roomId}`, {
+        method: 'DELETE',
+      });
+
+      if (responseRoom.ok) {
+        console.log('Room deleted successfully');
+        // Update the state with the new room list (excluding the deleted room)
+        const updatedRoomsList = roomsList.filter((room) => room.id !== roomId);
+        setRoomsList(updatedRoomsList);
+      } else {
+        console.error('Failed to delete room');
+      }
+    } catch (error) {
+      console.error('Error deleting room:', error);
+    }
+  };
 
   return (
     <div className="screen-container">
@@ -273,6 +374,20 @@ const PurchasePage = () => {
         </Modal.Footer>
       </Modal>
 
+      {/* Delete Room Modal */}
+      <Modal show={deletingRoomOpen} onHide={() => setDeletingRoomOpen(false)}>
+      <Modal.Header closeButton>
+          <Modal.Title>Delete the {roomToDelete.name} list?</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          This will delete the room and all the items in the list. Do you wish to continue?
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => setDeletingRoomOpen(false)}>Cancel</Button>
+          <Button variant="primary" onClick={() => handleDeleteRoom(roomToDelete.id)}>Delete</Button>
+        </Modal.Footer>
+      </Modal>
+
       <div className="plist-scrollable-content">
       {roomsList.map((room) => {
         
@@ -288,13 +403,26 @@ const PurchasePage = () => {
             
             <ListGroup>
               {roomItems[room.id] && roomItems[room.id].length === 0 ? (
-                <p className="rooms-widget-checked-items">The list is empty. Add an item!</p>
+                <p className="rooms-widget-checked-items">No unchecked items in the list. Add a new item!</p>
               ) : (
                 <div>
                   {roomItems[room.id]?.map((item) => (
-                    <ListGroup.Item action href={`/detailed-room-view?roomId=${room.id}`} key={item.id}
-                    style={{fontFamily: `'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;`, textAlign: 'left', fontSize: '18px'}}>
-                      {item.name}
+                    // <ListGroup.Item action href={`/detailed-room-view?roomId=${room.id}`} key={item.id}
+                    // style={{fontFamily: `'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;`, textAlign: 'left', fontSize: '18px'}}>
+                    //   {item.name}
+                    // </ListGroup.Item>
+                    <ListGroup.Item key={item.id} className="checklist-item" action onClick={() => handleCheckItem(item.id, room.id)}>
+                      <div className="checklist-left-seciton">
+                        <Form.Check type="checkbox" label={item.checked ? <del style={{ color: '#d3d3d3' }}>{item.name}</del> : item.name}
+                          checked={item.checked} onChange={() => handleCheckItem(item.id, room.id)} />
+                      </div>
+                      <div className="checklist-right-seciton">
+                        <Button variant="danger" onClick={(e) => handleDeleteItem(item.id, e, room.id)}>
+                          <Trash size={20} />
+                        </Button>
+                      </div>
+
+
                     </ListGroup.Item>
                   ))}
                 </div>
@@ -302,6 +430,7 @@ const PurchasePage = () => {
             </ListGroup>
             <div className="rooms-widget-buttons">
               <Button href={`/detailed-room-view?roomId=${room.id}`} variant="secondary" size="sm">View Full List</Button>
+              <Button variant="outline-danger" size="sm" onClick={() => handleDeleteRoomOnClick(room)}>Delete Room</Button>
             </div>
           </div>
         </div>

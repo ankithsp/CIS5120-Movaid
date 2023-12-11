@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Bag, HouseFill, ClipboardCheck, CalendarWeek, Map } from "react-bootstrap-icons";
+import { Bag, HouseFill, ClipboardCheck, CalendarWeek, Map, Trash } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
-import { ListGroup, Badge, ProgressBar, Container, Row, Col } from "react-bootstrap";
+import { ListGroup, Form, Button, Badge, ProgressBar, Container, Row, Col } from "react-bootstrap";
 import "./Homepage.css";
-import "../global.css";
+import "../global.css"; 
 
 // For Weather Data API, using OpenWeatherMap
 const apiKey = '10f988116a40bcedd5940f2715931b48';
@@ -23,7 +23,7 @@ const Homepage = () => {
     useEffect(() => {
         const fetchItems = async () => {
             try {
-                const response = await fetch('http://localhost:8000/items?_limit=5');
+                const response = await fetch('http://localhost:8000/items?checked=false&_limit=5');
                 const data = await response.json();
                 setItemsList(data);
             } catch (error) {
@@ -107,6 +107,61 @@ const Homepage = () => {
         return time.toLocaleTimeString('en-US', options);
     };
 
+    const handleCheckItem = async (itemId) => {
+        // Find the item to be updated
+        const itemToToggle = itemsList.find((item) => item.id === itemId);
+        try {
+            const response = await fetch(`http://localhost:8000/purchaseList/${itemToToggle.purchaseListId}/items/${itemId}`, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ checked: !itemToToggle.checked }),
+            });
+
+            if (response.ok) {
+                console.log('Checklist item updated successfully');
+
+                const updatedChecklist = itemsList.map((item) =>
+                    item.id === itemId ? { ...item, checked: !item.checked } : item
+                );
+
+                // Update the state with the new checklist items
+                setItemsList(updatedChecklist);
+                console.log('New state:', updatedChecklist);
+            } else {
+                console.error('Failed to update item');
+            }
+
+        } catch (error) {
+            console.error('Error updating checked item:', error);
+            setItemsList(itemsList);
+        }
+    }
+    const handleDeleteItem = async (itemId, e) => {
+
+        e.stopPropagation();
+        const itemToToggle = itemsList.find((item) => item.id === itemId);
+        try {
+            const response = await fetch(`http://localhost:8000/purchaseList/${itemToToggle.purchaseListId}/items/${itemId}`, {
+                method: 'DELETE',
+            });
+
+            if (response.ok) {
+                console.log('Checklist item deleted successfully');
+
+                // Update the state by removing the deleted item
+                const updatedChecklist = itemsList.filter((item) => item.id !== itemId);
+                setItemsList(updatedChecklist);
+                console.log('New state:', updatedChecklist);
+            } else {
+                console.error('Failed to delete item');
+            }
+        } catch (error) {
+            console.error('Error deleting item:', error);
+        }
+    }
+
     return (
         <div className="screen-container">
             <div className="top-banner">
@@ -127,8 +182,16 @@ const Homepage = () => {
                     </div>    
                     <ListGroup>
                         {itemsList.map((item) => (
-                            <ListGroup.Item key={item.id} style={{textAlign: 'left'}}>
-                                {item.name}
+                            <ListGroup.Item key={item.id} className="checklist-item" action onClick={() => handleCheckItem(item.id)}>
+                                <div className="checklist-left-seciton">
+                                    <Form.Check type="checkbox" label={item.checked ? <del style={{ color: '#d3d3d3' }}>{item.name}</del> : item.name}
+                                        checked={item.checked} onChange={() => handleCheckItem(item.id)} />
+                                </div>
+                                <div className="checklist-right-seciton">
+                                    <Button variant="danger" onClick={(e) => handleDeleteItem(item.id, e)}>
+                                        <Trash size={20} />
+                                    </Button>
+                                </div>
                             </ListGroup.Item>
                         ))}
                     </ListGroup>
