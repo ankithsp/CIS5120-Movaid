@@ -409,19 +409,15 @@ const PurchasePage = () => {
               ) : (
                 <div>
                   {roomItems[room.id]?.map((item) => (
-                    // <ListGroup.Item action href={`/detailed-room-view?roomId=${room.id}`} key={item.id}
-                    // style={{fontFamily: `'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;`, textAlign: 'left', fontSize: '18px'}}>
-                    //   {item.name}
-                    // </ListGroup.Item>
                     <ListGroup.Item key={item.id} className="checklist-item" action onClick={() => handleCheckItem(item.id, room.id)}>
                       <div className="checklist-left-seciton">
                         <Form.Check type="checkbox" label={item.checked ? <del style={{ color: '#d3d3d3' }}>{item.name}</del> : item.name}
                           checked={item.checked} onChange={() => handleCheckItem(item.id, room.id)} />
                       </div>
                       <div className="checklist-right-seciton">
-                        <Button variant="danger" onClick={(e) => handleDeleteItem(item.id, e, room.id)}>
+                        {/* <Button variant="danger" onClick={(e) => handleDeleteItem(item.id, e, room.id)}>
                           <Trash size={20} />
-                        </Button>
+                        </Button> */}
                       </div>
 
 

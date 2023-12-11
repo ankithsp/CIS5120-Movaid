@@ -47,14 +47,14 @@ const TodoPage = () => {
         return (
             <>
                 {task.completed ? (
-                    <Button variant="outline-danger" onClick={() => handleTaskIncomplete(task)} style={{ borderRadius: '50%', padding: '8px', width: '36px', height: '36px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <Button variant="outline-secondary" onClick={() => handleTaskIncomplete(task)} style={{ borderRadius: '50%', padding: '8px', width: '36px', height: '36px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                         <div>
                             <CheckCircleFill size={30} />
                         </div>
                         
                     </Button>
                 ) : (
-                    <Button variant="outline-success" onClick={() => handleTaskCompletion(task)} style={{ borderRadius: '50%', padding: '8px', width: '36px', height: '36px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <Button variant="outline-secondary" onClick={() => handleTaskCompletion(task)} style={{ borderRadius: '50%', padding: '8px', width: '36px', height: '36px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                         <div> <CheckCircle size={30} /> </div>
                         
                     </Button>
