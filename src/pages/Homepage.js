@@ -16,6 +16,7 @@ const Homepage = () => {
 
     const [itemsList, setItemsList] = useState([]);
     const [budgetLevel, setBudgetLevel] = useState({}); 
+    const [dynamBudgetLevel, setDynamBudgetLevel] = useState({level: 0, something: 0}); 
     const [tasksList, setTasksList] = useState([]);
     const [eventsList, setEventsList] = useState([]);
     const [weather, setWeather] = useState([]);
@@ -77,11 +78,27 @@ const Homepage = () => {
             }
         }
 
+        const calculateBudgetLevel = async () => {
+            try {
+            const response = await fetch(`http://localhost:8000/items?checked=true`);
+            const data = await response.json();
+            if (data.length > 0) {
+              const total = data.reduce((acc, item) => acc + item.price, 0);
+              setDynamBudgetLevel(dynamBudgetLevel => ({...dynamBudgetLevel, level: dynamBudgetLevel.level+total}));
+            } else {
+              console.log('No checked items found');
+            }
+            } catch (error) {
+              console.error('Error fetching data:', error);
+            }
+          };
+
         fetchItems();
         fetchBudget();
         fetchTasks();
         fetchEvents();
         fetchWeather();
+        calculateBudgetLevel();
     }, []);
 
     const renderPriorityBadge = (priorityLevel) => {
@@ -177,7 +194,9 @@ const Homepage = () => {
                 <div className="widget-container">
                     <div className="widget-budget-tracker-container">
                         <p className="budget-start">$0</p>
-                        <ProgressBar style={{width: '75%', marginBottom: '15px'}} animated variant="success" min= {0} now={budgetLevel.currLevel} max={budgetLevel.totalBudget} label={`$${budgetLevel.currLevel}`}/>
+                        { dynamBudgetLevel &&
+                            <ProgressBar style={{width: '75%', marginBottom: '15px'}} animated variant="success" min= {0} now={dynamBudgetLevel.level} max={budgetLevel.totalBudget} label={`$${dynamBudgetLevel.level}`}/>
+                        }
                         <p className="budget-end">${budgetLevel.totalBudget}</p>
                     </div>    
                     <ListGroup>

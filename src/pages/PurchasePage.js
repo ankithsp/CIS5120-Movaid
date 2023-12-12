@@ -14,10 +14,12 @@ const PurchasePage = () => {
 
   const navigate = useNavigate();
 
-  const budget = 100;
-  const currentSpend = 47;
+  // const budget = 100;
+  // const currentSpend = 47;
 
   const [budgetLevel, setBudgetLevel] = useState({}); 
+  const [dynamBudgetLevel, setDynamBudgetLevel] = useState({level: 0, something: 0}); 
+  // const [roomCostList, setRoomCostList] = useState([]);
 
   const [roomsList, setRoomsList] = useState([]);
   const [roomItems, setRoomItems] = useState({});
@@ -60,8 +62,21 @@ const PurchasePage = () => {
         console.error('Error fetching data:', error);
       }
     };
-
-    fetchBudget();
+    const calculateBudgetLevel = async () => {
+      try {
+      const response = await fetch(`http://localhost:8000/items?checked=true`);
+      const data = await response.json();
+      if (data.length > 0) {
+        const total = data.reduce((acc, item) => acc + item.price, 0);
+        setDynamBudgetLevel(dynamBudgetLevel => ({...dynamBudgetLevel, level: dynamBudgetLevel.level+total}));
+      } else {
+        console.log('No checked items found');
+      }
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+    fetchBudget(), calculateBudgetLevel();
   }, []);
 
 
@@ -82,6 +97,7 @@ const PurchasePage = () => {
   //   }
   // };
 
+
   const getNumCheckedItems = async (roomId) => {
     try {
       const response = await fetch(`http://localhost:8000/purchaseList/${roomId}/items`);
@@ -95,6 +111,29 @@ const PurchasePage = () => {
       console.error('Error fetching data:', error);
     }
   };
+
+  // const updateBudgetTracker = async (price) => {
+  //   try {
+  //     const updatedLevel = budgetLevel+price;
+
+  //     const response = await fetch(`http://localhost:8000/budget-tracker`, {
+  //       method: 'PATCH',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //       body: JSON.stringify({currLevel: updatedLevel}),
+  //     });
+  //     if (response.ok) {
+  //       console.log('Budget Level updated successfully');
+  //       fetchBudget();
+  //     } else {
+  //       console.error('Failed to update budget');
+  //     }
+  //   }
+  //   catch (error){
+  //     console.error('Error updating budget: ', error);
+  //   }
+  // }
 
   const getRoomItems = async (roomId) => {
     try {
@@ -306,7 +345,10 @@ const PurchasePage = () => {
           <h5 className="subheader">Budget Tracker</h5>
           <div className="widget-budget-tracker-container-purchase">
             <p className="budget-start-purchase">$0</p>
-            <ProgressBar className = "budget-tracker-bar" style={{width: '100%', marginBottom: '15px'}} animated variant="success" min= {0} now={budgetLevel.currLevel} max={budgetLevel.totalBudget} label={`$${budgetLevel.currLevel}`}/>
+            {dynamBudgetLevel && 
+            <ProgressBar className = "budget-tracker-bar" style={{width: '100%', marginBottom: '15px'}} animated variant="success" min= {0} now={dynamBudgetLevel.level} max={budgetLevel.totalBudget} label={`$${dynamBudgetLevel.level}`}/>
+            }
+            
             <p className="budget-end-purchase">${budgetLevel.totalBudget}</p>
           </div>
           <Button style={{marginTop: '10px'}} variant="primary" size="lg" onClick={() => setAddingItemModalOpen(true)}>Add Item</Button>
@@ -397,9 +439,11 @@ const PurchasePage = () => {
         <div key={room.id}>
           <h5 className="widget-title">{room.name}</h5>
           <div className="rooms-widget-container">
-            {numCheckedItems[room.id] && 
+            {numCheckedItems[room.id] && dynamBudgetLevel && 
                 <div className="rooms-widget-item-count">
                   <p style={{fontSize: '20px'}}>{numCheckedItems[room.id][0]} / {numCheckedItems[room.id][1]} items purchased</p>
+                  {/* <p style={{fontSize: '20px'}}>{roomCostList[room.id]}items purchased</p> */}
+                  {/* <p style={{fontSize: '20px'}}>{dynamBudgetLevel.level} items purchased</p> */}
                 </div>
             }
             
