@@ -8,9 +8,12 @@
     transform: translate(-50%, -50%);
     border: 1px solid #ccc;
     overflow: hidden;
+    background-color: #2e367a;
+    color: white;
 }
 
 .home-scrollable-content {
+    padding-top: 10px;
     overflow-y: auto;
     height: calc(70%);
     /* Adjusted height to accommodate top banner and bottom bar */
@@ -22,6 +25,11 @@
     background-color: white;
     padding: 20px;
     text-align: center;
+    color: black;
+
+    background-image: url('/public/background-wide.png');
+    background-size: cover;
+    background-position: center;
 }
 
 .banner-content {
@@ -44,7 +52,7 @@
 
 .subheader {
     font-size: 16px;
-    color: #555;
+    color: gray;
     /* Adjust the color of the subheader */
 }
 
@@ -57,16 +65,23 @@
     margin-top: -40px; /* Negative margin to expand the bottom bar upward */
     display: flex;
     justify-content: space-evenly;
+    color: black;
 }
 
 .widget-container {
-    background-color: rgba(213, 177, 149, .4);
+    /* background-color: rgba(213, 177, 149, .4); */
+    background-color: white;
+    color: black;
     border-radius: 10px;
     padding: 20px;
     margin-bottom: 20px;
     margin-left: 20px;
     margin-right: 20px;
     margin-top: 5px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: 500;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Adjust the shadow values as needed */
 }
 
 .widget-title {
@@ -75,6 +90,7 @@
     text-align:left;
     margin-left: 25px;
     margin-bottom: 0rem;
+    text-shadow: #555;
 }
 
 .icon-wrapper {
@@ -104,9 +120,10 @@
 .full-list-link a {
     text-decoration: underline;
     text-align: right;
-    color: #007bff;
+    color: #0084d6;
     font-size: 14px;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    /* font-family: Georgia, 'Times New Roman', Times, serif; */
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .list-item-container {
@@ -161,5 +178,34 @@
 
 .event-list-item {
     background-color: #f8f9fa;
+    color: black;
     margin-bottom: 5px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.widget-budget-tracker-container{
+    display: flex;
+    align-items: center;
+    font-family: var(--font-marko-one);
+}
+
+.budget-start {
+    font-size: 15px;
+    margin-right: 5px;
+}
+
+.budget-end {
+    font-size: 15px;
+    margin-left: 5px;
+}
+
+.plan-widget-currTemp-text{
+    align-items: center;
+    font-size: 12px;
+}
+
+.plan-widget-highLowTemp-text{
+    align-items: center;
+    font-size: 10px;
+    margin-top: -10px;
 }

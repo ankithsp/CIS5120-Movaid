@@ -7,6 +7,13 @@
       "city": "Philadelphia"
     }
   ],
+  "budget-tracker": [
+    {
+      "id": 1,
+      "currLevel": 1000,
+      "totalBudget": 3000
+    }
+  ],
   "purchaseList": [
     {
       "id": 1,
@@ -26,85 +33,274 @@
   ],
   "items": [
     {
-      "id": "0e4346d9-d4aa-40e2-b61e-6f1f1d974a28",
-      "name": "Knives",
-      "checked": false,
-      "price": 20,
-      "purchaseListId": "1"
-    },
-    {
       "id": "51fa1015-b799-4596-91c3-36f5ae9bf9f4",
       "name": "Mixing Bowl",
-      "checked": false,
-      "price": 20,
-      "purchaseListId": "1"
-    },
-    {
-      "id": "ab3a0618-96e7-4527-b852-72a4a56edce0",
-      "name": "Cutting Board",
-      "checked": false,
-      "price": 20,
-      "purchaseListId": "1"
-    },
-    {
-      "id": "4f6484c3-7029-47c2-8099-67eeba62638c",
-      "name": "Sponge",
-      "checked": false,
-      "price": 20,
+      "checked": true,
+      "price": 200,
       "purchaseListId": "1"
     },
     {
       "id": "9dfe41c3-55ab-4bb2-abdd-32c460a4d814",
       "name": "Dish Rack",
       "checked": true,
-      "price": 20,
+      "price": 200,
       "purchaseListId": "1"
     },
     {
       "id": "40da5e06-75ca-471f-a7f8-485443edec9e",
       "name": "Couch",
       "checked": true,
-      "price": 20,
-      "purchaseListId": "2"
-    },
-    {
-      "id": "20f63bfa-ca45-4c0b-88c7-f2925013f8e3",
-      "name": "Lamp",
-      "checked": true,
-      "price": 20,
-      "purchaseListId": "2"
-    },
-    {
-      "id": "2dded49c-70bc-4245-b90b-4eb1af7ebabd",
-      "name": "TV Stand",
-      "checked": false,
-      "price": 20,
+      "price": 200,
       "purchaseListId": "2"
     },
     {
       "id": "b8dc7555-f8e1-417d-b0f6-878f65cb2fea",
       "name": "Hat Rack",
-      "checked": false,
-      "price": 20,
+      "checked": true,
+      "price": 200,
       "purchaseListId": "2"
-    },
-    {
-      "id": "b99e27ed-bd4e-4a18-b863-5f725895b477",
-      "name": "Bed",
-      "checked": false,
-      "price": 20,
-      "purchaseListId": "3"
     },
     {
       "id": "ee473ee1-31e3-4f15-8e9e-6bc6e2c61fb0",
       "name": "Desk Lamp",
       "checked": true,
-      "price": 20,
+      "price": 200,
       "purchaseListId": "3"
     },
     {
       "id": "b62b2c3d-3419-48fa-b380-fb455dc25ad0",
       "name": "Closet Hangers",
+      "checked": false,
+      "price": 200,
+      "purchaseListId": "3"
+    },
+    {
+      "id": "078abdc2-8db5-4611-b400-2952dd46da64",
+      "name": "Bed",
+      "checked": false,
+      "price": 200,
+      "purchaseListId": "3"
+    },
+    {
+      "id": "ad7f97f2-1321-44b9-88cd-c643ae7c9b9c",
+      "name": "Bedding",
+      "checked": false,
+      "price": 200,
+      "purchaseListId": "3"
+    },
+    {
+      "id": "2ae29f19-d71b-42b9-a762-09067ece1997",
+      "name": "Nightstand",
+      "checked": false,
+      "price": 200,
+      "purchaseListId": "3"
+    },
+    {
+      "id": "4e8a8bdc-a1a7-41ea-a383-089b0f84be8d",
+      "name": "Sieve",
+      "checked": true,
+      "price": 200,
+      "purchaseListId": "1"
+    },
+    {
+      "id": "95cc9a30-8511-40bb-b75d-5e0be59c743c",
+      "name": "Knife Set",
+      "checked": true,
+      "price": 200,
+      "purchaseListId": "1"
+    },
+    {
+      "id": "a3e74991-cefb-48c1-8207-697b6c9be97f",
+      "name": "Cutting Board",
+      "checked": false,
+      "price": 200,
+      "purchaseListId": "1"
+    },
+    {
+      "id": "08c0b230-f3ec-4c79-90eb-4f15c4fc11c5",
+      "name": "Pots and Pans set",
+      "checked": false,
+      "price": 200,
+      "purchaseListId": "1"
+    },
+    {
+      "id": "e9c9cb62-ee66-433d-bf99-b6929dfca8f1",
+      "name": "Baking Sheet",
+      "checked": false,
+      "price": 200,
+      "purchaseListId": "1"
+    },
+    {
+      "id": "fb4e510d-e1fa-4b92-aabf-9b257cc36a73",
+      "name": "Cooking Utensils Set",
+      "checked": false,
+      "price": 200,
+      "purchaseListId": "1"
+    },
+    {
+      "id": "93b95ced-2229-4fb1-8f8b-879f46b3b092",
+      "name": "Flatware",
+      "checked": false,
+      "price": 200,
+      "purchaseListId": "1"
+    },
+    {
+      "id": "32d00f3c-7857-4862-a560-6f4bc5156c8b",
+      "name": "Dinnerware set",
+      "checked": false,
+      "price": 200,
+      "purchaseListId": "1"
+    },
+    {
+      "id": "9aca5d90-cd70-4634-9453-2d0fbdc9a3a6",
+      "name": "Tongs",
+      "checked": false,
+      "price": 200,
+      "purchaseListId": "1"
+    },
+    {
+      "id": "2bfba4f7-34b0-4ebf-9f45-47183fe04ed1",
+      "name": "Oven Mitts",
+      "checked": false,
+      "price": 200,
+      "purchaseListId": "1"
+    },
+    {
+      "id": "f1f1931d-c89b-4c80-83eb-14c03f36a9b9",
+      "name": "Storage Containers",
+      "checked": false,
+      "price": 200,
+      "purchaseListId": "1"
+    },
+    {
+      "id": "e75567bb-c934-4937-b4e3-426eceb12973",
+      "name": "Aluminum Foil",
+      "checked": false,
+      "price": 200,
+      "purchaseListId": "1"
+    },
+    {
+      "id": "daa099c9-4003-4718-8a8c-3ee6eb41dad2",
+      "name": "Cleaning Sponge",
+      "checked": false,
+      "price": 200,
+      "purchaseListId": "1"
+    },
+    {
+      "id": "2b69323e-5080-4b36-ba2d-c10e77753f24",
+      "name": "Trash Bags",
+      "checked": false,
+      "price": 200,
+      "purchaseListId": "1"
+    },
+    {
+      "id": "1d6b565d-34e2-42ee-bf94-ac22bffbd887",
+      "name": "Trash Bin",
+      "checked": false,
+      "price": 200,
+      "purchaseListId": "1"
+    },
+    {
+      "id": "442afc42-56e1-41b1-970a-ab27f2af59ad",
+      "name": "Coffee Table",
+      "checked": true,
+      "price": 200,
+      "purchaseListId": "2"
+    },
+    {
+      "id": "2124c21d-880a-4590-9bfd-17c55cce4e80",
+      "name": "TV",
+      "checked": true,
+      "price": 200,
+      "purchaseListId": "2"
+    },
+    {
+      "id": "d9367eaa-b36d-4f5b-8585-c88f96587aad",
+      "name": "Area Rug",
+      "checked": true,
+      "price": 200,
+      "purchaseListId": "2"
+    },
+    {
+      "id": "1a2f807f-0a61-4182-8834-92d19afd2dd8",
+      "name": "Curtains",
+      "checked": false,
+      "price": 200,
+      "purchaseListId": "2"
+    },
+    {
+      "id": "2918bcb6-e7f7-4cea-b611-86d1afdef368",
+      "name": "Artwork",
+      "checked": false,
+      "price": 200,
+      "purchaseListId": "2"
+    },
+    {
+      "id": "95f1c0d7-c703-418c-97a3-cbd4286e3a0d",
+      "name": "Throw Pillows",
+      "checked": false,
+      "price": 200,
+      "purchaseListId": "2"
+    },
+    {
+      "id": "3034f76e-16b8-4aaa-be34-fb2910536898",
+      "name": "Throw Blankets",
+      "checked": false,
+      "price": 200,
+      "purchaseListId": "2"
+    },
+    {
+      "id": "da92f095-2949-4c01-b915-e043ad6faa15",
+      "name": "Floor Lamp",
+      "checked": false,
+      "price": 200,
+      "purchaseListId": "2"
+    },
+    {
+      "id": "c8a6aed3-0bd1-4609-aa59-b01e2c2a8be0",
+      "name": "Mattress",
+      "checked": false,
+      "price": 200,
+      "purchaseListId": "3"
+    },
+    {
+      "id": "7c128c31-08e4-452e-b7cd-02d16849e73d",
+      "name": "Pillows",
+      "checked": false,
+      "price": 200,
+      "purchaseListId": "3"
+    },
+    {
+      "id": "48d472fb-a52b-44c9-84b3-cea5372f035f",
+      "name": "Floor Lamp",
+      "checked": false,
+      "price": 200,
+      "purchaseListId": "3"
+    },
+    {
+      "id": "87dd2a13-565a-450c-8054-4c593cda768c",
+      "name": "Curtains",
+      "checked": false,
+      "price": 200,
+      "purchaseListId": "3"
+    },
+    {
+      "id": "0e5a9d76-01d0-45c8-81de-ec6b08b7a27e",
+      "name": "Mirror",
+      "checked": false,
+      "price": 200,
+      "purchaseListId": "3"
+    },
+    {
+      "id": "4947d606-50e6-4d83-9f13-f44de15279e6",
+      "name": "Laundry Bag",
+      "checked": false,
+      "price": 200,
+      "purchaseListId": "3"
+    },
+    {
+      "id": "0f22cf25-502b-4064-8b90-571f3e965905",
+      "name": "Hangers",
       "checked": false,
       "price": 20,
       "purchaseListId": "3"
@@ -156,51 +352,27 @@
   ],
   "moveInPlan": [
     {
-      "id": "1b93537c-d48b-4597-84eb-8391e9b39120",
-      "desc": "Facilities coming to replace the smoke detector",
-      "dateStart": "2023-12-02",
+      "id": "920578b7-6f7b-45e5-8332-5a001338e813",
+      "desc": "testing",
+      "dateStart": "2023-12-12",
       "dateEnd": null,
-      "timeStart": "13:00:00",
+      "timeStart": "19:00:00",
       "timeEnd": null
     },
     {
-      "id": "34520",
-      "desc": "Testing grouping",
-      "dateStart": "2023-12-02",
+      "id": "c0802887-8d68-451d-82b6-aee1a645c16b",
+      "desc": "testing 2",
+      "dateStart": "2023-12-13",
       "dateEnd": null,
-      "timeStart": "15:00:00",
+      "timeStart": "19:01:00",
       "timeEnd": null
     },
     {
-      "id": "3434852389p520",
-      "desc": "Testing grouping again",
-      "dateStart": "2023-12-01",
+      "id": "eb7b83d2-8d41-4d8b-95b4-ce7890088bef",
+      "desc": "tesitng 3",
+      "dateStart": "2023-12-15",
       "dateEnd": null,
-      "timeStart": "15:00:00",
-      "timeEnd": null
-    },
-    {
-      "id": "h37298d",
-      "desc": "Testing grouping once more",
-      "dateStart": "2023-12-05",
-      "dateEnd": null,
-      "timeStart": "15:00:00",
-      "timeEnd": null
-    },
-    {
-      "id": "9ecd2756-b817-4297-b37c-7085e9191d39",
-      "desc": "Testing",
-      "dateStart": "2023-12-02",
-      "dateEnd": null,
-      "timeStart": "13:41:00",
-      "timeEnd": null
-    },
-    {
-      "id": "3416263f-4e5e-4f8c-a204-16dc87ec22c9",
-      "desc": "testing weather",
-      "dateStart": "2023-12-04",
-      "dateEnd": null,
-      "timeStart": "13:50:00",
+      "timeStart": "19:01:00",
       "timeEnd": null
     }
   ]

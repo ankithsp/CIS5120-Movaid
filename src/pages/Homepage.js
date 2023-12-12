@@ -1,32 +1,47 @@
 import React, { useEffect, useState } from "react";
-import { Bag, HouseFill, ClipboardCheck, CalendarWeek, Map } from "react-bootstrap-icons";
+import { Bag, HouseFill, ClipboardCheck, CalendarWeek, Map, Trash } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
-import { ListGroup, Badge } from "react-bootstrap";
-import "./Homepage.css"
+import { ListGroup, Form, Button, Badge, ProgressBar, Container, Row, Col } from "react-bootstrap";
+import "./Homepage.css";
+import "../global.css"; 
 
 // For Weather Data API, using OpenWeatherMap
 const apiKey = '10f988116a40bcedd5940f2715931b48';
-const lat = 39.952583
-const long = -75.165222
-const apiURL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${apiKey}`;
+const lat = 39.952583;
+const long = -75.165222;
+const units = 'imperial';
+const apiURL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=${units}&appid=${apiKey}`;
 
 const Homepage = () => {
 
     const [itemsList, setItemsList] = useState([]);
+    const [budgetLevel, setBudgetLevel] = useState({}); 
+    const [dynamBudgetLevel, setDynamBudgetLevel] = useState({level: 0, something: 0}); 
     const [tasksList, setTasksList] = useState([]);
     const [eventsList, setEventsList] = useState([]);
-    const [weather, setWeather] = useState({});
+    const [weather, setWeather] = useState([]);
 
     useEffect(() => {
         const fetchItems = async () => {
             try {
-                const response = await fetch('http://localhost:8000/items?_limit=5');
+                const response = await fetch('http://localhost:8000/items?checked=false&_limit=5');
                 const data = await response.json();
                 setItemsList(data);
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
         }
+
+        const fetchBudget = async () => {
+            try {
+              const response = await fetch('http://localhost:8000/budget-tracker');
+              const data = await response.json();
+              // console.log(data[0]);
+              setBudgetLevel(data[0]);
+            } catch (error) {
+              console.error('Error fetching data:', error);
+            }
+          };
 
         const fetchTasks = async () => {
             try {
@@ -56,16 +71,37 @@ const Homepage = () => {
             try {
                 const response = await fetch(apiURL);
                 const data = await response.json();
-                setWeather(data.weather[0]);
+                // console.log([data.main, data.weather[0]]);
+                setWeather([data.main, data.weather[0]]);
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
         }
 
+        const calculateBudgetLevel = async () => {
+            try {
+            const response = await fetch(`http://localhost:8000/items?checked=true`);
+            const data = await response.json();
+            if (data.length > 0) {
+              const total = data.reduce((acc, item) => acc + item.price, 0);
+              setTimeout(function () {
+                setDynamBudgetLevel(dynamBudgetLevel => ({...dynamBudgetLevel, level: dynamBudgetLevel.level+total}));
+              }, 500);
+              
+            } else {
+              console.log('No checked items found');
+            }
+            } catch (error) {
+              console.error('Error fetching data:', error);
+            }
+          };
+
         fetchItems();
+        fetchBudget();
         fetchTasks();
         fetchEvents();
         fetchWeather();
+        calculateBudgetLevel();
     }, []);
 
     const renderPriorityBadge = (priorityLevel) => {
@@ -75,7 +111,7 @@ const Homepage = () => {
         case 2:
             return <Badge bg="warning" style={{ fontSize: '20px' }}>!!</Badge>;
         case 3:
-            return <Badge bg="danger" style={{ fontSize: '20px' }}>!!!</Badge>;
+            return <Badge bg="danger" style={{ fontSize: '20px'}}>!!!</Badge>;
         default:
             return null;
         }
@@ -91,11 +127,49 @@ const Homepage = () => {
         return time.toLocaleTimeString('en-US', options);
     };
 
+    const handleCheckItem = async (itemId) => {
+        // Find the item to be updated
+        const itemToToggle = itemsList.find((item) => item.id === itemId);
+        try {
+            const response = await fetch(`http://localhost:8000/purchaseList/${itemToToggle.purchaseListId}/items/${itemId}`, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ checked: !itemToToggle.checked }),
+            });
+
+            if (response.ok) {
+                console.log('Checklist item updated successfully');
+
+                const updatedChecklist = itemsList.map((item) =>
+                    item.id === itemId ? { ...item, checked: !item.checked } : item
+                );
+
+                // Update the state with the new checklist items
+                setItemsList(updatedChecklist);
+                if(!itemToToggle.checked) {
+                    setDynamBudgetLevel(dynamBudgetLevel => ({...dynamBudgetLevel, level: dynamBudgetLevel.level+itemToToggle.price}));
+                } else {
+                    setDynamBudgetLevel(dynamBudgetLevel => ({...dynamBudgetLevel, level: dynamBudgetLevel.level-itemToToggle.price}));
+                }
+                
+                console.log('New state:', updatedChecklist);
+            } else {
+                console.error('Failed to update item');
+            }
+
+        } catch (error) {
+            console.error('Error updating checked item:', error);
+            setItemsList(itemsList);
+        }
+    }
+
     return (
         <div className="screen-container">
             <div className="top-banner">
                 <div className="banner-content">
-                    <img src="/movaid-icon.png" alt="Movaid Icon" className="app-icon" />
+                    <img src="/movaid-blue.png" alt="Movaid Icon" className="app-icon" />
                     <h2 className="welcome-header">Good Evening, John!</h2>
                     <p className="subheader">You are <strong>3 days</strong> away from moving into <br></br>123 Main Street</p>
                 </div>
@@ -104,10 +178,25 @@ const Homepage = () => {
             <div className="home-scrollable-content">
                 <h5 className="widget-title">Things to Purchase</h5>
                 <div className="widget-container">
+                    <div className="widget-budget-tracker-container">
+                        <p className="budget-start">$0</p>
+                        { dynamBudgetLevel &&
+                            <ProgressBar style={{width: '75%', marginBottom: '15px'}} animated variant="success" min= {0} now={dynamBudgetLevel.level} max={budgetLevel.totalBudget} label={`$${dynamBudgetLevel.level}`}/>
+                        }
+                        <p className="budget-end">${budgetLevel.totalBudget}</p>
+                    </div>    
                     <ListGroup>
                         {itemsList.map((item) => (
-                            <ListGroup.Item key={item.id} style={{fontFamily: `Georgia, 'Times New Roman', Times, serif`, textAlign: 'left' }}>
-                                {item.name}
+                            <ListGroup.Item key={item.id} className="checklist-item" action onClick={() => handleCheckItem(item.id)}>
+                                <div className="checklist-left-seciton">
+                                    <Form.Check type="checkbox" label={item.checked ? <del style={{ color: '#d3d3d3' }}>{item.name}</del> : item.name}
+                                        checked={item.checked} onChange={() => handleCheckItem(item.id)} />
+                                </div>
+                                <div className="checklist-right-seciton">
+                                    {/* <Button variant="danger" onClick={(e) => handleDeleteItem(item.id, e)}>
+                                        <Trash size={20} />
+                                    </Button> */}   
+                                </div>
                             </ListGroup.Item>
                         ))}
                     </ListGroup>
@@ -120,7 +209,7 @@ const Homepage = () => {
                     <ListGroup>
                         {tasksList.sort((a, b) => b.priority - a.priority).slice(0,3)
                             .map((task) => (
-                                <ListGroup.Item key={task.id} as="li" className="d-flex justify-content-between align-items-center" style={{ fontFamily: `Georgia, 'Times New Roman', Times, serif`, textAlign: 'left' }}>
+                                <ListGroup.Item key={task.id} as="li" className="d-flex justify-content-between align-items-center" style={{textAlign: 'left'}}>
                                     <div className="ms-2 me-auto">
                                         <div>{task.desc}</div>
                                     </div>
@@ -138,15 +227,21 @@ const Homepage = () => {
                     <div className="plan-widget-top">
                         {/* Date Section */}
                         <div className="plan-widget-date">
-                            <h5>{formatDate(new Date().toISOString().split("T")[0])}</h5>
+                            <h5 style={{textAlign:"left"}}>{formatDate(new Date().toISOString().split("T")[0])}</h5>
                         </div>
                         <div className="plan-widget-icon-container">
-                            <div>
-                                <div className="plan-widget-icon-background">
-                                    <img src={`http://openweathermap.org/img/wn/${weather.icon}.png`} alt="Weather Icon" />
+                            {weather[0] && weather[1] && 
+                                <div>
+                                    <div className="plan-widget-icon-background">
+                                        <img src={`http://openweathermap.org/img/wn/${weather[1].icon}.png`} alt="Weather Icon" />
+                                    </div>
+                                    {/* Citation: https://stackoverflow.com/questions/48387180/is-it-possible-to-capitalize-first-letter-of-text-string-in-react-native-how-to#:~:text=React%20native%20now%20lets%20you,No%20function%20necessary.&text=Instead%20of%20using%20a%20function,this%20as%20a%20common%20component.&text=just%20use%20javascript. */}
+                                    <h5 style={{ fontSize: '12px', textTransform: 'capitalize' }}>{weather[1].description}</h5>
+                                    <p className="plan-widget-currTemp-text">{weather[0].temp} &deg;F</p>
+                                    <p className="plan-widget-highLowTemp-text">H: {weather[0].temp_max}  L: {weather[0].temp_min}</p>
                                 </div>
-                                <h5 style={{ fontSize: '12px' }}>{weather.description}</h5>
-                            </div>
+                            }
+                            
                         </div>
 
 
@@ -157,7 +252,7 @@ const Homepage = () => {
                             <ListGroup>
                                 {eventsList.map(event => (
                                     <ListGroup.Item key={event.id} className="event-list-item" action>
-                                        <p>{event.desc}</p>
+                                        <p style={{textAlign: "left"}}>{event.desc}</p>
                                         {event.timeEnd ? <p><strong>{formatTime(event.timeStart)} - {formatTime(event.timeEnd)}</strong></p> : <p><strong>{formatTime(event.timeStart)}</strong></p>}
                                     </ListGroup.Item>
                                 ))}
@@ -173,11 +268,11 @@ const Homepage = () => {
                 <div className="widget-container">
                     <ListGroup>
                         <ListGroup.Item action href="https://philly.eater.com/maps/best-cheesesteak-philadelphia"
-                        style={{fontFamily: `Georgia, 'Times New Roman', Times, serif`, textAlign: 'left'}}>Best Cheesesteaks in Philadelphia</ListGroup.Item>
+                        style={{textAlign: 'left'}}>Best Cheesesteaks in Philadelphia</ListGroup.Item>
                         <ListGroup.Item action href="https://www.cntraveler.com/gallery/best-museums-in-philadelphia"
-                        style={{fontFamily: `Georgia, 'Times New Roman', Times, serif`, textAlign: 'left'}}>Top Rated Museums in Philadelphia</ListGroup.Item>
+                        style={{textAlign: 'left'}}>Top Rated Museums in Philadelphia</ListGroup.Item>
                         <ListGroup.Item action href="https://www.phillymag.com/be-well-philly/waterfall-hikes/"
-                        style={{fontFamily: `Georgia, 'Times New Roman', Times, serif`, textAlign: 'left'}}>Hiking Trails Around Philadelphia</ListGroup.Item>
+                        style={{textAlign: 'left'}}>Hiking Trails Around Philadelphia</ListGroup.Item>
                     </ListGroup>
                     <div className="full-list-link">
                         <a href="/discover">Open All Recommendations <span>&#8594;</span></a>

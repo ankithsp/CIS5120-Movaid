@@ -1,6 +1,6 @@
 .plist-scrollable-content {
   overflow-y: auto;
-  height: calc(64.5%);
+  height: calc(62%);
   /* Adjusted height to accommodate top banner and bottom bar */
 }
 
@@ -8,14 +8,23 @@
   position: sticky;
   top: 0;
   background-color: white;
-  padding: 20px;
+  padding-top: 20px;
+  padding-bottom: 35px;
+  padding-left: 20px;
+  padding-right: 20px;
   text-align: center;
+
+
+  background-image: url('/public/background-wide.png');
+  background-size: cover;
+  background-position: center;
 }
 
 .plist-banner-content {
   display: flex;
   flex-direction: column;
   align-items: center;
+  color: black;
 }
 
 .plist-welcome-header {
@@ -26,7 +35,9 @@
 }
 
 .rooms-widget-container {
-  background-color: rgba(213, 177, 149, .4);
+  /* background-color: rgba(213, 177, 149, .4); */
+  background-color: white;
+  color: black;
   border-radius: 10px;
   padding: 20px;
   margin-bottom: 20px;
@@ -36,9 +47,42 @@
   display: grid;
   grid-template-rows: auto auto; /* Two rows, first row adjusts to content, second row takes the remaining space */
   gap: 10px; /* Adjust the gap between rows as needed */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Adjust the shadow values as needed */
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .rooms-widget-buttons {
   display: flex;
   justify-content: space-evenly;
+}
+
+.widget-budget-tracker-container-purchase{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.budget-tracker-bar{
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.budget-start-purchase {
+  font-size: 15px;
+  margin-right: 5px;
+}
+
+.budget-end-purchase {
+  font-size: 15px;
+  margin-left: 5px;
+}
+
+.rooms-widget-checked-items {
+  font-size: 10px;
+}
+
+.rooms-widget-item-count {
+  font-size: 17px;
+  margin-bottom: -10px;
 }
