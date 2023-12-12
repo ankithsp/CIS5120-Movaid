@@ -83,3 +83,7 @@
     font-size: 13px;
     margin-top: -10px;
 }
+
+.event-list-content {
+    justify-content: space-between;
+}

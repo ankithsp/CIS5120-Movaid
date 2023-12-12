@@ -1,6 +1,6 @@
 import React from "react";
 import "./PlanPage.css";
-import { Bag, House, Map, ClipboardCheck, CalendarWeekFill } from "react-bootstrap-icons";
+import { Bag, House, Map, ClipboardCheck, CalendarWeekFill, Trash } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Button, ListGroup, Form, Modal, Stack } from "react-bootstrap";
@@ -23,28 +23,30 @@ const PlanPage = () => {
     const [eventToAddDateStart, setEventToAddDateStart] = useState(''); 
     const [eventToAddDateEnd, setEventToAddDateEnd] = useState(''); 
 
+    const fetchEvents = async () => {
+        try {
+            const response = await fetch('http://localhost:8000/moveInPlan');
+            const data = await response.json();
+
+            // Grouping Events by Date
+            const groupedEvents = {};
+            data.forEach(event => {
+                const date = event.dateStart;
+
+                if(!groupedEvents[date]) {
+                    groupedEvents[date] = [];
+                }
+                groupedEvents[date].push(event);
+            })
+            setEventsList(groupedEvents);
+
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+    };
+
     useEffect(() => {
-        const fetchEvents = async () => {
-            try {
-                const response = await fetch('http://localhost:8000/moveInPlan');
-                const data = await response.json();
-
-                // Grouping Events by Date
-                const groupedEvents = {};
-                data.forEach(event => {
-                    const date = event.dateStart;
-
-                    if(!groupedEvents[date]) {
-                        groupedEvents[date] = [];
-                    }
-                    groupedEvents[date].push(event);
-                })
-                setEventsList(groupedEvents);
-
-            } catch (error) {
-                console.error('Error fetching data:', error);
-            }
-        };
+        
 
         const fetchWeather = async () => {
             try {
@@ -107,11 +109,31 @@ const PlanPage = () => {
                 setEventToAddDateStart('');
                 setEventToAddDateEnd('');
                 setAddingEventModalOpen(false);
+
+                fetchEvents();
             } else {
                 console.error('Failed to add event');
             }
         } catch (error) {
             console.error('Error making POST request:', error);
+        }
+    }
+    const handleDeleteEvent = async (eventId) => {
+        try {
+            const response = await fetch(`http://localhost:8000/moveInPlan/${eventId}`, {
+                method: 'DELETE',
+            });
+
+            if (response.ok) {
+                console.log('Event deleted successfully');
+
+                // Fetch updated events after deletion
+                fetchEvents();
+            } else {
+                console.error('Failed to delete event');
+            }
+        } catch (error) {
+            console.error('Error deleting event:', error);
         }
     }
 
@@ -126,9 +148,10 @@ const PlanPage = () => {
         return time.toLocaleTimeString('en-US', options);
     };
 
+
+
     return (
         <div className="screen-container">
-
             <div className="plan-top-banner">
                 <div className="plan-banner-content">
                     <h2 className="welcome-header">Move-In Plan</h2>
@@ -196,42 +219,27 @@ const PlanPage = () => {
                                     </div>
                                 </Stack>
                             </Stack>
-                            <Stack className="plan-widget-bottom"direction="vertical" gap={1}>
+                            <Stack className="plan-widget-bottom" direction="vertical" gap={1}>
                                 <ListGroup>
                                     {eventsList[date].map(event => (
+                                        // <ListGroup.Item key={event.id} className="event-list-item" action>
+                                        //     <p>{event.desc}</p>
+                                        //     {event.timeEnd ? <p><strong>{formatTime(event.timeStart)} - {formatTime(event.timeEnd)}</strong></p> : <p><strong>{formatTime(event.timeStart)}</strong></p>}
+                                        // </ListGroup.Item>
                                         <ListGroup.Item key={event.id} className="event-list-item" action>
-                                            <p>{event.desc}</p>
-                                            {event.timeEnd ? <p><strong>{formatTime(event.timeStart)} - {formatTime(event.timeEnd)}</strong></p> : <p><strong>{formatTime(event.timeStart)}</strong></p>}
+                                            <Stack direction="horizontal" gap={1} className="event-list-content">
+                                                <div>
+                                                    <p>{event.desc}</p>
+                                                    {event.timeEnd ? <p><strong>{formatTime(event.timeStart)} - {formatTime(event.timeEnd)}</strong></p> : <p><strong>{formatTime(event.timeStart)}</strong></p>}
+                                                </div>
+                                                <Button variant="danger" onClick={() => handleDeleteEvent(event.id)}><Trash size={20}/></Button>
+                                            </Stack>
+                                            
                                         </ListGroup.Item>
                                     ))}
                                 </ListGroup>
                             </Stack>
                         </Stack>
-                        {/* <div className="plan-widget-top">
-                            <div className="plan-widget-date">
-                                <h5>{formatDate(date)}</h5>
-                            </div>
-                            <div className="plan-widget-icon-container">
-                                {weatherList[date] && (
-                                    <div>
-                                        <div className="plan-widget-icon-background">
-                                            <img src={`http://openweathermap.org/img/wn/${weatherList[date].icon}.png`} alt="Weather Icon" />
-                                        </div>
-                                        <h5 style={{ fontSize: '12px' }}>{weatherList[date].description}</h5>
-                                    </div>
-                                )}
-                            </div>
-                        </div>
-                        <div className="plan-widget-bottom">
-                            <ListGroup>
-                                {eventsList[date].map(event => (
-                                    <ListGroup.Item key={event.id} className="event-list-item" action>
-                                        <p>{event.desc}</p>
-                                        {event.timeEnd ? <p><strong>{formatTime(event.timeStart)} - {formatTime(event.timeEnd)}</strong></p> : <p><strong>{formatTime(event.timeStart)}</strong></p>}
-                                    </ListGroup.Item>
-                                ))}
-                            </ListGroup>
-                        </div> */}
                     </div>
                 ))}
             </div>
