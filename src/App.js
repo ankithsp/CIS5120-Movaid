@@ -16,6 +16,7 @@ import TodoPage from "./pages/TodoPage";
 import PlanPage from "./pages/PlanPage";
 import DiscoverPage from "./pages/DiscoverPage";
 import PurchasePage from "./pages/PurchasePage";
+import EntrySurvey from "./pages/EntrySurvey";
 
 function App() {
   const action = useNavigationType();
@@ -34,6 +35,10 @@ function App() {
 
     switch (pathname) {
       case "/":
+        title = "";
+        metaDescription = "";
+        break;
+      case "/survey":
         title = "";
         metaDescription = "";
         break;
@@ -82,6 +87,10 @@ function App() {
       <Route 
         path="/" 
         element={<Homepage />} 
+      />
+      <Route 
+        path="/survey" 
+        element={<EntrySurvey />} 
       />
       <Route
         path="/purchase"
