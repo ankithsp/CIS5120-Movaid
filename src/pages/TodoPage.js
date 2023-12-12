@@ -15,6 +15,8 @@ const TodoPage = () => {
     const [taskToAdd, setTaskToAdd] = useState('');
     const [taskToAddPriority, setTaskToAddPriority] = useState(0);
     const [addingTaskModalOpen, setAddingTaskModalOpen] = useState(false);
+    const [addingTaskModalSugg1Open, setAddingTaskModalSugg1Open] = useState(false);
+    const [addingTaskModalSugg2Open, setAddingTaskModalSugg2Open] = useState(false);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -85,6 +87,8 @@ const TodoPage = () => {
                 setTaskToAdd('');
                 setTaskToAddPriority(0);
                 setAddingTaskModalOpen(false);
+                setAddingTaskModalSugg1Open(false);
+                setAddingTaskModalSugg2Open(false);
             } else {
               console.error('Failed to add task');
             }
@@ -209,7 +213,6 @@ const TodoPage = () => {
                 </Modal.Footer>
             </Modal>
             
-
             <div className="todo-scrollable-content">
                 <Accordion alwaysOpen style={{borderRadius: '10px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.5)'}}>
                     <Accordion.Item eventKey="0">
@@ -247,8 +250,135 @@ const TodoPage = () => {
                         </Accordion.Body>
                     </Accordion.Item>
                 </Accordion>
-            </div>
 
+                <div className="suggestions-list">
+                <h5>Suggestions...</h5>
+                <div className="suggestion-1">
+                <Button type="button" className="sug1-button" onClick={() => setAddingTaskModalSugg1Open(true)}>
+                        Update Mailing Address for Bank Account
+                </Button>
+                <Modal show={addingTaskModalSugg1Open} onHide={() => setAddingTaskModalSugg1Open(false)} >
+                <Modal.Header closeButton>
+                    <Modal.Title>Add a New To-Do Task</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <Form>
+                        <Form.Group controlId="taskToAdd">
+                            <Form.Label>Task Description</Form.Label>
+                            <Form.Control
+                                type="text"
+                                placeholder="Enter task description"
+                                value={"Update Mailing Address for Bank Account"}
+                                onChange={(e) => setTaskToAdd(e.target.value)}
+                            />
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label>Priority Level</Form.Label>
+                            <div className="mb-3">
+                                <Form.Check
+                                    inline
+                                    label="High"
+                                    name="group1"
+                                    type="radio"
+                                    id={`high-prio`}
+                                    value={3}
+                                    onChange={(e) => setTaskToAddPriority(e.target.value)}
+                                    checked={taskToAddPriority === "3"}
+                                />
+                                <Form.Check
+                                    inline
+                                    label="Medium"
+                                    name="group1"
+                                    type={"radio"}
+                                    id={`med-prio`}
+                                    value={2}
+                                    onChange={(e) => setTaskToAddPriority(e.target.value)}
+                                    checked={taskToAddPriority === "2"}
+                                />
+                                <Form.Check
+                                    inline
+                                    label="Low"
+                                    name="group1"
+                                    type={"radio"}
+                                    id={`low-prio`}
+                                    value={1}
+                                    onChange={(e) => setTaskToAddPriority(e.target.value)}
+                                    checked={taskToAddPriority === "1"}
+                                />
+                            </div>
+                        </Form.Group>
+                    </Form>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={() => setAddingTaskModalSugg1Open(false)}>Close</Button>
+                    <Button variant="primary" onClick={handleAddTask}>Add Task</Button>
+                </Modal.Footer>
+                </Modal>
+                </div>
+                <div className="suggestion-2">
+                <Button type="button" className="sug2-button" onClick={() => setAddingTaskModalSugg2Open(true)}>
+                        Find in-network providers nearby
+                </Button>
+                <Modal show={addingTaskModalSugg2Open} onHide={() => setAddingTaskModalSugg2Open(false)} >
+                <Modal.Header closeButton>
+                    <Modal.Title>Add a New To-Do Task</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <Form>
+                        <Form.Group controlId="taskToAdd">
+                            <Form.Label>Task Description</Form.Label>
+                            <Form.Control
+                                type="text"
+                                placeholder="Enter task description"
+                                value={"Find in-network providers nearby"}
+                                onChange={(e) => setTaskToAdd(e.target.value)}
+                            />
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label>Priority Level</Form.Label>
+                            <div className="mb-3">
+                                <Form.Check
+                                    inline
+                                    label="High"
+                                    name="group1"
+                                    type="radio"
+                                    id={`high-prio`}
+                                    value={3}
+                                    onChange={(e) => setTaskToAddPriority(e.target.value)}
+                                    checked={taskToAddPriority === "3"}
+                                />
+                                <Form.Check
+                                    inline
+                                    label="Medium"
+                                    name="group1"
+                                    type={"radio"}
+                                    id={`med-prio`}
+                                    value={2}
+                                    onChange={(e) => setTaskToAddPriority(e.target.value)}
+                                    checked={taskToAddPriority === "2"}
+                                />
+                                <Form.Check
+                                    inline
+                                    label="Low"
+                                    name="group1"
+                                    type={"radio"}
+                                    id={`low-prio`}
+                                    value={1}
+                                    onChange={(e) => setTaskToAddPriority(e.target.value)}
+                                    checked={taskToAddPriority === "1"}
+                                />
+                            </div>
+                        </Form.Group>
+                    </Form>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={() => setAddingTaskModalSugg2Open(false)}>Close</Button>
+                    <Button variant="primary" onClick={handleAddTask}>Add Task</Button>
+                </Modal.Footer>
+                </Modal>
+                </div>
+            </div>
+            </div>
 
             <div className="bottom-bar">
                 <Link to="/" className="navbar-link">
