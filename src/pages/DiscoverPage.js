@@ -4,7 +4,7 @@ import "./DiscoverPage.css";
 import { House, Bag, ClipboardCheck, CalendarWeek, MapFill } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { ListGroup, Button } from "react-bootstrap";
+import { ListGroup, Button, Spinner } from "react-bootstrap";
 
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 
@@ -38,6 +38,8 @@ const DiscoverPage = () => {
         { name: "University of Pennsylvania", coordinates: [39.9522, -75.1932] },
     ]
 
+    const [mapLoading, setMapLoading] = useState(true);
+
     return (
         <>
             {showMap ?
@@ -60,7 +62,9 @@ const DiscoverPage = () => {
                         <div className="discover-map">
                             {/* Citation: https://stackoverflow.com/questions/61425949/how-to-use-google-map-iframe-embed-code-in-react-js */}
                             <div className="google-map-code">
-                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d195601.38000048845!2d-75.28283599674772!3d40.00238128385527!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c6b7d8d4b54beb%3A0x89f514d88c3e58c1!2sPhiladelphia%2C%20PA!5e0!3m2!1sen!2sus!4v1701579536616!5m2!1sen!2sus" height="400" style={{ border: 0 }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" aria-hidden="false" tabIndex="0"></iframe>
+                                {mapLoading ? <div style={{alignContent: 'center'}}><Spinner animation="border"/></div>
+                                : null}
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d195601.38000048845!2d-75.28283599674772!3d40.00238128385527!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c6b7d8d4b54beb%3A0x89f514d88c3e58c1!2sPhiladelphia%2C%20PA!5e0!3m2!1sen!2sus!4v1701579536616!5m2!1sen!2sus" height="400" style={{ border: 0 }} onLoad={() => setMapLoading(false)} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" aria-hidden="false" tabIndex="0"></iframe>
                             </div>
                         </div>
                     </div>

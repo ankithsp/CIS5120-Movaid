@@ -207,9 +207,9 @@ const Homepage = () => {
                                         checked={item.checked} onChange={() => handleCheckItem(item.id)} />
                                 </div>
                                 <div className="checklist-right-seciton">
-                                    <Button variant="danger" onClick={(e) => handleDeleteItem(item.id, e)}>
+                                    {/* <Button variant="danger" onClick={(e) => handleDeleteItem(item.id, e)}>
                                         <Trash size={20} />
-                                    </Button>
+                                    </Button> */}   
                                 </div>
                             </ListGroup.Item>
                         ))}
