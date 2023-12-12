@@ -57,6 +57,7 @@ const PurchasePage = () => {
         const response = await fetch('http://localhost:8000/budget-tracker');
         const data = await response.json();
         // console.log(data[0]);
+        
         setBudgetLevel(data[0]);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -68,7 +69,9 @@ const PurchasePage = () => {
       const data = await response.json();
       if (data.length > 0) {
         const total = data.reduce((acc, item) => acc + item.price, 0);
-        setDynamBudgetLevel(dynamBudgetLevel => ({...dynamBudgetLevel, level: dynamBudgetLevel.level+total}));
+        setTimeout(function () {
+          setDynamBudgetLevel(dynamBudgetLevel => ({...dynamBudgetLevel, level: dynamBudgetLevel.level+total}));
+        }, 500);      
       } else {
         console.log('No checked items found');
       }
@@ -256,6 +259,7 @@ const PurchasePage = () => {
         // Update the state with the new checklist items
         getRoomItems(roomId);
         getNumCheckedItems(roomId);
+        setDynamBudgetLevel(dynamBudgetLevel => ({...dynamBudgetLevel, level: dynamBudgetLevel.level+itemToToggle.price}));
         console.log('New state:', updatedChecklist);
       } else {
         console.error('Failed to update item');

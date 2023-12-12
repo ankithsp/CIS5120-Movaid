@@ -84,7 +84,10 @@ const Homepage = () => {
             const data = await response.json();
             if (data.length > 0) {
               const total = data.reduce((acc, item) => acc + item.price, 0);
-              setDynamBudgetLevel(dynamBudgetLevel => ({...dynamBudgetLevel, level: dynamBudgetLevel.level+total}));
+              setTimeout(function () {
+                setDynamBudgetLevel(dynamBudgetLevel => ({...dynamBudgetLevel, level: dynamBudgetLevel.level+total}));
+              }, 500);
+              
             } else {
               console.log('No checked items found');
             }
@@ -145,6 +148,12 @@ const Homepage = () => {
 
                 // Update the state with the new checklist items
                 setItemsList(updatedChecklist);
+                if(!itemToToggle.checked) {
+                    setDynamBudgetLevel(dynamBudgetLevel => ({...dynamBudgetLevel, level: dynamBudgetLevel.level+itemToToggle.price}));
+                } else {
+                    setDynamBudgetLevel(dynamBudgetLevel => ({...dynamBudgetLevel, level: dynamBudgetLevel.level-itemToToggle.price}));
+                }
+                
                 console.log('New state:', updatedChecklist);
             } else {
                 console.error('Failed to update item');
@@ -153,29 +162,6 @@ const Homepage = () => {
         } catch (error) {
             console.error('Error updating checked item:', error);
             setItemsList(itemsList);
-        }
-    }
-    const handleDeleteItem = async (itemId, e) => {
-
-        e.stopPropagation();
-        const itemToToggle = itemsList.find((item) => item.id === itemId);
-        try {
-            const response = await fetch(`http://localhost:8000/purchaseList/${itemToToggle.purchaseListId}/items/${itemId}`, {
-                method: 'DELETE',
-            });
-
-            if (response.ok) {
-                console.log('Checklist item deleted successfully');
-
-                // Update the state by removing the deleted item
-                const updatedChecklist = itemsList.filter((item) => item.id !== itemId);
-                setItemsList(updatedChecklist);
-                console.log('New state:', updatedChecklist);
-            } else {
-                console.error('Failed to delete item');
-            }
-        } catch (error) {
-            console.error('Error deleting item:', error);
         }
     }
 

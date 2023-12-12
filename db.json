@@ -112,14 +112,14 @@
     {
       "id": "a3e74991-cefb-48c1-8207-697b6c9be97f",
       "name": "Cutting Board",
-      "checked": true,
+      "checked": false,
       "price": 200,
       "purchaseListId": "1"
     },
     {
       "id": "08c0b230-f3ec-4c79-90eb-4f15c4fc11c5",
       "name": "Pots and Pans set",
-      "checked": true,
+      "checked": false,
       "price": 200,
       "purchaseListId": "1"
     },
@@ -210,14 +210,14 @@
     {
       "id": "2124c21d-880a-4590-9bfd-17c55cce4e80",
       "name": "TV",
-      "checked": false,
+      "checked": true,
       "price": 200,
       "purchaseListId": "2"
     },
     {
       "id": "d9367eaa-b36d-4f5b-8585-c88f96587aad",
       "name": "Area Rug",
-      "checked": false,
+      "checked": true,
       "price": 200,
       "purchaseListId": "2"
     },
