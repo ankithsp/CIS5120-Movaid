@@ -18,22 +18,24 @@ const TodoPage = () => {
     const [addingTaskModalSugg1Open, setAddingTaskModalSugg1Open] = useState(false);
     const [addingTaskModalSugg2Open, setAddingTaskModalSugg2Open] = useState(false);
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await fetch('http://localhost:8000/todoTasks');
-                const data = await response.json();
-                console.log(data);
+    const fetchData = async () => {
+        try {
+            const response = await fetch('http://localhost:8000/todoTasks');
+            const data = await response.json();
+            console.log(data);
 
-                const completedTasks = data.filter(task => task.completed);
-                const todoTasks = data.filter(task => !task.completed);
+            const completedTasks = data.filter(task => task.completed);
+            const todoTasks = data.filter(task => !task.completed);
 
-                setCompletedTasksList(completedTasks);
-                setTodoTasksList(todoTasks);
-            } catch (error) {
-                console.error('Error fetching todo items:', error);
-            }
+            setCompletedTasksList(completedTasks);
+            setTodoTasksList(todoTasks);
+        } catch (error) {
+            console.error('Error fetching todo items:', error);
         }
+    }
+
+    useEffect(() => {
+        
         fetchData();
 
         const firstAccordionHeader = document.querySelector('.accordion-item:first-child .accordion-header:first-child .accordion-button');
@@ -89,6 +91,8 @@ const TodoPage = () => {
                 setAddingTaskModalOpen(false);
                 setAddingTaskModalSugg1Open(false);
                 setAddingTaskModalSugg2Open(false);
+
+                fetchData();
             } else {
               console.error('Failed to add task');
             }
@@ -142,6 +146,24 @@ const TodoPage = () => {
             console.error('Error making PATCH request:', error);
         }
     };
+
+    const onOpenTaskSugg1 = async (task) => {
+        console.log(task);
+        setTaskToAdd(task);
+        setAddingTaskModalSugg1Open(true);
+    }
+    const onCloseTaskSugg1 = async () => {
+        setAddingTaskModalSugg1Open(false);
+        setTaskToAdd('');
+    }
+    const onOpenTaskSugg2 = async (task) => {
+        setTaskToAdd(task);
+        setAddingTaskModalSugg2Open(true);
+    }
+    const onCloseTaskSugg2 = async () => {
+        setAddingTaskModalSugg2Open(false);
+        setTaskToAdd('');
+    }
 
     return (
         <div className="screen-container">
@@ -254,10 +276,10 @@ const TodoPage = () => {
                 <div className="suggestions-list">
                 <h5>Suggestions...</h5>
                 <div className="suggestion-1">
-                <Button type="button" className="sug1-button" onClick={() => setAddingTaskModalSugg1Open(true)}>
+                <Button type="button" className="sug1-button" onClick={(e) => onOpenTaskSugg1(e.target.textContent)}>
                         Update Mailing Address for Bank Account
                 </Button>
-                <Modal show={addingTaskModalSugg1Open} onHide={() => setAddingTaskModalSugg1Open(false)} >
+                <Modal show={addingTaskModalSugg1Open} onHide={(e) => onCloseTaskSugg1()} >
                 <Modal.Header closeButton>
                     <Modal.Title>Add a New To-Do Task</Modal.Title>
                 </Modal.Header>
@@ -310,16 +332,16 @@ const TodoPage = () => {
                     </Form>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={() => setAddingTaskModalSugg1Open(false)}>Close</Button>
+                    <Button variant="secondary" onClick={() => onCloseTaskSugg1()}>Close</Button>
                     <Button variant="primary" onClick={handleAddTask}>Add Task</Button>
                 </Modal.Footer>
                 </Modal>
                 </div>
                 <div className="suggestion-2">
-                <Button type="button" className="sug2-button" onClick={() => setAddingTaskModalSugg2Open(true)}>
+                <Button type="button" className="sug2-button" onClick={(e) => onOpenTaskSugg2(e.target.textContent)}>
                         Find in-network providers nearby
                 </Button>
-                <Modal show={addingTaskModalSugg2Open} onHide={() => setAddingTaskModalSugg2Open(false)} >
+                <Modal show={addingTaskModalSugg2Open} onHide={() => onCloseTaskSugg2()} >
                 <Modal.Header closeButton>
                     <Modal.Title>Add a New To-Do Task</Modal.Title>
                 </Modal.Header>
@@ -372,7 +394,7 @@ const TodoPage = () => {
                     </Form>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={() => setAddingTaskModalSugg2Open(false)}>Close</Button>
+                    <Button variant="secondary" onClick={() => onCloseTaskSugg2()}>Close</Button>
                     <Button variant="primary" onClick={handleAddTask}>Add Task</Button>
                 </Modal.Footer>
                 </Modal>
