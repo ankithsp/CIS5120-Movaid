@@ -350,7 +350,7 @@ const PurchasePage = () => {
           <div className="widget-budget-tracker-container-purchase">
             <p className="budget-start-purchase">$0</p>
             {dynamBudgetLevel && 
-            <ProgressBar className = "budget-tracker-bar" style={{width: '100%', marginBottom: '15px'}} animated variant="success" min= {0} now={dynamBudgetLevel.level} max={budgetLevel.totalBudget} label={`$${dynamBudgetLevel.level}`}/>
+            <ProgressBar className = "budget-tracker-bar" style={{width: '150%', marginBottom: '15px'}} animated variant="success" min= {0} now={dynamBudgetLevel.level} max={budgetLevel.totalBudget} label={`$${dynamBudgetLevel.level}`}/>
             }
             
             <p className="budget-end-purchase">${budgetLevel.totalBudget}</p>

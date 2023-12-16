@@ -63,7 +63,7 @@
     {
       "id": "ee473ee1-31e3-4f15-8e9e-6bc6e2c61fb0",
       "name": "Desk Lamp",
-      "checked": true,
+      "checked": false,
       "price": 200,
       "purchaseListId": "3"
     },
@@ -77,7 +77,7 @@
     {
       "id": "078abdc2-8db5-4611-b400-2952dd46da64",
       "name": "Bed",
-      "checked": false,
+      "checked": true,
       "price": 200,
       "purchaseListId": "3"
     },
@@ -98,14 +98,14 @@
     {
       "id": "4e8a8bdc-a1a7-41ea-a383-089b0f84be8d",
       "name": "Sieve",
-      "checked": true,
+      "checked": false,
       "price": 200,
       "purchaseListId": "1"
     },
     {
       "id": "95cc9a30-8511-40bb-b75d-5e0be59c743c",
       "name": "Knife Set",
-      "checked": true,
+      "checked": false,
       "price": 200,
       "purchaseListId": "1"
     },
@@ -203,21 +203,21 @@
     {
       "id": "442afc42-56e1-41b1-970a-ab27f2af59ad",
       "name": "Coffee Table",
-      "checked": true,
+      "checked": false,
       "price": 200,
       "purchaseListId": "2"
     },
     {
       "id": "2124c21d-880a-4590-9bfd-17c55cce4e80",
       "name": "TV",
-      "checked": true,
+      "checked": false,
       "price": 200,
       "purchaseListId": "2"
     },
     {
       "id": "d9367eaa-b36d-4f5b-8585-c88f96587aad",
       "name": "Area Rug",
-      "checked": true,
+      "checked": false,
       "price": 200,
       "purchaseListId": "2"
     },
@@ -336,43 +336,15 @@
       "desc": "Greet neighbors",
       "priority": 1,
       "completed": true
-    },
-    {
-      "id": "ee5f994e-cd92-44b0-9d02-645b81c5086b",
-      "desc": "gfdaasfd",
-      "priority": 2,
-      "completed": true
-    },
-    {
-      "id": "a8f06ad8-a405-4f74-a1ed-52c3d9e2d81a",
-      "desc": "Test Task",
-      "priority": 1,
-      "completed": false
     }
   ],
   "moveInPlan": [
     {
-      "id": "920578b7-6f7b-45e5-8332-5a001338e813",
-      "desc": "testing",
-      "dateStart": "2023-12-12",
-      "dateEnd": null,
-      "timeStart": "19:00:00",
-      "timeEnd": null
-    },
-    {
-      "id": "c0802887-8d68-451d-82b6-aee1a645c16b",
-      "desc": "testing 2",
-      "dateStart": "2023-12-13",
-      "dateEnd": null,
-      "timeStart": "19:01:00",
-      "timeEnd": null
-    },
-    {
-      "id": "eb7b83d2-8d41-4d8b-95b4-ce7890088bef",
-      "desc": "tesitng 3",
+      "id": "7d6693e6-09fa-4c83-9fe2-7f1500fd8f31",
+      "desc": "Get keys from landlord and move-in!",
       "dateStart": "2023-12-15",
       "dateEnd": null,
-      "timeStart": "19:01:00",
+      "timeStart": "13:00:00",
       "timeEnd": null
     }
   ]

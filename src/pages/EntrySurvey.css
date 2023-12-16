@@ -1,0 +1,45 @@
+
+.banner-top {
+    position: sticky;
+    top: 0;
+    background-color: white;
+    padding: 20px;
+    text-align: center;
+    color: black;
+
+    background-image: url('/public/background-wide.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.form-group{
+    margin-left: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.fn-input {
+    margin-left: -70px;
+}
+.ln-input{
+    margin-left: -70px;
+}
+.addr-input{
+    margin-left: -190px;
+}
+
+.addr2-input{
+    margin-left: -120px;
+}
+
+.city-input{
+    margin-left: -140px;
+}
+
+.state-input{
+    margin-left: -60px;
+}
+
+.zip-input{
+    margin-left: -80px;
+}

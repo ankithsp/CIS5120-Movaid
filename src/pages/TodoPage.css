@@ -41,3 +41,30 @@
 .accordion-button:not(.collapsed) {
     color: #212529;
 }
+
+.suggestions-list{
+    margin-top: 25px;
+}
+
+.suggestion-2{
+    margin-top: 15px;
+}
+
+.sug1-button{
+    background-color: white;
+    color: black;
+}
+.sug1-button:hover{
+    background-color: lightgray;
+    color: black;
+}
+
+.sug2-button{
+    width: 100%;
+    background-color: white;
+    color: black;
+}
+.sug2-button:hover{
+    background-color: lightgray;
+    color: black;
+}
