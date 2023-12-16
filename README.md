@@ -11,4 +11,4 @@
 
 
   ## Citations
-  We used the Figma 'Locofy' plugin to help convert the design and functionality of our hi-fi prototype to React code. 
+  We used various online resources, which are cited in-line, to assist with our project.  
